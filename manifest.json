@@ -1,7 +1,10 @@
 {
   "version": 1,
   "locale": "en_US",
-  "platform": "4.4.0",
+  "platform": {
+    "version": "4.4.0",
+    "type": "R"
+  },
   "metadata": {
     "appmode": "static",
     "primary_rmd": null,
