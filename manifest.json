@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "locale": "en_US",
+  "platform": "4.4.0",
+  "metadata": {
+    "appmode": "static",
+    "primary_rmd": null,
+    "primary_html": "results/RNA_seq/multiqc/raw_multiqc_report.html",
+    "content_category": null,
+    "has_parameters": false
+  },
+  "packages": null,
+  "files": {
+    ".gitattributes": {
+      "checksum": "a339e38692a339d07ce8a47fddd2ee4e"
+    },
+    ".Rprofile": {
+      "checksum": "1b8b1f5a8c8f29d15faa08937a191174"
+    },
+    "renv.lock": {
+      "checksum": "2f618b70b3d2913a188899423d0f2284"
+    },
+    "results/phenotype/ICP_MS_Histo.RDS": {
+      "checksum": "721af588e07340b18f64820cebc6d146"
+    },
+    "results/phenotype/SMT_Ileum_Histo.RDS": {
+      "checksum": "9ee2b6dc667bb810296bb9847a656908"
+    },
+    "results/phenotype/SMT_Neg_FITC.RDS": {
+      "checksum": "0532b6936c6f881de09b02e5fe160187"
+    },
+    "results/phenotype/Spont_FITC_4KDa.RDS": {
+      "checksum": "2ee40bbee25a558a2d9068023b291679"
+    },
+    "results/phenotype/Spont_FITC_Jej_Histo.RDS": {
+      "checksum": "153abdfae709de94e49222f3632020f0"
+    },
+    "results/RNA_seq/DESEQ2/.~lock.DESEQ2_SPONT_FITC_MUT_vs_WT_results.csv#": {
+      "checksum": "3f8c3b900e21f7d0b2281f97bb2b6692"
+    },
+    "results/RNA_seq/DESEQ2/DESEQ2_HFD_MUT_vs_WT_results.csv": {
+      "checksum": "188b81a03e8cbbf25d28f6a458126c1a"
+    },
+    "results/RNA_seq/DESEQ2/DESEQ2_SMT_Neg_dds_object.RDS": {
+      "checksum": "8f948445c4ad8c93866c91da9c0cd5b7"
+    },
+    "results/RNA_seq/DESEQ2/DESEQ2_SMT_Neg_MUT_vs_WT_results.csv": {
+      "checksum": "08b78077e05e1c95be7fd99440ecb51f"
+    },
+    "results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_dds_object.RDS": {
+      "checksum": "63ca2c4b6c80f8cba0ed49e552b765ad"
+    },
+    "results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_HET_vs_WT_results.csv": {
+      "checksum": "fb003b52979be211f9e625165a46e50b"
+    },
+    "results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_MUT_vs_WT_results.csv": {
+      "checksum": "672ed5da35bd0a934b91810594c029e5"
+    },
+    "results/RNA_seq/DESEQ2/DESEQ2_STL_Positive_HET_vs_WT_results.csv": {
+      "checksum": "4bff33fa551acd4b6de8ec1509d80970"
+    },
+    "results/RNA_seq/DESEQ2/DESEQ2_STL_Positive_MUT_vs_WT_results.csv": {
+      "checksum": "7d365cc0d15ee01c27bc06c101169558"
+    },
+    "results/RNA_seq/DESEQ2/females_DESEQ2_HFD_HET_vs_WT_results.csv": {
+      "checksum": "a521492aecfc76cf2aad2455610cd375"
+    },
+    "results/RNA_seq/DESEQ2/females_DESEQ2_HFD_MUT_vs_WT_results.csv": {
+      "checksum": "86d82ab6a600704577ac30ad94e87e91"
+    },
+    "results/RNA_seq/DESEQ2/females_significant_DESEQ2_HFD_HET_vs_WT_results.csv": {
+      "checksum": "526381c9258a08c5ae2893d9f4ddcaa7"
+    },
+    "results/RNA_seq/DESEQ2/females_significant_DESEQ2_HFD_MUT_vs_WT_results.csv": {
+      "checksum": "027b3592635e50c7edc73f36e9c1afde"
+    },
+    "results/RNA_seq/DESEQ2/males_DESEQ2_HFD_HET_vs_WT_results.csv": {
+      "checksum": "de60bb9bc2b5e90000f814c56db38022"
+    },
+    "results/RNA_seq/DESEQ2/males_DESEQ2_HFD_MUT_vs_WT_results.csv": {
+      "checksum": "d47abe25eb5bc5ac67e9df76b906b26a"
+    },
+    "results/RNA_seq/DESEQ2/males_significant_DESEQ2_HFD_HET_vs_WT_results.csv": {
+      "checksum": "c2432c9e5eba02eed57cf7efde7d375f"
+    },
+    "results/RNA_seq/DESEQ2/males_significant_DESEQ2_HFD_MUT_vs_WT_results.csv": {
+      "checksum": "76e0820f3c4785e60c95c17c1f1c592c"
+    },
+    "results/RNA_seq/DESEQ2/significant_DESEQ2_HFD_MUT_vs_WT_results.csv": {
+      "checksum": "e6230a5307f49a6a4c6e8399e67b7675"
+    },
+    "results/RNA_seq/GSEA/.~lock.GSEA_SPONT_FITC_Depleted_MUT_vs_WT.csv#": {
+      "checksum": "9c352495242398692f1f6099c7345499"
+    },
+    "results/RNA_seq/GSEA/.~lock.GSEA_SPONT_FITC_Enriched_MUT_vs_WT.csv#": {
+      "checksum": "32d6a90646239ab636ba7a223f1f94a1"
+    },
+    "results/RNA_seq/GSEA/.~lock.GSEA_STL_Positive_Depleted_MUT_vs_WT.csv#": {
+      "checksum": "da2eb1f835cdc28e7da8cb79d65d5a2e"
+    },
+    "results/RNA_seq/GSEA/.~lock.GSEA_STL_Positive_Enriched_MUT_vs_WT.csv#": {
+      "checksum": "1372784aa0d054a9d403e75d3cdf063e"
+    },
+    "results/RNA_seq/GSEA/GSEA_HFD_Depleted_MUT_vs_WT.csv": {
+      "checksum": "645d009c49643c5efca37ca2a107ab1b"
+    },
+    "results/RNA_seq/GSEA/GSEA_HFD_Enriched_MUT_vs_WT.csv": {
+      "checksum": "aeeb0823de3039807da27f8bd4b69624"
+    },
+    "results/RNA_seq/GSEA/GSEA_HFD_MUT_vs_WT.RDS": {
+      "checksum": "526ce130bc4c8d3393d02d32854689c8"
+    },
+    "results/RNA_seq/GSEA/GSEA_plot.png": {
+      "checksum": "a00a8ec443a587d5a5a0c9ad389e7634"
+    },
+    "results/RNA_seq/GSEA/GSEA_SMT_Depleted_MUT_vs_WT.csv": {
+      "checksum": "c83d18492d9163e306e0c53a34c71b92"
+    },
+    "results/RNA_seq/GSEA/GSEA_SMT_Enriched_MUT_vs_WT.csv": {
+      "checksum": "cac44fa86d03ed407f8f2c75a5229d53"
+    },
+    "results/RNA_seq/GSEA/GSEA_SMT_Neg_MUT_vs_WT.RDS": {
+      "checksum": "1759766b376ecbfe7ea05cfb251c38ac"
+    },
+    "results/RNA_seq/GSEA/GSEA_SPONT_FITC_Depleted_MUT_vs_WT.csv": {
+      "checksum": "0d5c17ed1504dc9d20e1275a696d8a4d"
+    },
+    "results/RNA_seq/GSEA/GSEA_SPONT_FITC_Enriched_MUT_vs_WT.csv": {
+      "checksum": "05c75ca44eb399e5b46d85fa1e08debd"
+    },
+    "results/RNA_seq/GSEA/GSEA_SPONT_FITC_HET_vs_WT.RDS": {
+      "checksum": "51a527ea48c1f6d4a5e9a7b464ef5b17"
+    },
+    "results/RNA_seq/GSEA/GSEA_SPONT_FITC_MUT_vs_WT.RDS": {
+      "checksum": "069efe07bf7d7a47f6fa1d9f9d4a00f6"
+    },
+    "results/RNA_seq/GSEA/GSEA_STL_Positive_Depleted_MUT_vs_WT.csv": {
+      "checksum": "8fe451d07252a45c7bb84d9339f304ec"
+    },
+    "results/RNA_seq/GSEA/GSEA_STL_Positive_Enriched_MUT_vs_WT.csv": {
+      "checksum": "37bdffb28847259f2d485bdafa32385f"
+    },
+    "results/RNA_seq/GSEA/GSEA_STL_Positive_MUT_vs_WT.RDS": {
+      "checksum": "71a568eefd5ac599c53d46374332e715"
+    },
+    "results/RNA_seq/GSEA/M7_GSEA_SMT_Neg_MUT_vs_WT.RDS": {
+      "checksum": "2b6c062d6859f10ac810535bcb3c2677"
+    },
+    "results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS": {
+      "checksum": "1f2a2b1bfd58881133ac8ec846666c9d"
+    },
+    "results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS": {
+      "checksum": "91de7310ed3b30110ca80dccea6a6919"
+    },
+    "results/RNA_seq/GSEA/Rplot.eps": {
+      "checksum": "c0e6e88b364d0c2ab4949dee790127ff"
+    },
+    "results/RNA_seq/GSEA/SMT_Neg_MUT_vs_WT.RDS": {
+      "checksum": "33aacf46e676e6003ee67d14d69fc169"
+    },
+    "results/RNA_seq/GSEA/STL_MUT_vs_WT_Immune.svg": {
+      "checksum": "8bd675366a4fbe3dc3bd0e4841efe591"
+    },
+    "results/RNA_seq/GSEA/test.RDS": {
+      "checksum": "b43f45d7887be29aa413f8037bc6c087"
+    },
+    "results/RNA_seq/GSEAGSEA_SPONT_FITC_MUT_vs_WT.RDS": {
+      "checksum": "cff5a90ea8621898ac774a7da826add0"
+    },
+    "results/RNA_seq/multiqc/raw_multiqc_report.html": {
+      "checksum": "5051593c58f557d9e870755ce7a7353a"
+    },
+    "results/RNA_seq/multiqc/salmon_multiqc_report.html": {
+      "checksum": "809345f532cb66d342885af086fc9f8c"
+    },
+    "results/RNA_seq/multiqc/trim_multiqc_report.html": {
+      "checksum": "f8b143d7fd122be9714aa985d84fe906"
+    },
+    "results/RNA_seq/pca_plots/SPONT_FITC_PCA.RDS": {
+      "checksum": "8bc28d5b4b89b8210b62a495ea4c7394"
+    },
+    "results/RNA_seq/volcano_plots/female_hfd_plot.png": {
+      "checksum": "bee47746f840d0ea10e2dd94b4bc067a"
+    },
+    "results/RNA_seq/volcano_plots/het_female_hfd_plot.png": {
+      "checksum": "b4757632d867b040053a0b3a9a16b86c"
+    },
+    "results/RNA_seq/volcano_plots/het_male_hfd_plot.png": {
+      "checksum": "7e69e0b01b470503f62d6d29e40f27b9"
+    },
+    "results/RNA_seq/volcano_plots/hfd_plot.png": {
+      "checksum": "9d70bd4f4ed7709adb7791cee5f1c89d"
+    },
+    "results/RNA_seq/volcano_plots/male_hfd_plot.png": {
+      "checksum": "982aadabd67aae6f6336ec12802ba47e"
+    },
+    "results/RNA_seq/volcano_plots/smtneg_plot.png": {
+      "checksum": "07380a181c7fe60a8bf0a8ff9993133f"
+    },
+    "results/RNA_seq/volcano_plots/SPONT_FITC_HET_vs_WT.png": {
+      "checksum": "745304daf95dfb7d50ef79cc596fe9d0"
+    },
+    "results/RNA_seq/volcano_plots/STL_Positive_MUT_vs_WT.png": {
+      "checksum": "d1b14660acb3be88acbf46d747079e7a"
+    },
+    "results/SMT_Maaslin2/all_results.tsv": {
+      "checksum": "460d5e90239c13ae6434d291bd653656"
+    },
+    "results/SMT_Maaslin2/features/filtered_data_norm_transformed.tsv": {
+      "checksum": "ba75fc842bd776e33da683f9dd1b77f8"
+    },
+    "results/SMT_Maaslin2/features/filtered_data_norm.tsv": {
+      "checksum": "e93ab733ddca2a18f844e1245e8097ce"
+    },
+    "results/SMT_Maaslin2/features/filtered_data.tsv": {
+      "checksum": "a56b4ace0228f67d143ead249646a117"
+    },
+    "results/SMT_Maaslin2/fits/fitted.rds": {
+      "checksum": "df31a8ae1c8f6d95715c182d955fab34"
+    },
+    "results/SMT_Maaslin2/fits/residuals.rds": {
+      "checksum": "84e07e82c066713e3a054aa42cca144b"
+    },
+    "results/SMT_Maaslin2/maaslin2.log": {
+      "checksum": "0b4579477c7acd2d5f15d17bb74220d6"
+    },
+    "results/SMT_Maaslin2/pca_scores.csv": {
+      "checksum": "34541401b2e3cc4c085d7d097e238f94"
+    },
+    "results/SMT_Maaslin2/Relative_Abundance_Species_Luminal_SI_ASV.RDS": {
+      "checksum": "9a1ce0fbfe3dfd27d20eff8b8b534abd"
+    },
+    "results/SMT_Maaslin2/significant_results.tsv": {
+      "checksum": "d0b51deca332ba40b8480ea164ec5575"
+    },
+    "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/all_results.tsv": {
+      "checksum": "62f00b533083eef36a58566b33765558"
+    },
+    "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/features/filtered_data_norm_transformed.tsv": {
+      "checksum": "1fe4d6ea94527ee177c66013f02b3138"
+    },
+    "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/features/filtered_data_norm.tsv": {
+      "checksum": "ca8953828a55aa4d367c980362cc5bfa"
+    },
+    "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/features/filtered_data.tsv": {
+      "checksum": "cf5492036469275f4c7710d93544fe82"
+    },
+    "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/fits/fitted.rds": {
+      "checksum": "0567fb0b63444db1cb486e855a337970"
+    },
+    "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/fits/residuals.rds": {
+      "checksum": "e0336d1d0e2757728c6715ea934aab44"
+    },
+    "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/maaslin2.log": {
+      "checksum": "d394b035e3eb954b5f886f5b241ba2c4"
+    },
+    "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/significant_results.tsv": {
+      "checksum": "b59c2eec5465c3f9d6f2433017297c53"
+    },
+    "results/SMT_Shotgun_Beta_Diversity.RDS": {
+      "checksum": "db3ab1a8ac31c3368540200c78cab197"
+    },
+    "results/SMT_Shotgun_DAT.RDS": {
+      "checksum": "6330ee3a8ada3d6f8902228b9038cd89"
+    },
+    "src/00_REPOS_SETUP.R": {
+      "checksum": "499b28f6cad4bf257af65a86c84fbd2c"
+    },
+    "src/app.R": {
+      "checksum": "a188ba4bc0aa0b920c919bf0a1c670df"
+    }
+  },
+  "users": null
+}
