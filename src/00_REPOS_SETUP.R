@@ -11,7 +11,7 @@ rsconnect::writeManifest(
 
 
 files <- list.files(
-  path = "results", 
+  path = ".", 
   recursive = TRUE,   # look into subfolders
   full.names = TRUE   # keep relative paths
 )
