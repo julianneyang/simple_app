@@ -1,0 +1,133 @@
+2025-08-28 07:26:33.101209 INFO::Writing function arguments to log file
+2025-08-28 07:26:33.103596 DEBUG::Function arguments
+2025-08-28 07:26:33.10446 DEBUG::Output folder: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2
+2025-08-28 07:26:33.105597 DEBUG::Min Abundance: 0.000000
+2025-08-28 07:26:33.106324 DEBUG::Min Prevalence: 0.150000
+2025-08-28 07:26:33.107049 DEBUG::Normalization: TSS
+2025-08-28 07:26:33.107744 DEBUG::Transform: LOG
+2025-08-28 07:26:33.108442 DEBUG::Analysis method: LM
+2025-08-28 07:26:33.109127 DEBUG::Max significance: 0.250000
+2025-08-28 07:26:33.109818 DEBUG::Random effects:
+2025-08-28 07:26:33.110811 DEBUG::Fixed effects: Sex,Site,Genotype
+2025-08-28 07:26:33.111451 DEBUG::Correction method: BH
+2025-08-28 07:26:33.112196 DEBUG::Standardize: TRUE
+2025-08-28 07:26:33.112846 DEBUG::Cores: 1
+2025-08-28 07:26:33.113434 INFO::Verifying options selected are valid
+2025-08-28 07:26:33.1149 INFO::Determining format of input files
+2025-08-28 07:26:33.116311 INFO::Input format is data samples as columns and metadata samples as rows
+2025-08-28 07:26:33.1194 DEBUG::Transformed data so samples are rows
+2025-08-28 07:26:33.120685 DEBUG::The following samples were found to have features but no metadata. They will be removed. X83_SLC_SMT_NEG_143I,X62_SLC_SMT_NEG_BLANK
+2025-08-28 07:26:33.121381 DEBUG::A total of 59 samples were found in both the data and metadata
+2025-08-28 07:26:33.121862 DEBUG::Reordering data/metadata to use same sample ordering
+2025-08-28 07:26:33.125318 INFO::Formula for fixed effects: expr ~  Sex + Site + Genotype
+2025-08-28 07:26:33.127457 INFO::Factor detected for categorial metadata 'Genotype'. Provide a reference argument or manually set factor ordering to change reference level.
+2025-08-28 07:26:33.128856 INFO::Filter data based on min abundance and min prevalence
+2025-08-28 07:26:33.13048 INFO::Total samples in data: 59
+2025-08-28 07:26:33.132127 INFO::Min samples required with min abundance for a feature not to be filtered: 8.850000
+2025-08-28 07:26:33.137569 INFO::Total filtered features: 121
+2025-08-28 07:26:33.1391 INFO::Filtered feature names from abundance and prevalence filtering: s__Cutibacterium_acnes, s__GGB70518_SGB94950, s__GGB28421_SGB41004, s__Bacteria_unclassified_SGB43539, s__Bacteria_unclassified_SGB44461, s__bacterium_1XD21_13, s__bacterium_1XD42_54, s__bacterium_1XD42_76, s__bacterium_1xD8_48, s__bacterium_D16_29, s__GGB28961_SGB41670, s__GGB28963_SGB41672, s__GGB79854_SGB41662, s__GGB28888_SGB41569, s__GGB79948_SGB41679, s__GGB28967_SGB41678, s__GGB28903_SGB41594, s__GGB28927_SGB41625, s__GGB28901_SGB41592, s__GGB28946_SGB41652, s__GGB79804_SGB41650, s__Bacteroides_caecimuris, s__Bacteroides_intestinalis, s__Bacteroides_thetaiotaomicron, s__Duncaniella_freteri, s__Prevotella_sp_MGM1, s__Alistipes_finegoldii, s__Alistipes_timonensis, s__GGB28990_SGB41704, s__Parabacteroides_distasonis, s__Parabacteroides_goldsteinii, s__GGB27770_SGB40184, s__GGB28403_SGB40190, s__GGB79741_SGB1950, s__GGB79628_SGB35895, s__GGB27894_SGB40329, s__GGB31108_SGB44379, s__GGB27478_SGB39772, s__Enterococcus_gallinarum, s__GGB27481_SGB39777, s__Lactobacillus_SGB5158, s__GGB31823_SGB45199, s__GGB28981_SGB41693, s__GGB28456_SGB41039, s__GGB28439_SGB41022, s__GGB28980_SGB41692, s__GGB45293_SGB41002, s__GGB30296_SGB43260, s__GGB3661_SGB41629, s__GGB28956_SGB41665, s__GGB30408_SGB43438, s__GGB27476_SGB43516, s__GGB28948_SGB41654, s__GGB28949_SGB41655, s__GGB28853_SGB41519, s__GGB28869_SGB41543, s__GGB62427_SGB41546, s__GGB79698_SGB41545, s__GGB28793_SGB41446, s__GGB30414_SGB43453, s__GGB42321_SGB59488, s__GGB29546_SGB42339, s__GGB28870_SGB41548, s__GGB79844_SGB41536, s__GGB28394_SGB40975, s__GGB28380_SGB40960, s__GGB28382_SGB40962, s__GGB28908_SGB41656, s__GGB29003_SGB41719, s__GGB29531_SGB42317, s__Candidatus_Metalachnospira_SGB63370, s__GGB28934_SGB41635, s__GGB30455_SGB43519, s__Clostridium_SGB65123, s__GGB28845_SGB41512, s__GGB30147_SGB43074, s__GGB80168_SGB43527, s__GGB27480_SGB39776, s__GGB73359_SGB46611, s__Anaerostipes_hominis, s__Blautia_pseudococcoides, s__GGB28769_SGB41421, s__GGB28828_SGB41484, s__GGB28865_SGB41537, s__GGB28925_SGB41622, s__GGB28957_SGB41666, s__GGB42644_SGB59842, s__GGB79592_SGB45219, s__Lachnospiraceae_bacterium_A2, s__Schaedlerella_arabinosiphila, s__Acutalibacter_sp_1XD8_33, s__Acutalibacter_sp_1XD8_36, s__GGB30290_SGB43252, s__GGB30450_SGB43507, s__GGB30451_SGB102185, s__GGB30454_SGB100837, s__GGB30454_SGB43514, s__GGB30457_SGB63218, s__GGB30461_SGB43529, s__GGB30461_SGB63208, s__GGB30468_SGB43552, s__GGB45514_SGB63186, s__GGB45536_SGB63216, s__GGB5207_SGB43496, s__GGB74395_SGB43523, s__GGB74408_SGB43542, s__GGB75053_SGB43494, s__GGB75055_SGB43513, s__GGB75064_SGB102200, s__GGB75064_SGB43546, s__Oscillibacter_SGB43502, s__Oscillibacter_sp_1_3, s__Oscillibacter_sp_CU971, s__Pseudoflavonifractor_sp_524_17, s__Clostridium_cocleatum, s__GGB79594_SGB41414, s__Zoogloea_SGB41465, s__GGB30667_SGB43809, s__Escherichia_coli, s__Acinetobacter_baumannii, s__Pseudomonas_aeruginosa
+2025-08-28 07:26:33.143154 INFO::Total filtered features with variance filtering: 0
+2025-08-28 07:26:33.14462 INFO::Filtered feature names from variance filtering:
+2025-08-28 07:26:33.146036 INFO::Running selected normalization method: TSS
+2025-08-28 07:26:33.149276 INFO::Applying z-score to standardize continuous metadata
+2025-08-28 07:26:33.155397 INFO::Running selected transform method: LOG
+2025-08-28 07:26:33.159542 INFO::Running selected analysis method: LM
+2025-08-28 07:26:33.161735 INFO::Fitting model to feature number 1, s__Bifidobacterium_pseudolongum
+2025-08-28 07:26:33.170967 INFO::Fitting model to feature number 2, s__GGB80032_SGB42945
+2025-08-28 07:26:33.177054 INFO::Fitting model to feature number 3, s__Atopobiaceae_bacterium_FL090493
+2025-08-28 07:26:33.182941 INFO::Fitting model to feature number 4, s__Coriobacteriaceae_bacterium
+2025-08-28 07:26:33.216321 INFO::Fitting model to feature number 5, s__Parvibacter_caecicola
+2025-08-28 07:26:33.221968 INFO::Fitting model to feature number 6, s__Adlercreutzia_caecimuris
+2025-08-28 07:26:33.22806 INFO::Fitting model to feature number 7, s__Adlercreutzia_mucosicola
+2025-08-28 07:26:33.235381 INFO::Fitting model to feature number 8, s__Adlercreutzia_muris
+2025-08-28 07:26:33.242411 INFO::Fitting model to feature number 9, s__Eggerthellaceae_bacterium
+2025-08-28 07:26:33.249048 INFO::Fitting model to feature number 10, s__Enterorhabdus_sp_P55
+2025-08-28 07:26:33.255898 INFO::Fitting model to feature number 11, s__Bacteria_unclassified_SGB63107
+2025-08-28 07:26:33.380028 INFO::Fitting model to feature number 12, s__bacterium_D16_63
+2025-08-28 07:26:33.384876 INFO::Fitting model to feature number 13, s__bacterium_D16_76
+2025-08-28 07:26:33.389385 INFO::Fitting model to feature number 14, s__GGB14001_SGB21428
+2025-08-28 07:26:33.395091 INFO::Fitting model to feature number 15, s__GGB30048_SGB42949
+2025-08-28 07:26:33.400393 INFO::Fitting model to feature number 16, s__GGB28904_SGB41597
+2025-08-28 07:26:33.40579 INFO::Fitting model to feature number 17, s__GGB28898_SGB41580
+2025-08-28 07:26:33.411445 INFO::Fitting model to feature number 18, s__Bacteroides_SGB40318
+2025-08-28 07:26:33.417613 INFO::Fitting model to feature number 19, s__Bacteroidales_bacterium
+2025-08-28 07:26:33.422285 INFO::Fitting model to feature number 20, s__GGB27849_SGB40283
+2025-08-28 07:26:33.452445 INFO::Fitting model to feature number 21, s__Barnesiella_sp_CU968
+2025-08-28 07:26:33.457954 INFO::Fitting model to feature number 22, s__Duncaniella_dubosii
+2025-08-28 07:26:33.463616 INFO::Fitting model to feature number 23, s__Duncaniella_muris
+2025-08-28 07:26:33.469077 INFO::Fitting model to feature number 24, s__GGB27919_SGB40357
+2025-08-28 07:26:33.47553 INFO::Fitting model to feature number 25, s__GGB3583_SGB21441
+2025-08-28 07:26:33.482445 INFO::Fitting model to feature number 26, s__GGB46159_SGB63927
+2025-08-28 07:26:33.489537 INFO::Fitting model to feature number 27, s__GGB70852_SGB95305
+2025-08-28 07:26:33.497723 INFO::Fitting model to feature number 28, s__Muribaculaceae_bacterium
+2025-08-28 07:26:33.631773 INFO::Fitting model to feature number 29, s__Muribaculaceae_bacterium_Isolate_013_NCI
+2025-08-28 07:26:33.910165 INFO::Fitting model to feature number 30, s__Muribaculaceae_bacterium_Isolate_110_HZI
+2025-08-28 07:26:33.915956 INFO::Fitting model to feature number 31, s__Muribaculum_gordoncarteri
+2025-08-28 07:26:33.921883 INFO::Fitting model to feature number 32, s__Muribaculum_intestinale
+2025-08-28 07:26:33.926136 INFO::Fitting model to feature number 33, s__Paramuribaculum_intestinale
+2025-08-28 07:26:33.931998 INFO::Fitting model to feature number 34, s__GGB1503_SGB2082
+2025-08-28 07:26:33.936558 INFO::Fitting model to feature number 35, s__GGB24146_SGB35950
+2025-08-28 07:26:33.940728 INFO::Fitting model to feature number 36, s__GGB27872_SGB40306
+2025-08-28 07:26:33.946358 INFO::Fitting model to feature number 37, s__GGB24149_SGB35953
+2025-08-28 07:26:33.952766 INFO::Fitting model to feature number 38, s__GGB27861_SGB40295
+2025-08-28 07:26:34.256965 INFO::Fitting model to feature number 39, s__GGB75879_SGB103683
+2025-08-28 07:26:34.261685 INFO::Fitting model to feature number 40, s__GGB27866_SGB40300
+2025-08-28 07:26:34.266238 INFO::Fitting model to feature number 41, s__GGB27885_SGB40319
+2025-08-28 07:26:34.271136 INFO::Fitting model to feature number 42, s__GGB27485_SGB39778
+2025-08-28 07:26:34.277562 INFO::Fitting model to feature number 43, s__GGB75725_SGB102612
+2025-08-28 07:26:34.283397 INFO::Fitting model to feature number 44, s__GGB27929_SGB40368
+2025-08-28 07:26:34.288145 INFO::Fitting model to feature number 45, s__GGB27860_SGB40294
+2025-08-28 07:26:34.293648 INFO::Fitting model to feature number 46, s__Lactobacillus_intestinalis
+2025-08-28 07:26:34.297976 INFO::Fitting model to feature number 47, s__Lactobacillus_johnsonii
+2025-08-28 07:26:34.505023 INFO::Fitting model to feature number 48, s__Ligilactobacillus_murinus
+2025-08-28 07:26:34.510939 INFO::Fitting model to feature number 49, s__Limosilactobacillus_reuteri
+2025-08-28 07:26:34.515843 INFO::Fitting model to feature number 50, s__GGB28981_SGB41694
+2025-08-28 07:26:34.520815 INFO::Fitting model to feature number 51, s__GGB28772_SGB41425
+2025-08-28 07:26:34.526291 INFO::Fitting model to feature number 52, s__GGB28778_SGB41431
+2025-08-28 07:26:34.532038 INFO::Fitting model to feature number 53, s__GGB30298_SGB43262
+2025-08-28 07:26:34.537802 INFO::Fitting model to feature number 54, s__GGB79760_SGB63182
+2025-08-28 07:26:34.543786 INFO::Fitting model to feature number 55, s__GGB28967_SGB41417
+2025-08-28 07:26:34.549329 INFO::Fitting model to feature number 56, s__GGB3171_SGB4185
+2025-08-28 07:26:34.698801 INFO::Fitting model to feature number 57, s__GGB28330_SGB40904
+2025-08-28 07:26:34.703407 INFO::Fitting model to feature number 58, s__Clostridiaceae_bacterium
+2025-08-28 07:26:34.708761 INFO::Fitting model to feature number 59, s__Clostridium_SGB40327
+2025-08-28 07:26:34.714789 INFO::Fitting model to feature number 60, s__GGB24132_SGB35935
+2025-08-28 07:26:34.719947 INFO::Fitting model to feature number 61, s__Clostridiales_bacterium
+2025-08-28 07:26:34.725159 INFO::Fitting model to feature number 62, s__Dorea_sp_5_2
+2025-08-28 07:26:34.73104 INFO::Fitting model to feature number 63, s__GGB25041_SGB36960
+2025-08-28 07:26:34.736697 INFO::Fitting model to feature number 64, s__GGB27873_SGB41457
+2025-08-28 07:26:34.743045 INFO::Fitting model to feature number 65, s__GGB27876_SGB40310
+2025-08-28 07:26:34.751448 INFO::Fitting model to feature number 66, s__GGB28766_SGB41418
+2025-08-28 07:26:34.756967 INFO::Fitting model to feature number 67, s__GGB28988_SGB41701
+2025-08-28 07:26:34.763108 INFO::Fitting model to feature number 68, s__GGB30861_SGB44083
+2025-08-28 07:26:34.769539 INFO::Fitting model to feature number 69, s__GGB42598_SGB59794
+2025-08-28 07:26:34.775788 INFO::Fitting model to feature number 70, s__GGB42646_SGB59844
+2025-08-28 07:26:34.781885 INFO::Fitting model to feature number 71, s__Lachnospiraceae_bacterium
+2025-08-28 07:26:34.788502 INFO::Fitting model to feature number 72, s__Lachnospiraceae_bacterium_MD308
+2025-08-28 07:26:34.794802 INFO::Fitting model to feature number 73, s__Lachnospiraceae_unclassified_SGB41402
+2025-08-28 07:26:34.931246 INFO::Fitting model to feature number 74, s__GGB28849_SGB41516
+2025-08-28 07:26:34.936153 INFO::Fitting model to feature number 75, s__GGB28879_SGB43526
+2025-08-28 07:26:34.940463 INFO::Fitting model to feature number 76, s__GGB30461_SGB63209
+2025-08-28 07:26:34.945482 INFO::Fitting model to feature number 77, s__GGB30466_SGB63211
+2025-08-28 07:26:34.949277 INFO::Fitting model to feature number 78, s__GGB45650_SGB63364
+2025-08-28 07:26:34.953197 INFO::Fitting model to feature number 79, s__GGB75074_SGB102167
+2025-08-28 07:26:34.958748 INFO::Fitting model to feature number 80, s__Neglectibacter_sp_X4
+2025-08-28 07:26:34.965095 INFO::Fitting model to feature number 81, s__Hungateiclostridiaceae_bacterium_KB18
+2025-08-28 07:26:34.970647 INFO::Fitting model to feature number 82, s__Faecalibaculum_rodentium
+2025-08-28 07:26:35.016284 INFO::Fitting model to feature number 83, s__Turicibacter_sp_TS3
+2025-08-28 07:26:35.023127 INFO::Fitting model to feature number 84, s__GGB24148_SGB35952
+2025-08-28 07:26:35.030375 INFO::Fitting model to feature number 85, s__Parasutterella_sp_NM82_D38
+2025-08-28 07:26:35.037616 INFO::Fitting model to feature number 86, s__Turicimonas_muris
+2025-08-28 07:26:35.044227 INFO::Fitting model to feature number 87, s__GGB28310_SGB40880
+2025-08-28 07:26:35.050858 INFO::Fitting model to feature number 88, s__GGB28317_SGB40889
+2025-08-28 07:26:35.057798 INFO::Fitting model to feature number 89, s__Akkermansia_muciniphila
+2025-08-28 07:26:35.08496 INFO::Counting total values for each feature
+2025-08-28 07:26:35.098377 INFO::Writing filtered data to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/features/filtered_data.tsv
+2025-08-28 07:26:35.102241 INFO::Writing filtered, normalized data to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/features/filtered_data_norm.tsv
+2025-08-28 07:26:35.110218 INFO::Writing filtered, normalized, transformed data to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/features/filtered_data_norm_transformed.tsv
+2025-08-28 07:26:35.286406 WARNING::Deleting existing residuals file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/fits/residuals.rds
+2025-08-28 07:26:35.309489 INFO::Writing residuals to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/fits/residuals.rds
+2025-08-28 07:26:35.312961 WARNING::Deleting existing fitted file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/fits/fitted.rds
+2025-08-28 07:26:35.315006 INFO::Writing fitted values to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/fits/fitted.rds
+2025-08-28 07:26:35.317179 INFO::Writing all results to file (ordered by increasing q-values): /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/all_results.tsv
+2025-08-28 07:26:35.321739 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin2/significant_results.tsv
