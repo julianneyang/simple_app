@@ -1,10 +1,7 @@
 {
   "version": 1,
   "locale": "en_US",
-  "platform": {
-    "version": "4.4.0",
-    "type": "R"
-  },
+  "platform": "4.4.0",
   "metadata": {
     "appmode": "static",
     "primary_rmd": null,
@@ -18,7 +15,7 @@
       "checksum": "a339e38692a339d07ce8a47fddd2ee4e"
     },
     ".Rprofile": {
-      "checksum": "9b7f24d6b9944e0c4eb416d2f9b53027"
+      "checksum": "270d4a9ac14e82f2ebd6682e02c85fad"
     },
     "renv.lock": {
       "checksum": "b016b5aa6e22b4f92685def0bae5a385"
@@ -267,7 +264,7 @@
       "checksum": "6330ee3a8ada3d6f8902228b9038cd89"
     },
     "src/00_REPOS_SETUP.R": {
-      "checksum": "9f5761103b12be21a551234746ca03d4"
+      "checksum": "f80bf5149da049506e90b9b4808f0132"
     },
     "src/app.R": {
       "checksum": "a188ba4bc0aa0b920c919bf0a1c670df"
