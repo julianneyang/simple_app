@@ -10,7 +10,7 @@ library(plotly)
 library(stringi)
 
 # ---- Load data ----
-
+here::i_am("src/app.R")
 # ---- UI ----
 ui <- fluidPage(
   titlePanel("Aggregated Data from the SLC SI Project"),
