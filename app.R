@@ -116,13 +116,13 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # Read in your pre-made ggplot objects
-  # plot_slc_spont_1 <- readRDS(here("results/phenotype/Spont_FITC_4KDa.RDS"))
-  # plot_slc_spont_2 <- readRDS(here("results/phenotype/Spont_FITC_Jej_Histo.RDS"))
-  # plot_slc_spont_3 <- readRDS(here("results/phenotype/ICP_MS_Histo.RDS"))
-  # plot_smt_negative_1 <- readRDS(here("results/phenotype/SMT_Ileum_Histo.RDS"))
-  # plot_smt_negative_2 <- readRDS(here("results/phenotype/SMT_Neg_FITC.RDS"))
-  # plot_smt_negative_3 <- readRDS(here("results/SMT_Shotgun_DAT.RDS"))
-  # plot_smt_negative_4 <- readRDS(here("results/SMT_Shotgun_Beta_Diversity.RDS"))
+  plot_slc_spont_1 <- readRDS(here("results/phenotype/Spont_FITC_4KDa.RDS"))
+  plot_slc_spont_2 <- readRDS(here("results/phenotype/Spont_FITC_Jej_Histo.RDS"))
+  plot_slc_spont_3 <- readRDS(here("results/phenotype/ICP_MS_Histo.RDS"))
+  plot_smt_negative_1 <- readRDS(here("results/phenotype/SMT_Ileum_Histo.RDS"))
+  plot_smt_negative_2 <- readRDS(here("results/phenotype/SMT_Neg_FITC.RDS"))
+  plot_smt_negative_3 <- readRDS(here("results/SMT_Shotgun_DAT.RDS"))
+  plot_smt_negative_4 <- readRDS(here("results/SMT_Shotgun_Beta_Diversity.RDS"))
   
   # Define files and readers in a list
   files <- list(
