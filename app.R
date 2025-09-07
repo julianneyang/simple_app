@@ -1,4 +1,4 @@
-renv::restore()
+#renv::restore()
 library(shiny)
 library(ggplot2)
 library(tidyverse)
@@ -121,75 +121,75 @@ server <- function(input, output) {
   plot_slc_spont_3 <- readRDS(here("results/phenotype/ICP_MS_Histo.RDS"))
   plot_smt_negative_1 <- readRDS(here("results/phenotype/SMT_Ileum_Histo.RDS"))
   plot_smt_negative_2 <- readRDS(here("results/phenotype/SMT_Neg_FITC.RDS"))
-  plot_smt_negative_3 <- readRDS(here("results/SMT_Shotgun_DAT.RDS"))
-  plot_smt_negative_4 <- readRDS(here("results/SMT_Shotgun_Beta_Diversity.RDS"))
+  # plot_smt_negative_3 <- readRDS(here("results/SMT_Shotgun_DAT.RDS"))
+  # plot_smt_negative_4 <- readRDS(here("results/SMT_Shotgun_Beta_Diversity.RDS"))
+  # 
+  # # Define files and readers in a list
+  # files <- list(
+  #   list(
+  #     id = "preview1",
+  #     path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_MUT_vs_WT_results.csv"),
+  #     reader = function(p) read.csv(p, row.names = 1)
+  #   ),
+  #   list(
+  #     id = "preview2",
+  #     path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_HET_vs_WT_results.csv"),
+  #     reader = function(p) read.csv(p, row.names = 1)
+  #   ),
+  #   list(
+  #     id = "preview3",
+  #     path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
+  #     reader = function(p) readRDS(p) %>% arrange(padj)
+  #   ),
+  #   list(
+  #     id = "preview4",
+  #     path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
+  #     reader = function(p) readRDS(p) %>% arrange(padj)
+  #   ),
+  #   list(
+  #     id = "preview5",
+  #     path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_HET_vs_WT.RDS"),
+  #     reader = function(p) readRDS(p) %>% arrange(padj)
+  #   ),
+  #   list(
+  #     id = "preview6",
+  #     path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS"),
+  #     reader = function(p) readRDS(p) %>% arrange(padj)
+  #   ),
+  #   list(
+  #     id = "preview7",
+  #     path = here("results/RNA_seq/DESEQ2/DESEQ2_SMT_Neg_MUT_vs_WT_results.csv"),
+  #     reader = function(p) read.csv(p, row.names = 1)
+  #   ),
+  #   list(
+  #     id = "preview8",
+  #     path = here("results/RNA_seq/GSEA/GSEA_SMT_Neg_MUT_vs_WT.RDS"),
+  #     reader = function(p) readRDS(p) %>% arrange(padj)
+  #   ),
+  #   list(
+  #     id = "preview9",
+  #     path = here("results/RNA_seq/GSEA/M7_GSEA_SMT_Neg_MUT_vs_WT.RDS"),
+  #     reader = function(p) readRDS(p) %>% arrange(padj)
+  #   )
+  # )
   
-  # Define files and readers in a list
-  files <- list(
-    list(
-      id = "preview1",
-      path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_MUT_vs_WT_results.csv"),
-      reader = function(p) read.csv(p, row.names = 1)
-    ),
-    list(
-      id = "preview2",
-      path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_HET_vs_WT_results.csv"),
-      reader = function(p) read.csv(p, row.names = 1)
-    ),
-    list(
-      id = "preview3",
-      path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
-      reader = function(p) readRDS(p) %>% arrange(padj)
-    ),
-    list(
-      id = "preview4",
-      path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
-      reader = function(p) readRDS(p) %>% arrange(padj)
-    ),
-    list(
-      id = "preview5",
-      path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_HET_vs_WT.RDS"),
-      reader = function(p) readRDS(p) %>% arrange(padj)
-    ),
-    list(
-      id = "preview6",
-      path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS"),
-      reader = function(p) readRDS(p) %>% arrange(padj)
-    ),
-    list(
-      id = "preview7",
-      path = here("results/RNA_seq/DESEQ2/DESEQ2_SMT_Neg_MUT_vs_WT_results.csv"),
-      reader = function(p) read.csv(p, row.names = 1)
-    ),
-    list(
-      id = "preview8",
-      path = here("results/RNA_seq/GSEA/GSEA_SMT_Neg_MUT_vs_WT.RDS"),
-      reader = function(p) readRDS(p) %>% arrange(padj)
-    ),
-    list(
-      id = "preview9",
-      path = here("results/RNA_seq/GSEA/M7_GSEA_SMT_Neg_MUT_vs_WT.RDS"),
-      reader = function(p) readRDS(p) %>% arrange(padj)
-    )
-  )
-  
-  # Loop over file definitions
-  for (f in files) {
-    local({
-      id <- stri_sub(f$id, -1, -1)
-      path <- f$path
-      df <- f$reader(path)
-      
-      output[[paste0("filepath", id)]] <- renderText({
-        paste("Loaded from:", normalizePath(path))
-      })
-      
-      output[[f$id]] <- renderDT({
-        datatable(df, options = list(scrollX = TRUE, pageLength = 5))
-      })
-    })
-  }
-  
+  # # Loop over file definitions
+  # for (f in files) {
+  #   local({
+  #     id <- stri_sub(f$id, -1, -1)
+  #     path <- f$path
+  #     df <- f$reader(path)
+  #     
+  #     output[[paste0("filepath", id)]] <- renderText({
+  #       paste("Loaded from:", normalizePath(path))
+  #     })
+  #     
+  #     output[[f$id]] <- renderDT({
+  #       datatable(df, options = list(scrollX = TRUE, pageLength = 5))
+  #     })
+  #   })
+  # }
+  # 
   
   # Render them
   output$plot_slc_spont_1 <- renderPlot({ print(plot_slc_spont_1) })
@@ -197,92 +197,91 @@ server <- function(input, output) {
   output$plot_slc_spont_3 <- renderPlot({ print(plot_slc_spont_3 ) })
   output$plot_smt_negative_1 <- renderPlot({ print(plot_smt_negative_1 ) })
   output$plot_smt_negative_2 <- renderPlot({ print(plot_smt_negative_2 ) })
-  output$plot_smt_negative_3 <- renderPlot({ print(plot_smt_negative_3 ) })
-  output$plot_smt_negative_4 <- renderPlot({ print(plot_smt_negative_4 ) })
-  
-  output$plot_tl1a2 <- renderPlot({ print(plot_tl1a2) })
-  
-  set.seed(123)
-  gsea_df <- data.frame(readRDS(here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS"))) %>%
-    mutate(logFDR = -log10(padj))
-  
-  output$gsea_manhattan <- renderPlotly({
-    plot_ly(
-      data = gsea_df,
-      x = ~NES,
-      y = ~logFDR,
-      text = ~paste0(
-        "Pathway: ", pathway, "<br>",
-        "NES: ", round(NES, 2), "<br>",
-        "FDR: ", signif(padj, 3)
-      ),
-      type = "scatter",
-      mode = "markers",
-      marker = list(size = 10,
-                    color = ~logFDR,
-                    colorscale = "Viridis",
-                    showscale = TRUE)
-    ) %>%
-      layout(
-        xaxis = list(title = "Normalized Enrichment Score (NES)"),
-        yaxis = list(title = "-log10(padj)"),
-        hovermode = "closest"
-      )
-  })
-  
-  gsea_df_het <- data.frame(readRDS(here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS"))) %>%
-    mutate(logFDR = -log10(padj))
-  
-  output$gsea_manhattan_het <- renderPlotly({
-    plot_ly(
-      data = gsea_df_het,
-      x = ~NES,
-      y = ~logFDR,
-      text = ~paste0(
-        "Pathway: ", pathway, "<br>",
-        "NES: ", round(NES, 2), "<br>",
-        "FDR: ", signif(padj, 3)
-      ),
-      type = "scatter",
-      mode = "markers",
-      marker = list(size = 10,
-                    color = ~logFDR,
-                    colorscale = "Viridis",
-                    showscale = TRUE)
-    ) %>%
-      layout(
-        xaxis = list(title = "Normalized Enrichment Score (NES)"),
-        yaxis = list(title = "-log10(padj)"),
-        hovermode = "closest"
-      )
-  })
-  
-  gsea_df_smt <- data.frame(readRDS(here("results/RNA_seq/GSEA/M7_GSEA_SMT_Neg_MUT_vs_WT.RDS"))) %>%
-    mutate(logFDR = -log10(padj))
-  
-  output$SMT_Neg_gsea_manhattan <- renderPlotly({
-    plot_ly(
-      data = gsea_df_smt,
-      x = ~NES,
-      y = ~logFDR,
-      text = ~paste0(
-        "Pathway: ", pathway, "<br>",
-        "NES: ", round(NES, 2), "<br>",
-        "FDR: ", signif(padj, 3)
-      ),
-      type = "scatter",
-      mode = "markers",
-      marker = list(size = 10,
-                    color = ~logFDR,
-                    colorscale = "Viridis",
-                    showscale = TRUE)
-    ) %>%
-      layout(
-        xaxis = list(title = "Normalized Enrichment Score (NES)"),
-        yaxis = list(title = "-log10(padj)"),
-        hovermode = "closest"
-      )
-  })
+  # output$plot_smt_negative_3 <- renderPlot({ print(plot_smt_negative_3 ) })
+  # output$plot_smt_negative_4 <- renderPlot({ print(plot_smt_negative_4 ) })
+  # 
+
+  # set.seed(123)
+  # gsea_df <- data.frame(readRDS(here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS"))) %>%
+  #   mutate(logFDR = -log10(padj))
+  # 
+  # output$gsea_manhattan <- renderPlotly({
+  #   plot_ly(
+  #     data = gsea_df,
+  #     x = ~NES,
+  #     y = ~logFDR,
+  #     text = ~paste0(
+  #       "Pathway: ", pathway, "<br>",
+  #       "NES: ", round(NES, 2), "<br>",
+  #       "FDR: ", signif(padj, 3)
+  #     ),
+  #     type = "scatter",
+  #     mode = "markers",
+  #     marker = list(size = 10,
+  #                   color = ~logFDR,
+  #                   colorscale = "Viridis",
+  #                   showscale = TRUE)
+  #   ) %>%
+  #     layout(
+  #       xaxis = list(title = "Normalized Enrichment Score (NES)"),
+  #       yaxis = list(title = "-log10(padj)"),
+  #       hovermode = "closest"
+  #     )
+  # })
+  # 
+  # gsea_df_het <- data.frame(readRDS(here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS"))) %>%
+  #   mutate(logFDR = -log10(padj))
+  # 
+  # output$gsea_manhattan_het <- renderPlotly({
+  #   plot_ly(
+  #     data = gsea_df_het,
+  #     x = ~NES,
+  #     y = ~logFDR,
+  #     text = ~paste0(
+  #       "Pathway: ", pathway, "<br>",
+  #       "NES: ", round(NES, 2), "<br>",
+  #       "FDR: ", signif(padj, 3)
+  #     ),
+  #     type = "scatter",
+  #     mode = "markers",
+  #     marker = list(size = 10,
+  #                   color = ~logFDR,
+  #                   colorscale = "Viridis",
+  #                   showscale = TRUE)
+  #   ) %>%
+  #     layout(
+  #       xaxis = list(title = "Normalized Enrichment Score (NES)"),
+  #       yaxis = list(title = "-log10(padj)"),
+  #       hovermode = "closest"
+  #     )
+  # })
+  # 
+  # gsea_df_smt <- data.frame(readRDS(here("results/RNA_seq/GSEA/M7_GSEA_SMT_Neg_MUT_vs_WT.RDS"))) %>%
+  #   mutate(logFDR = -log10(padj))
+  # 
+  # output$SMT_Neg_gsea_manhattan <- renderPlotly({
+  #   plot_ly(
+  #     data = gsea_df_smt,
+  #     x = ~NES,
+  #     y = ~logFDR,
+  #     text = ~paste0(
+  #       "Pathway: ", pathway, "<br>",
+  #       "NES: ", round(NES, 2), "<br>",
+  #       "FDR: ", signif(padj, 3)
+  #     ),
+  #     type = "scatter",
+  #     mode = "markers",
+  #     marker = list(size = 10,
+  #                   color = ~logFDR,
+  #                   colorscale = "Viridis",
+  #                   showscale = TRUE)
+  #   ) %>%
+  #     layout(
+  #       xaxis = list(title = "Normalized Enrichment Score (NES)"),
+  #       yaxis = list(title = "-log10(padj)"),
+  #       hovermode = "closest"
+  #     )
+  # })
   
 }
 
