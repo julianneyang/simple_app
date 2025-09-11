@@ -266,43 +266,44 @@ server <- function(input, output) {
   plot_slc_indo_1 <- plot_avg_trajectory(indo, title_string = "SLC Indomethacin DAI", subtitle_string = "HET p = 0.1913, MUT p = 0.0036")
   
   
-  # # Define files and readers in a list
-  # files <- list(
-  #   list(
-  #     id = "preview1",
-  #     path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_MUT_vs_WT_results.csv"),
-  #     reader = function(p) read.csv(p, row.names = 1)
-  #   ),
-  #   list(
-  #     id = "preview2",
-  #     path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_HET_vs_WT_results.csv"),
-  #     reader = function(p) read.csv(p, row.names = 1)
-  #   ),
-  #   list(
-  #     id = "preview3",
-  #     path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
-  #     reader = function(p) readRDS(p) %>% arrange(padj)
-  #   ),
-  #   list(
-  #     id = "preview4",
-  #     path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
-  #     reader = function(p) readRDS(p) %>% arrange(padj)
-  #   ),
-  #   list(
-  #     id = "preview5",
-  #     path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_HET_vs_WT.RDS"),
-  #     reader = function(p) readRDS(p) %>% arrange(padj)
-  #   ),
-  #   list(
-  #     id = "preview6",
-  #     path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS"),
-  #     reader = function(p) readRDS(p) %>% arrange(padj)
-  #   ),
-  #   list(
-  #     id = "preview7",
-  #     path = here("results/RNA_seq/DESEQ2/DESEQ2_SMT_Neg_MUT_vs_WT_results.csv"),
-  #     reader = function(p) read.csv(p, row.names = 1)
-  #   ),
+  # Define files and readers in a list
+  files <- list(
+    list(
+      id = "preview1",
+      path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_MUT_vs_WT_results.csv"),
+      reader = function(p) read.csv(p, row.names = 1)
+    ),
+    list(
+      id = "preview2",
+      path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_HET_vs_WT_results.csv"),
+      reader = function(p) read.csv(p, row.names = 1)
+    ),
+    # list(
+    #   id = "preview3",
+    #   path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
+    #   reader = function(p) readRDS(p) %>% arrange(padj)
+    # ),
+    # list(
+    #   id = "preview4",
+    #   path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
+    #   reader = function(p) readRDS(p) %>% arrange(padj)
+    # ),
+    # list(
+    #   id = "preview5",
+    #   path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_HET_vs_WT.RDS"),
+    #   reader = function(p) readRDS(p) %>% arrange(padj)
+    # ),
+    # list(
+    #   id = "preview6",
+    #   path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS"),
+    #   reader = function(p) readRDS(p) %>% arrange(padj)
+    # ),
+    list(
+      id = "preview7",
+      path = here("results/RNA_seq/DESEQ2/DESEQ2_SMT_Neg_MUT_vs_WT_results.csv"),
+      reader = function(p) read.csv(p, row.names = 1)
+    )
+  )
   #   list(
   #     id = "preview8",
   #     path = here("results/RNA_seq/GSEA/GSEA_SMT_Neg_MUT_vs_WT.RDS"),
@@ -315,23 +316,23 @@ server <- function(input, output) {
   #   )
   # )
   # 
-  # # Loop over file definitions
-  # for (f in files) {
-  #   local({
-  #     id <- stri_sub(f$id, -1, -1)
-  #     path <- f$path
-  #     df <- f$reader(path)
-  #     
-  #     output[[paste0("filepath", id)]] <- renderText({
-  #       paste("Loaded from:", normalizePath(path))
-  #     })
-  #     
-  #     output[[f$id]] <- renderDT({
-  #       datatable(head(df, 100), options = list(scrollX = TRUE, pageLength = 5))
-  #     })
-  #   })
-  # }
-  
+  # Loop over file definitions
+  for (f in files) {
+    local({
+      id <- stri_sub(f$id, -1, -1)
+      path <- f$path
+      df <- f$reader(path)
+
+      output[[paste0("filepath", id)]] <- renderText({
+        paste("Loaded from:", normalizePath(path))
+      })
+
+      output[[f$id]] <- renderDT({
+        datatable(head(df, 100), options = list(scrollX = TRUE, pageLength = 5))
+      })
+    })
+  }
+
   
   # Render them
   output$plot_slc_spont_1 <- renderPlot({ print(plot_slc_spont_1) })
