@@ -1,13 +1,7 @@
 renv::init(bioconductor="3.20")
 renv::install("rsconnect")
 renv::snapshot()
-rsconnect::writeManifest(
-  appFiles= files,
-  #appFileManifest = "src/app.R",
-  appMode= "shiny",
-  envManagementR = TRUE,
-  verbose = TRUE
-)
+
 
 
 files <- list.files(
@@ -16,3 +10,10 @@ files <- list.files(
   full.names = TRUE   # keep relative paths
 )
 
+rsconnect::writeManifest(
+  appFiles= files,
+  #appFileManifest = "src/app.R",
+  appMode= "shiny",
+  envManagementR = TRUE,
+  verbose = TRUE
+)

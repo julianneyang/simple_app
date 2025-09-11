@@ -4507,10 +4507,85 @@
   },
   "files": {
     "app.R": {
-      "checksum": "2649055b4be373a3070987f0dcb3936a"
+      "checksum": "34ada66bdf349569477b9c2a4ced8400"
+    },
+    "data/phenotype/Archive_SLC_GPX/SLC_GPX_Cohort_1_Activity_SI_MUC_.csv": {
+      "checksum": "d3fc35deb2e50be13b19f2f07bb8f417"
+    },
+    "data/phenotype/Archive_SLC_GPX/SLC_GPX_Cohort_1_Musocal_Pellet_Dilution.csv": {
+      "checksum": "4e55e02e93fd93302a868b6f686bdfa3"
+    },
+    "data/phenotype/Archive_SLC_GPX/SLC_GPX_Cohort_2_3_Conical_Weights_Mucosal SI.csv": {
+      "checksum": "c70c04ea28f5459ceb30c855a0bb46b6"
+    },
+    "data/phenotype/Archive_SLC_GPX/SLC_Uninduced_GPX_Activity_5.15.23.csv": {
+      "checksum": "4d438e0e4125f9d8ae4d2da16839468a"
+    },
+    "data/phenotype/SLC_HFD/HFD_FITC_Analysis.csv": {
+      "checksum": "b0a2994731503d92f0bfcb76c583d895"
+    },
+    "data/phenotype/SLC_HFD/HFD_Histo.csv": {
+      "checksum": "37f701a6a87c8c43663c48dff280d619"
+    },
+    "data/phenotype/SLC_HFD/SLC_HFD_Lipidomics.csv": {
+      "checksum": "e4accef7dbc72a08a561bce937dfca6d"
+    },
+    "data/phenotype/SLC_HFD/SLC_HFD_Mouse_Info.csv": {
+      "checksum": "bd7c05efe853c0d256729f6eef1e62e3"
+    },
+    "data/phenotype/SLC_ICP-MS/Analysis_ICP_MS.csv": {
+      "checksum": "38be029aabfeb5598db3e44a466d4390"
+    },
+    "data/phenotype/SLC_ICP-MS/Ileum Spontaneous ICP-MS.csv": {
+      "checksum": "99ca6f24b91169a9e6d822450926fe24"
+    },
+    "data/phenotype/SLC_Indomethacin/SLC_Indo_DAI.csv": {
+      "checksum": "9204ee86c9314272280eb22ccdd43ab7"
+    },
+    "data/phenotype/SLC_Indomethacin/SLC_Indomethacin_Mouse_Info.csv": {
+      "checksum": "039eb28a86e0e0e6fa3c32d3dfa342ff"
+    },
+    "data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_FITC_Results.csv": {
+      "checksum": "52e4b523f1da097b65533c7e83246951"
+    },
+    "data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_Jejunum_Histo.csv": {
+      "checksum": "5549a771674158142d35861e94985b45"
+    },
+    "data/phenotype/SLC_Spontaneous/GPX/11.29.23_GPX_Assay.xlsx - GPX.csv": {
+      "checksum": "49a4f4efd6180c0f5506b5b0ba87a51f"
+    },
+    "data/phenotype/SLC_Spontaneous/Proteomics/Proteomics_28Nov2024.csv": {
+      "checksum": "1536855d5aac46f05b6d7c31122bdf19"
+    },
+    "data/phenotype/SLC_Spontaneous/Proteomics/SelenoProtein_ID.csv": {
+      "checksum": "8f1503a65cd7fa2925e4af7039a7f1dd"
+    },
+    "data/phenotype/SLC_TL1A/SLC_TL1A_Mouse_Info_Breeding_Sheet.csv": {
+      "checksum": "ea39c9b1e37a57e4b26128c9d618f077"
+    },
+    "data/phenotype/SLC_TL1A/SLC_TL1A_Mouse_Info.csv": {
+      "checksum": "3f824f52152ce915ab2c6dd7037ec322"
+    },
+    "data/phenotype/SLC_TL1A/STL_Histology_Ileum.csv": {
+      "checksum": "329a770c7ac4e82733ec8cb9ef5a82e6"
+    },
+    "data/phenotype/SMT_Indomethacin/SMT_Both_Histo.csv": {
+      "checksum": "9a7d971ec31764d8c0d951f05695d421"
+    },
+    "data/phenotype/SMT_Indomethacin/SMT_Indo_DAI.csv": {
+      "checksum": "325515fcc301cbde383dd30a537259d2"
+    },
+    "data/phenotype/SMT_Indomethacin/SMT_Indo_Mouse_Info.csv": {
+      "checksum": "f5e5fed1c62a484db38aaa522574a9cd"
+    },
+    "data/phenotype/SMT_Negative/SMT_Neg_FITC.csv": {
+      "checksum": "b44e344c417784c5035e34f91297dbd8"
+    },
+    "data/phenotype/SMT_Negative/SMT_NEG_Mouse_Info.csv": {
+      "checksum": "b6f4fa87b860b04540682ff117d19dd4"
     },
     "manifest.json": {
-      "checksum": "d5817245c29ec5b53a0d0f164a74f80c"
+      "checksum": "9c2b49b32486bd303854be5a862496d2"
     },
     "renv.lock": {
       "checksum": "b016b5aa6e22b4f92685def0bae5a385"
@@ -4747,7 +4822,7 @@
       "checksum": "c8d3f84a410f46d4d8b03a268e313e35"
     },
     "src/00_REPOS_SETUP.R": {
-      "checksum": "5d94dcc530103f54c138c8b3e27d17b8"
+      "checksum": "1fedc05204e93e871bec433280c2c7ec"
     }
   },
   "users": null

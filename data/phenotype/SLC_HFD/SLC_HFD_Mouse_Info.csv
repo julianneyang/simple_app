@@ -1,0 +1,72 @@
+Assays,,
+"These mice were on an HFD for 12 weeks, were weighed and % body fat percentage measured every week, underwent a GTT between week 11 and 12, and then were fasted for 12 hours overnight prior to gavaging with FITC dextran and sacking 4 hours post gavage",,
+Mucosal pellets were collected in DMEM/DTT (no FBS) in the same manner as was done for GPX mice,,
+Samples,,
+"Fecal pellet at baseline, and then at every week up until week 12 ",,
+"duo, Jej, Ile, flushed clean with 1X PBS, in RNA later ",,
+"Duo, Jej, Ile, Cec, Colon in 10% neutral buffered formalin",,
+"Ileum flushed clean with 1X PBS for lipidomics, flash frozen in N2",,
+"Mucosal pellet from SI, fresh frozen",,
+"Duo, Jej, Ile, cecal content",,
+Plasma ,,
+,,
+Mesenteric fat for RNAlater and snap frozen ,,
+Subcutaneous fat for RNAlater and snap frozen ,,
+,,
+,,
+,,
+Mouse ID,Sex,MUT
+352,Female,WT
+235,Female,WT
+236,Female,WT
+232,Female,WT
+234,Female,WT
+226,Male,WT
+227,Male,WT
+237,Male,WT
+356,Male,WT
+276,Male,WT
+231,Female,HET
+255,Female,HET
+26,Female,HET
+308,Male,HET
+229,Male,HET
+230,Male,HET
+238,Male,HET
+258,Male,HET
+275,Male,HET
+263,Male,HET
+353,Female,MUT
+262,Male,MUT
+299,Male,MUT
+305,Male,MUT
+228,Male,MUT
+264,Male,MUT
+371,Female,WT
+375,Male,WT
+389,Male,WT
+346,Male,WT
+397,Male,WT
+370,Female,HET
+429,Female,HET
+348,Female,HET
+379,Female,HET
+380,Female,HET
+384,Female,HET
+495,Female,HET
+496,Female,HET
+497,Female,HET
+373,Male,HET
+50,Male,HET
+345,Male,HET
+347,Male,HET
+350,Male,HET
+377,Male,HET
+385,Male,HET
+500,Male,HET
+369,Female,MUT
+390,Female,MUT
+381,Female,MUT
+498,Female,MUT
+499,Male,MUT
+451,Male,MUT
