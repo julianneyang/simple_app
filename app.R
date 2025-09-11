@@ -175,7 +175,15 @@ ui <- fluidPage(
               tabPanel("SLC_TL1A",
                        fluidRow(
                          column(6, plotOutput("plot_tl1a_1")),
-                         column(6, plotOutput("plot_tl1a_2"))
+                         column(6, plotOutput("plot_tl1a_2")),
+                         h2("RNA-sequencing Results"),
+                         br(),
+                         h3("DESeq2: HET vs WT"),
+                         textOutput("filepath11"),
+                         DTOutput("preview11"),
+                         h3("DESeq2: MUT vs WT"),
+                         textOutput("filepath12"),
+                         DTOutput("preview12")
                        )
               ),
               
@@ -188,8 +196,14 @@ ui <- fluidPage(
               
               tabPanel("SLC_HFD",
                        fluidRow(
+                         h2("Phenotype Results"),
                          column(6, plotOutput("plot_slc_hfd_1")),
-                         column(6, plotOutput("plot_slc_hfd_2"))
+                         column(6, plotOutput("plot_slc_hfd_2")),
+                         h2("RNA-sequencing Results"),
+                         br(),
+                         h3("DESeq2: MUT vs WT"),
+                         textOutput("filepath10"),
+                         DTOutput("preview10"),
                        )
               ),
               
@@ -302,8 +316,8 @@ server <- function(input, output) {
       id = "preview7",
       path = here("results/RNA_seq/DESEQ2/DESEQ2_SMT_Neg_MUT_vs_WT_results.csv"),
       reader = function(p) read.csv(p, row.names = 1)
-    )
-  )
+      ),
+  
   #   list(
   #     id = "preview8",
   #     path = here("results/RNA_seq/GSEA/GSEA_SMT_Neg_MUT_vs_WT.RDS"),
@@ -314,7 +328,22 @@ server <- function(input, output) {
   #     path = here("results/RNA_seq/GSEA/M7_GSEA_SMT_Neg_MUT_vs_WT.RDS"),
   #     reader = function(p) readRDS(p) %>% arrange(padj)
   #   )
-  # )
+  list(
+      id = "preview10",
+      path = here("results/RNA_seq/DESEQ2/DESEQ2_HFD_MUT_vs_WT_results.csv"),
+      reader = function(p) read.csv(p, row.names = 1)
+      ),
+  list(
+    id = "preview11",
+    path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_Positive_HET_vs_WT_results.csv"),
+    reader = function(p) read.csv(p, row.names = 1)
+    ),
+  list(
+    id = "preview12",
+    path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_Positive_MUT_vs_WT_results.csv"),
+    reader = function(p) read.csv(p, row.names = 1)
+    )
+  )
   # 
   # Loop over file definitions
   for (f in files) {
