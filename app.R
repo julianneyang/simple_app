@@ -279,6 +279,10 @@ server <- function(input, output) {
     left_join(meta, by="MouseID")
   plot_slc_indo_1 <- plot_avg_trajectory(indo, title_string = "SLC Indomethacin DAI", subtitle_string = "HET p = 0.1913, MUT p = 0.0036")
   
+  plot_slc_indo_2 <- plot_histology(csv_filepath= here("data/phenotype/SLC_Indomethacin/SLC_Indo_Histo.csv"),
+                                    title_string = "Ileum Histology",
+                                    subtitle_string =  "SLC Indomethacin Cohort",
+                                    stat_comparisons =  full_comparisons) 
   
   # Define files and readers in a list
   files <- list(
@@ -375,6 +379,7 @@ server <- function(input, output) {
   
   output$plot_smt_indo_1 <- renderPlot({ print(plot_smt_indo_1) })
   output$plot_slc_indo_1 <- renderPlot({ print(plot_slc_indo_1) })
+  output$plot_slc_indo_2 <- renderPlot({ print(plot_slc_indo_2) })
   
   # set.seed(123)
   # 
@@ -449,7 +454,7 @@ server <- function(input, output) {
       # output$plot_smt_negative_3 <- renderPlot({ print(plot_smt_negative_3 ) })
       # output$plot_smt_negative_4 <- renderPlot({ print(plot_smt_negative_4 ) })
       # output$plot_smt_negative_5 <- renderPlot({ print(plot_smt_negative_5 ) })
-      output$SMT_Neg_wilcox_table <- renderTable(table_smt_negative)
+      #output$SMT_Neg_wilcox_table <- renderTable(table_smt_negative)
       
       # output$SMT_Neg_gsea_manhattan <- renderPlotly({
       #   make_gsea_plot("results/RNA_seq/GSEA/GSEA_SMT_Neg_MUT_vs_WT.RDS")
