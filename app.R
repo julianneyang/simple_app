@@ -203,7 +203,7 @@ ui <- fluidPage(
                          br(),
                          h3("DESeq2: MUT vs WT"),
                          textOutput("filepath10"),
-                         DTOutput("preview10"),
+                         DTOutput("preview10")
                        )
               ),
               
@@ -214,7 +214,12 @@ ui <- fluidPage(
                        )
               ),
               
-              
+              tabPanel("SE Supplementation",
+                       fluidRow(
+                         column(6, plotOutput("plot_se_supp_1")),
+                         column(6, plotOutput("plot_se_supp_2"))
+                       )
+              ),
               
               tabPanel("SLC_ICP-MS",
                        fluidRow(
@@ -283,6 +288,13 @@ server <- function(input, output) {
                                     title_string = "Ileum Histology",
                                     subtitle_string =  "SLC Indomethacin Cohort",
                                     stat_comparisons =  full_comparisons) 
+  
+  se_indo <- read.csv(here("data/phenotype/SE_Supp/SE_Supp_Indomethacin_DAI.csv"))
+  se_indo_ctrl <- se_indo %>% filter(Diet =="Control")
+  plot_se_supp_1 <- plot_avg_trajectory(se_indo_ctrl, title_string = "SE SUPP Control Diet", subtitle_string = "HET p = 0.5727, MUT p = 0.5037")
+  
+  se_indo_supp <- se_indo %>% filter(Diet =="Selenium")
+  plot_se_supp_2 <- plot_avg_trajectory(se_indo_supp, title_string = "SE SUPP Selenium Diet", subtitle_string = "HET p = 0.7391, MUT p = 0.6525")
   
   # Define files and readers in a list
   files <- list(
@@ -381,6 +393,8 @@ server <- function(input, output) {
   output$plot_slc_indo_1 <- renderPlot({ print(plot_slc_indo_1) })
   output$plot_slc_indo_2 <- renderPlot({ print(plot_slc_indo_2) })
   
+  output$plot_se_supp_1 <- renderPlot({ print(plot_se_supp_1) })
+  output$plot_se_supp_2 <- renderPlot({ print(plot_se_supp_2) })
   # set.seed(123)
   # 
   # # Helper function: read, preprocess, and make GSEA Manhattan plot
