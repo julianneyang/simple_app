@@ -296,6 +296,13 @@ server <- function(input, output) {
   se_indo_supp <- se_indo %>% filter(Diet =="Selenium")
   plot_se_supp_2 <- plot_avg_trajectory(se_indo_supp, title_string = "SE SUPP Selenium Diet", subtitle_string = "HET p = 0.7391, MUT p = 0.6525")
   
+  se_histo_ctrl <- plot_histology(csv_filepath= here("data/phenotype/SE_Supp/Control_Histology.csv"),
+                                  title_string = "Ileum Histology",
+                                  subtitle_string =  "SLC Control and Selenium Histology",
+                                  stat_comparisons =  full_comparisons) 
+  
+  
+  
   # Define files and readers in a list
   files <- list(
     list(
@@ -395,6 +402,7 @@ server <- function(input, output) {
   
   output$plot_se_supp_1 <- renderPlot({ print(plot_se_supp_1) })
   output$plot_se_supp_2 <- renderPlot({ print(plot_se_supp_2) })
+  output$plot_se_supp_3 <- renderPlot({ print(se_histo_ctrl) })
   # set.seed(123)
   # 
   # # Helper function: read, preprocess, and make GSEA Manhattan plot
