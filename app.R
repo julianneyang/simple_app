@@ -216,8 +216,9 @@ ui <- fluidPage(
               
               tabPanel("SE Supplementation",
                        fluidRow(
-                         column(6, plotOutput("plot_se_supp_1")),
-                         column(6, plotOutput("plot_se_supp_2"))
+                         column(4, plotOutput("plot_se_supp_1")),
+                         column(4, plotOutput("plot_se_supp_2")),
+                         column(4, plotOutput("plot_se_supp_3"))
                        )
               ),
               
@@ -299,7 +300,8 @@ server <- function(input, output) {
   se_histo_ctrl <- plot_histology(csv_filepath= here("data/phenotype/SE_Supp/Control_Histology.csv"),
                                   title_string = "Ileum Histology",
                                   subtitle_string =  "SLC Control and Selenium Histology",
-                                  stat_comparisons =  full_comparisons) 
+                                  stat_comparisons =  full_comparisons) +
+    facet_wrap(~Diet)
   
   
   
