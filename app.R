@@ -116,27 +116,27 @@ ui <- fluidPage(
                          h2("RNA-sequencing Results"),
                          br(),
                          h3("DESeq2: MUT vs WT"),
-                         textOutput("filepath1"),
-                         DTOutput("preview1"),
+                         textOutput("filepath01"),
+                         DTOutput("preview01"),
                          h3("DESeq2: HET vs WT"),
-                         textOutput("filepath2"),
-                         DTOutput("preview2"),
+                         textOutput("filepath02"),
+                         DTOutput("preview02"),
                          br(),
                          h3("GSEA: MUT vs WT"),
-                         textOutput("filepath3"),
-                         DTOutput("preview3"),
+                         textOutput("filepath03"),
+                         DTOutput("preview03"),
                          plotlyOutput("gsea_manhattan_mut", height = "600px"),
                          h3("GSEA: MUT vs WT, M7 Immunologic Signature Gene Sets"),
-                         textOutput("filepath4"),
-                         DTOutput("preview4"),
+                         textOutput("filepath04"),
+                         DTOutput("preview04"),
                          plotlyOutput("M7_gsea_manhattan_mut", height = "600px"),
                          h3("GSEA: HET vs WT"),
-                         textOutput("filepath5"),
-                         DTOutput("preview5"),
+                         textOutput("filepath05"),
+                         DTOutput("preview05"),
                          plotlyOutput("gsea_manhattan_het", height = "600px"),
                          h3("GSEA: HET vs WT, M7 Immunologic Signature Gene Sets"),
-                         textOutput("filepath6"),
-                         DTOutput("preview6"),
+                         textOutput("filepath06"),
+                         DTOutput("preview06"),
                          plotlyOutput("M7_gsea_manhattan_het", height = "600px"),
                          br(),
                          plotOutput("plot_slc_spont_4")
@@ -155,16 +155,16 @@ ui <- fluidPage(
                          column(6, plotOutput("plot_smt_negative_4")),
                          br(),
                          h3("DESeq2: MUT vs WT"),
-                         textOutput("filepath7"),
-                         DTOutput("preview7"),
+                         textOutput("filepath07"),
+                         DTOutput("preview07"),
                          br(),
                          h3("GSEA: MUT vs WT"),
-                         textOutput("filepath8"),
-                         DTOutput("preview8"),
+                         textOutput("filepath08"),
+                         DTOutput("preview08"),
                          plotlyOutput("SMT_Neg_gsea_manhattan", height = "600px"),
                          h3("GSEA: MUT vs WT, M7 Immunologic Signature Gene Sets"),
-                         textOutput("filepath9"),
-                         DTOutput("preview9"),
+                         textOutput("filepath09"),
+                         DTOutput("preview09"),
                          plotlyOutput("M7_SMT_Neg_gsea_manhattan", height = "600px"),
                          br(),
                          tableOutput("SMT_Neg_wilcox_table"),
@@ -179,11 +179,11 @@ ui <- fluidPage(
                          h2("RNA-sequencing Results"),
                          br(),
                          h3("DESeq2: HET vs WT"),
-                         textOutput("filepath11"),
-                         DTOutput("preview11"),
-                         h3("DESeq2: MUT vs WT"),
                          textOutput("filepath12"),
-                         DTOutput("preview12")
+                         DTOutput("preview12"),
+                         h3("DESeq2: MUT vs WT"),
+                         textOutput("filepath13"),
+                         DTOutput("preview13")
                        )
               ),
               
@@ -203,7 +203,10 @@ ui <- fluidPage(
                          br(),
                          h3("DESeq2: MUT vs WT"),
                          textOutput("filepath10"),
-                         DTOutput("preview10")
+                         DTOutput("preview10"),
+                         h3("GSEA: MUT vs WT"),
+                         textOutput("filepath11"),
+                         DTOutput("preview11")
                        )
               ),
               
@@ -216,9 +219,10 @@ ui <- fluidPage(
               
               tabPanel("SE Supplementation",
                        fluidRow(
-                         column(4, plotOutput("plot_se_supp_1")),
-                         column(4, plotOutput("plot_se_supp_2")),
-                         column(4, plotOutput("plot_se_supp_3"))
+                         column(3, plotOutput("plot_se_supp_1")),
+                         column(3, plotOutput("plot_se_supp_2")),
+                         column(3, plotOutput("plot_se_supp_3")),
+                         column(3, plotOutput("plot_se_supp_4"))
                        )
               ),
               
@@ -299,60 +303,50 @@ server <- function(input, output) {
   
   se_histo_ctrl <- plot_histology(csv_filepath= here("data/phenotype/SE_Supp/Control_Histology.csv"),
                                   title_string = "Ileum Histology",
-                                  subtitle_string =  "SLC Control and Selenium Histology",
+                                  subtitle_string =  "Indomethacin Negative Se and Ctrl Histology",
                                   stat_comparisons =  full_comparisons) +
     facet_wrap(~Diet)
   
   
+  se_histo_indo <- plot_histology(csv_filepath= here("data/phenotype/SE_Supp/Se_Supp_Histology_Indomethacin_Analysis.csv"),
+                                  title_string = "Ileum Histology",
+                                  subtitle_string =  "Indomethacin Positive Se and Ctrl Histology",
+                                  stat_comparisons =  full_comparisons) +
+    facet_wrap(~Diet)
   
   # Define files and readers in a list
   files <- list(
     list(
-      id = "preview1",
+      id = "preview01",
       path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_MUT_vs_WT_results.csv"),
       reader = function(p) read.csv(p, row.names = 1)
     ),
     list(
-      id = "preview2",
+      id = "preview02",
       path = here("results/RNA_seq/DESEQ2/DESEQ2_SPONT_FITC_HET_vs_WT_results.csv"),
       reader = function(p) read.csv(p, row.names = 1)
     ),
-    # list(
-    #   id = "preview3",
-    #   path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
-    #   reader = function(p) readRDS(p) %>% arrange(padj)
-    # ),
-    # list(
-    #   id = "preview4",
-    #   path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS"),
-    #   reader = function(p) readRDS(p) %>% arrange(padj)
-    # ),
-    # list(
-    #   id = "preview5",
-    #   path = here("results/RNA_seq/GSEA/GSEA_SPONT_FITC_HET_vs_WT.RDS"),
-    #   reader = function(p) readRDS(p) %>% arrange(padj)
-    # ),
-    # list(
-    #   id = "preview6",
-    #   path = here("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS"),
-    #   reader = function(p) readRDS(p) %>% arrange(padj)
-    # ),
     list(
-      id = "preview7",
+      id = "preview03",
+      path = here("results/RNA_seq/GSEA/M2_GSEA_SPONT_MUT_vs_WT.csv"),
+      reader = function(p) read.csv(p, row.names = 1)
+    ),
+    list(
+      id = "preview05",
+      path = here("results/RNA_seq/GSEA/M2_GSEA_SPONT_HET_vs_WT.csv"),
+      reader = function(p) read.csv(p, row.names = 1)
+    ),
+    list(
+      id = "preview07",
       path = here("results/RNA_seq/DESEQ2/DESEQ2_SMT_Neg_MUT_vs_WT_results.csv"),
       reader = function(p) read.csv(p, row.names = 1)
       ),
   
-  #   list(
-  #     id = "preview8",
-  #     path = here("results/RNA_seq/GSEA/GSEA_SMT_Neg_MUT_vs_WT.RDS"),
-  #     reader = function(p) readRDS(p) %>% arrange(padj)
-  #   ),
-  #   list(
-  #     id = "preview9",
-  #     path = here("results/RNA_seq/GSEA/M7_GSEA_SMT_Neg_MUT_vs_WT.RDS"),
-  #     reader = function(p) readRDS(p) %>% arrange(padj)
-  #   )
+    list(
+      id = "preview08",
+      path = here("results/RNA_seq/GSEA/M2_GSEA_SMT_Neg_MUT_vs_WT.csv"),
+      reader = function(p) read.csv(p, row.names = 1)
+    ),
   list(
       id = "preview10",
       path = here("results/RNA_seq/DESEQ2/DESEQ2_HFD_MUT_vs_WT_results.csv"),
@@ -360,11 +354,16 @@ server <- function(input, output) {
       ),
   list(
     id = "preview11",
+    path = here("results/RNA_seq/GSEA/M2_GSEA_SMT_Neg_MUT_vs_WT.csv"),
+    reader = function(p) read.csv(p, row.names = 1)
+  ),
+  list(
+    id = "preview12",
     path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_Positive_HET_vs_WT_results.csv"),
     reader = function(p) read.csv(p, row.names = 1)
     ),
   list(
-    id = "preview12",
+    id = "preview13",
     path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_Positive_MUT_vs_WT_results.csv"),
     reader = function(p) read.csv(p, row.names = 1)
     )
@@ -373,7 +372,7 @@ server <- function(input, output) {
   # Loop over file definitions
   for (f in files) {
     local({
-      id <- stri_sub(f$id, -1, -1)
+      id <- stri_sub(f$id, -2, -1)
       path <- f$path
       df <- f$reader(path)
 
@@ -405,55 +404,50 @@ server <- function(input, output) {
   output$plot_se_supp_1 <- renderPlot({ print(plot_se_supp_1) })
   output$plot_se_supp_2 <- renderPlot({ print(plot_se_supp_2) })
   output$plot_se_supp_3 <- renderPlot({ print(se_histo_ctrl) })
-  # set.seed(123)
-  # 
-  # # Helper function: read, preprocess, and make GSEA Manhattan plot
-  # make_gsea_plot <- function(rds_path) {
-  #   df <- readRDS(here(rds_path)) %>%
-  #     as.data.frame() %>%
-  #     mutate(logFDR = -log10(padj))
-  #   
-  #   plot_ly(
-  #     data = df,
-  #     x = ~NES,
-  #     y = ~logFDR,
-  #     text = ~paste0(
-  #       "Pathway: ", pathway, "<br>",
-  #       "NES: ", round(NES, 2), "<br>",
-  #       "FDR: ", signif(padj, 3)
-  #     ),
-  #     type = "scatter",
-  #     mode = "markers",
-  #     marker = list(
-  #       size = 10,
-  #       color = ~logFDR,
-  #       colorscale = "Viridis",
-  #       showscale = TRUE
-  #     )
-  #   ) %>%
-  #     layout(
-  #       xaxis = list(title = "Normalized Enrichment Score (NES)"),
-  #       yaxis = list(title = "-log10(padj)"),
-  #       hovermode = "closest"
-  #     )
-  # }
-  # 
-  # # Use the helper inside your outputs
-  # output$M7_gsea_manhattan_mut <- renderPlotly({
-  #   make_gsea_plot("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_MUT_vs_WT.RDS")
-  # })
-  # 
-  # output$M7_gsea_manhattan_het <- renderPlotly({
-  #   make_gsea_plot("results/RNA_seq/GSEA/M7_GSEA_SPONT_FITC_HET_vs_WT.RDS")
-  # })
-  # 
-  # output$gsea_manhattan_mut <- renderPlotly({
-  #   make_gsea_plot("results/RNA_seq/GSEA/GSEA_SPONT_FITC_MUT_vs_WT.RDS")
-  # })
-  # 
-  # output$gsea_manhattan_het <- renderPlotly({
-  #   make_gsea_plot("results/RNA_seq/GSEA/GSEA_SPONT_FITC_HET_vs_WT.RDS")
-  # })
+  output$plot_se_supp_4 <- renderPlot({ print(se_histo_indo) })
+  
+ 
+  # Helper function: read, preprocess, and make GSEA Manhattan plot
+  set.seed(123)
+  
+  make_gsea_plot <- function(path) {
+    df <- read.csv(here(path)) %>%
+      as.data.frame() %>%
+      mutate(logFDR = -log10(padj))
+
+    plot_ly(
+      data = df,
+      x = ~NES,
+      y = ~logFDR,
+      text = ~paste0(
+        "Pathway: ", pathway, "<br>",
+        "NES: ", round(NES, 2), "<br>",
+        "FDR: ", signif(padj, 3)
+      ),
+      type = "scatter",
+      mode = "markers",
+      marker = list(
+        size = 10,
+        color = ~logFDR,
+        colorscale = "Viridis",
+        showscale = TRUE
+      )
+    ) %>%
+      layout(
+        xaxis = list(title = "Normalized Enrichment Score (NES)"),
+        yaxis = list(title = "-log10(padj)"),
+        hovermode = "closest"
+      )
+  }
+
+  # Use the helper inside your outputs
+  output$gsea_manhattan_mut <- renderPlotly({
+    make_gsea_plot("results/RNA_seq/GSEA/M2_GSEA_HFD_Positive_MUT_vs_WT.csv")
+  })
+
+  output$gsea_manhattan_het <- renderPlotly({
+    make_gsea_plot("results/RNA_seq/GSEA/M2_GSEA_HFD_Positive_HET_vs_WT.csv")
+  })
   
   observeEvent(input$tabs, {
     if (input$tabs == "SMT_Negative") {
@@ -480,13 +474,10 @@ server <- function(input, output) {
       # output$plot_smt_negative_5 <- renderPlot({ print(plot_smt_negative_5 ) })
       #output$SMT_Neg_wilcox_table <- renderTable(table_smt_negative)
       
-      # output$SMT_Neg_gsea_manhattan <- renderPlotly({
-      #   make_gsea_plot("results/RNA_seq/GSEA/GSEA_SMT_Neg_MUT_vs_WT.RDS")
-      # })
-      # 
-      # output$M7_SMT_Neg_gsea_manhattan <- renderPlotly({
-      #   make_gsea_plot("results/RNA_seq/GSEA/M7_GSEA_SMT_Neg_MUT_vs_WT.RDS")
-      # })
+      output$SMT_Neg_gsea_manhattan <- renderPlotly({
+        make_gsea_plot("results/RNA_seq/GSEA/M2_GSEA_SMT_Neg_MUT_vs_WT.csv")
+      })
+
     }
   })
   

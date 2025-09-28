@@ -1,0 +1,61 @@
+MouseID,Notes,Mucosal,Submucosal,overall_inf,Transmural,Architechture,Score,Genotype,Sex,Diet,Treatment
+140,good for taking pic,0,0,0,0,0,0,WT,Female,Control,Indomethacin
+171,good for pic,0,0,0,0,0,0,WT,Male,Selenium,Indomethacin
+199,,0,0,0,0,0,0,WT,Male,Control,Indomethacin
+193,,0,0,0,0,0,0,WT,Male,Control,Indomethacin
+96,,0,0,0,0,0,0,WT,Male,Control,Indomethacin
+154,,0,0,0,0,1,1,HET,Female,Control,Indomethacin
+150,good for taking pic,2,0,1,0,0,1,MUT,Female,Control,Indomethacin
+85,,1,0,1,0,0,1,MUT,Female,Control,Indomethacin
+28,,0,0,0,0,1,1,HET,Male,Selenium,Indomethacin
+144,,1,0,1,0,0,1,MUT,Male,Selenium,Indomethacin
+145,,1,0,1,0,0,1,MUT,Male,Control,Indomethacin
+142,,1,0,1,0,0,1,MUT,Male,Selenium,Indomethacin
+238,,0,0,0,0,1,1,WT,Male,Selenium,Indomethacin
+65,,0,2,2,0,0,2,HET,Female,Selenium,Indomethacin
+56,,2,1,2,0,0,2,HET,Female,Selenium,Indomethacin
+147,,2,0,1,0,1,2,HET,Female,Control,Indomethacin
+97,,0,1,2,0,0,2,HET,Female,Control,Indomethacin
+40,,1,2,2,0,0,2,MUT,Female,Selenium,Indomethacin
+41,,1,1,2,0,0,2,MUT,Female,Selenium,Indomethacin
+181,,3,0,1,0,1,2,MUT,Female,Selenium,Indomethacin
+156,,2,1,2,0,0,2,MUT,Female,Control,Indomethacin
+99,,1,1,2,0,0,2,WT,Female,Control,Indomethacin
+225,,1,2,2,0,0,2,HET,Male,Selenium,Indomethacin
+224,,0,1,2,0,0,2,HET,Male,Selenium,Indomethacin
+43,,0,1,2,0,0,2,HET,Male,Control,Indomethacin
+24,,1,0,1,0,1,2,HET,Male,Selenium,Indomethacin
+32,,0,0,0,0,2,2,HET,Male,Control,Indomethacin
+144,,2,0,1,0,1,2,MUT,Male,Selenium,Indomethacin
+153,good for taking pic,0,2,2,0,0,2,WT,Male,Selenium,Indomethacin
+101,good for taking pic,0,1,2,0,0,2,WT,Male,Control,Indomethacin
+91, ,2,1,2,0,1,3,HET,Female,Selenium,Indomethacin
+90,,0,1,2,0,1,3,HET,Female,Selenium,Indomethacin
+36,,2,0,1,0,2,3,MUT,Female,Selenium,Indomethacin
+39,,1,0,1,0,2,3,MUT,Female,Selenium,Indomethacin
+183,,0,1,2,0,1,3,MUT,Female,Control,Indomethacin
+92,,4,1,3,0,0,3,WT,Female,Selenium,Indomethacin
+168,good for taking pic,3,1,3,0,0,3,WT,Female,Control,Indomethacin
+47,,2,0,1,0,2,3,WT,Female,Selenium,Indomethacin
+155,,2,2,3,0,0,3,WT,Female,Control,Indomethacin
+34,,5,2,3,0,0,3,HET,Male,Control,Indomethacin
+27,,0,0,0,0,3,3,MUT,Male,Selenium,Indomethacin
+176,,1,3,3,0,0,3,MUT,Male,Selenium,Indomethacin
+95,Good to show MUT,3,1,3,0,0,3,MUT,Male,Control,Indomethacin
+202,bad slide,1,1,2,0,1,3,WT,Male,Selenium,Indomethacin
+58,,2,4,3,0,1,4,HET,Female,Control,Indomethacin
+66,good for taking pic,2,2,3,0,1,4,WT,Female,Selenium,Indomethacin
+35,,2,1,2,0,2,4,HET,Male,Control,Indomethacin
+42,,0,1,2,0,2,4,HET,Male,Control,Indomethacin
+83,,1,1,2,0,2,4,MUT,Male,Selenium,Indomethacin
+30,,1,0,1,0,3,4,MUT,Male,Control,Indomethacin
+151,,4,3,3,0,1,4,WT,Male,Selenium,Indomethacin
+78,,3,1,3,0,2,5,HET,Female,Control,Indomethacin
+48,,1,0,1,0,4,5,WT,Female,Selenium,Indomethacin
+29,,2,2,3,0,2,5,HET,Male,Selenium,Indomethacin
+33,,1,3,3,0,2,5,MUT,Male,Control,Indomethacin
+192,,0,1,2,0,3,5,MUT,Male,Control,Indomethacin
+54,,0,1,2,0,4,6,HET,Female,Selenium,Indomethacin
+181,,2,5,3,0,3,6,MUT,Female,Selenium,Indomethacin
+182-1,,2,3,3,0,4,7,WT,Female,Control,Indomethacin
+89,,4,1,3,0,4,7,MUT,Male,Selenium,Indomethacin
