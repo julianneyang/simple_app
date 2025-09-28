@@ -290,6 +290,110 @@ make_overlap_plot <- function(het_input,
   ))
 }
 
+
+
+
+make_comparison_plot <- function(
+    gsea_file_smt,
+    gsea_file_spont,
+    threshold = 1,
+    filter_concordant = FALSE,
+    apply_threshold = FALSE
+) {
+  # 1. Read and format both datasets
+  deg_smt <- read.csv(gsea_file_smt, row.names = 1) %>%
+    mutate(value = "SMT", mean_coef = NES) %>%
+    dplyr::select(pathway, mean_coef, value, padj)
+  
+  deg_spont <- read.csv(gsea_file_spont) %>%
+    mutate(value = "SPONT", padj = padj_MUT) %>%
+    dplyr::select(pathway, mean_coef, value, padj)
+  
+  # 2. Combine them
+  full <- rbind(deg_smt, deg_spont)
+  
+  # 3. Keep significant features in either dataset
+  significant_smt <- deg_smt %>% filter(padj < 0.25) %>% pull(pathway)
+  significant_spont <- deg_spont %>% pull(pathway)
+  combined_significant_features <- union(significant_smt, significant_spont)
+  full <- full %>% filter(pathway %in% combined_significant_features)
+  
+  # 4. Require both conditions to exist
+  full_filtered <- full %>%
+    group_by(pathway) %>%
+    filter(all(c("SMT", "SPONT") %in% value)) %>%
+    ungroup()
+  
+  # 5. Optionally filter for concordance
+  if (filter_concordant) {
+    full_filtered <- full_filtered %>%
+      group_by(pathway) %>%
+      filter({
+        smt_coef <- mean_coef[value == "SMT"]
+        spont_coef <- mean_coef[value == "SPONT"]
+        length(smt_coef) == 1 && length(spont_coef) == 1 &&
+          ((smt_coef > 0 & spont_coef > 0) | (smt_coef < 0 & spont_coef < 0))
+      }) %>%
+      ungroup()
+  }
+  
+  # 6. Optionally filter by effect size threshold
+  if (apply_threshold) {
+    full_filtered <- full_filtered %>%
+      group_by(pathway) %>%
+      filter({
+        smt_coef <- mean_coef[value == "SMT"]
+        spont_coef <- mean_coef[value == "SPONT"]
+        abs(smt_coef) >= threshold | abs(spont_coef) >= threshold
+      }) %>%
+      ungroup()
+  }
+  
+  # 7. Calculate mean effect size per pathway for ordering
+  ordered_pathways <- full_filtered %>%
+    group_by(pathway) %>%
+    summarise(avg_coef = mean(mean_coef, na.rm = TRUE)) %>%
+    arrange(avg_coef) %>%
+    pull(pathway)
+  
+  # 8. Prepare data for plotting
+  full_plot <- full_filtered %>%
+    mutate(pathway = factor(pathway, levels = ordered_pathways))
+  
+  # 9. Create the interactive plot
+  fig <- plot_ly(
+    data = full_plot,
+    x = ~mean_coef,
+    y = ~pathway,
+    color = ~value,
+    colors = c("steelblue", "tomato"),
+    type = "bar",
+    orientation = "h",
+    hoverinfo = "text",
+    text = ~paste0(
+      "<b>", pathway, "</b><br>",
+      "Condition: ", value, "<br>",
+      "Effect size: ", round(mean_coef, 2), "<br>",
+      "padj: ", signif(padj, 3)
+    )
+  ) %>%
+    layout(
+      barmode = "group",
+      yaxis = list(title = "", categoryorder = "array", categoryarray = ordered_pathways),
+      xaxis = list(title = "Effect size"),
+      hoverlabel = list(bgcolor = "white")
+    )
+  
+  # 10. Wide-format table
+  full_wide <- full_filtered %>%
+    dplyr::select(pathway, value, mean_coef, padj) %>%
+    tidyr::pivot_wider(names_from = value, values_from = c(mean_coef, padj))
+  print(head(full_wide))
+  
+  return(list(plot = fig, table = full_wide))
+}
+
+
 # ---- UI ----
 ui <- fluidPage(
   titlePanel("Aggregated Data from the SLC SI Project"),
@@ -323,11 +427,13 @@ ui <- fluidPage(
                          sliderInput("threshold", "Absolute log2FC threshold:", 
                                      min = 0, max = 3, value = 1, step = 0.1),
                          DTOutput("overlap_table"),
+                         downloadButton("download_full_wide", "Download Concordant DEG CSV"),
                          plotlyOutput("plot_slc_spont_4"),
                          h3("Pathways with concordant directionality between HET and MUT, and padj < 0.25 in at least one"),
                          sliderInput("gsea_threshold", "Absolute log2FC threshold:", 
                                      min = 0, max = 3, value = 1, step = 0.1),
                          DTOutput("path_overlap_table"),
+                         downloadButton("download_path_wide", "Download Concordant Pathways CSV"),
                          plotlyOutput("plot_slc_spont_5")
                        )
                        
@@ -351,13 +457,13 @@ ui <- fluidPage(
                          textOutput("filepath08"),
                          DTOutput("preview08"),
                          plotlyOutput("SMT_Neg_gsea_manhattan", height = "600px"),
-                         h3("GSEA: MUT vs WT, M7 Immunologic Signature Gene Sets"),
-                         textOutput("filepath09"),
-                         DTOutput("preview09"),
-                         plotlyOutput("M7_SMT_Neg_gsea_manhattan", height = "600px"),
-                         br(),
-                         tableOutput("SMT_Neg_wilcox_table"),
-                         plotOutput("plot_smt_negative_5")
+                         h3("Concordance with SPONT FITC"),
+                         checkboxInput("filter_concordant", "Filter for concordant direction", value = FALSE),
+                         checkboxInput("apply_threshold", "Filter by effect size", value = FALSE),
+                         sliderInput("threshold", "Effect size threshold", min = 0, max = 3, step = 0.1, value = 1),
+                         plotlyOutput("comparison_plot"),
+                         DTOutput("comparison_table"),
+                         downloadButton("download_comparison")
                        )
               ),
               
@@ -603,6 +709,33 @@ server <- function(input, output) {
   output$plot_slc_spont_1 <- renderPlot({ print(plot_slc_spont_1) })
   output$plot_slc_spont_2 <- renderPlot({ print(plot_slc_spont_2 ) })
   output$plot_slc_spont_3 <- renderPlot({ print(plot_slc_spont_3 ) })
+
+  full_wide <- reactive({
+    slc_spont_overlap_result()$table
+  })
+  
+  output$download_full_wide <- downloadHandler(
+    filename = function() {
+      paste0("full_wide_", Sys.Date(), ".csv")
+    },
+    content = function(file) {
+      write.csv(full_wide(), file, row.names = FALSE)
+    }
+  )
+  
+  path_wide <- reactive({
+    slc_spont_path_overlap_result()$table
+  })
+  
+  output$download_path_wide <- downloadHandler(
+    filename = function() {
+      paste0("path_wide_", Sys.Date(), ".csv")
+    },
+    content = function(file) {
+      write.csv(path_wide(), file, row.names = FALSE)
+    }
+  )
+  
   output$plot_slc_spont_4 <- renderPlotly({
     slc_spont_overlap_result()$plot
   })
@@ -671,6 +804,30 @@ server <- function(input, output) {
       output$SMT_Neg_gsea_manhattan <- renderPlotly({
         make_gsea_plot("results/RNA_seq/GSEA/M2_GSEA_SMT_Neg_MUT_vs_WT.csv")
       })
+      
+      comparison_results <- reactive({
+        make_comparison_plot(
+          gsea_file_smt = here("results/RNA_seq/GSEA/M2_GSEA_SMT_Neg_MUT_vs_WT.csv"),
+          gsea_file_spont = here("results/RNA_seq/GSEA/SPONT_FITC_PATH_CONCORDANT.csv"),
+          threshold = input$threshold,
+          filter_concordant = input$filter_concordant,
+          apply_threshold = input$apply_threshold
+        )
+      })
+      
+      output$comparison_plot <- renderPlotly({
+        comparison_results()$plot
+      })
+      
+      output$comparison_table <- renderDT({
+        datatable(comparison_results()$table, options = list(scrollX = TRUE))
+      })
+      
+      
+      output$download_comparison <- downloadHandler(
+        filename = function() paste0("comparison_", Sys.Date(), ".csv"),
+        content = function(file) write.csv(comparison_result()$full_wide, file, row.names = FALSE)
+      )
 
     }
   })
@@ -700,6 +857,7 @@ server <- function(input, output) {
                           padj_cutoff=0.25)
       })
       
+  
       output$plot_tl1a_1 <- renderPlot({ print(plot_tl1a_1) })
       output$plot_tl1a_4 <- renderPlotly({
         tl1a_overlap_result()$plot
