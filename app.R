@@ -681,7 +681,9 @@ server <- function(input, output) {
       })
 
       output[[f$id]] <- renderDT({
-        datatable(head(df, 100), options = list(scrollX = TRUE, pageLength = 5))
+        datatable(df, options = list(scrollX = TRUE, pageLength = 5))
+        
+        #datatable(head(df, 100), options = list(scrollX = TRUE, pageLength = 5))
       })
     })
   }
