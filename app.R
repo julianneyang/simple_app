@@ -372,7 +372,17 @@ ui <- fluidPage(
                          DTOutput("preview12"),
                          h3("DESeq2: MUT vs WT"),
                          textOutput("filepath13"),
-                         DTOutput("preview13")
+                         DTOutput("preview13"),
+                         h3("DEG with concordant directionality between HET and MUT, and padj < 0.25 in at least one"),
+                         sliderInput("threshold", "Absolute log2FC threshold:", 
+                                     min = 0, max = 3, value = 1, step = 0.1),
+                         DTOutput("tl1a_overlap_table"),
+                         plotlyOutput("plot_tl1a_4"),
+                         h3("Pathways with concordant directionality between HET and MUT, and padj < 0.25 in at least one"),
+                         sliderInput("gsea_threshold", "Absolute log2FC threshold:", 
+                                     min = 0, max = 3, value = 1, step = 0.1),
+                         DTOutput("tl1a_path_overlap_table"),
+                         plotlyOutput("plot_tl1a_5")
                        )
               ),
               
@@ -395,9 +405,21 @@ ui <- fluidPage(
                          DTOutput("preview10"),
                          h3("GSEA: MUT vs WT"),
                          textOutput("filepath11"),
-                         DTOutput("preview11")
+                         DTOutput("preview11"),
+                         br(),
+                         h3("DEG with concordant directionality between HET and MUT, and padj < 0.25 in at least one"),
+                         sliderInput("hfd_threshold", "Absolute log2FC threshold:", 
+                                     min = 0, max = 3, value = 1, step = 0.1),
+                         DTOutput("hfd_overlap_table"),
+                         plotlyOutput("plot_hfd_4"),
+                         h3("Pathways with concordant directionality between HET and MUT, and padj < 0.25 in at least one"),
+                         sliderInput("hfd_gsea_threshold", "Absolute log2FC threshold:", 
+                                     min = 0, max = 3, value = 1, step = 0.1),
+                         DTOutput("hfd_path_overlap_table"),
+                         plotlyOutput("plot_hfd_5")
                        )
-              ),
+                    ),
+              
               
               tabPanel("SMT_Indomethacin",
                        fluidRow(
@@ -444,21 +466,6 @@ server <- function(input, output) {
                                      subtitle_string =  "ICP-MS Cohort",
                                      stat_comparisons =  list( c("WT", "MUT"))) 
   
-  plot_tl1a_1 <- plot_histology(csv_filepath= here("data/phenotype/SLC_TL1A/STL_Histology_Ileum.csv"),
-                                title_string = "Ileum Histology",
-                                subtitle_string =  "STL Cohort",
-                                stat_comparisons =  full_comparisons) +
-    facet_wrap(~TL1A)
-  
-  plot_hfd_1 <- plot_histology(csv_filepath= here("data/phenotype/SLC_HFD/HFD_Histo.csv"),
-                               title_string = "Ileum Histology",
-                               subtitle_string =  "HFD Cohort",
-                               stat_comparisons =  full_comparisons) 
-  plot_hfd_2 <- plot_fitc(csv_filepath = here("data/phenotype/SLC_HFD/HFD_FITC_Analysis.csv"),
-                          title_string = "FITC",
-                          subtitle_string = "HFD Cohort",
-                          stat_comparisons = full_comparisons) + 
-    facet_wrap(~Size)
   
   smt_indo <- read.csv(here("data/phenotype/SMT_Indomethacin/SMT_Indo_DAI.csv"))
   meta <- read.csv(here("data/phenotype/SMT_Indomethacin/SMT_Indo_Mouse_Info.csv")) %>%
@@ -546,12 +553,12 @@ server <- function(input, output) {
   ),
   list(
     id = "preview12",
-    path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_Positive_HET_vs_WT_results.csv"),
+    path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_HET_vs_WT_results.csv"),
     reader = function(p) read.csv(p, row.names = 1)
     ),
   list(
     id = "preview13",
-    path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_Positive_MUT_vs_WT_results.csv"),
+    path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_MUT_vs_WT_results.csv"),
     reader = function(p) read.csv(p, row.names = 1)
     )
   )
@@ -590,6 +597,8 @@ server <- function(input, output) {
                       padj_cutoff=0.25)
   })
   
+
+  
   # Render them
   output$plot_slc_spont_1 <- renderPlot({ print(plot_slc_spont_1) })
   output$plot_slc_spont_2 <- renderPlot({ print(plot_slc_spont_2 ) })
@@ -609,9 +618,10 @@ server <- function(input, output) {
     datatable(slc_spont_path_overlap_result()$table, options = list(scrollX = TRUE, pageLength = 10))
   })
   
-  output$plot_tl1a_1 <- renderPlot({ print(plot_tl1a_1) })
-  output$plot_slc_hfd_1 <- renderPlot({ print(plot_hfd_1) })
-  output$plot_slc_hfd_2 <- renderPlot({ print(plot_hfd_2) })
+
+  
+  
+
   
   output$plot_smt_indo_1 <- renderPlot({ print(plot_smt_indo_1) })
   output$plot_slc_indo_1 <- renderPlot({ print(plot_slc_indo_1) })
@@ -664,6 +674,100 @@ server <- function(input, output) {
 
     }
   })
+  
+  observeEvent(input$tabs, {
+    if (input$tabs == "SLC_TL1A") {
+      plot_tl1a_1 <- plot_histology(csv_filepath= here("data/phenotype/SLC_TL1A/STL_Histology_Ileum.csv"),
+                                    title_string = "Ileum Histology",
+                                    subtitle_string =  "STL Cohort",
+                                    stat_comparisons =  full_comparisons) +
+        facet_wrap(~TL1A)
+      
+      tl1a_overlap_result <- reactive({
+        make_overlap_plot(
+          het_input = "results/RNA_seq/DESEQ2/DESEQ2_STL_HET_vs_WT_results.csv",
+          mut_input = "results/RNA_seq/DESEQ2/DESEQ2_STL_MUT_vs_WT_results.csv",
+          threshold = input$threshold,
+          type = "DEG"
+        )
+      })
+      
+      tl1a_path_overlap_result <- reactive({
+        make_overlap_plot(het_input = here("results/RNA_seq/GSEA/M2_GSEA_STL_Positive_HET_vs_WT.csv"),
+                          mut_input = here("results/RNA_seq/GSEA/M2_GSEA_STL_Positive_MUT_vs_WT.csv"),
+                          threshold = input$gsea_threshold,
+                          type="GSEA",
+                          padj_cutoff=0.25)
+      })
+      
+      output$plot_tl1a_1 <- renderPlot({ print(plot_tl1a_1) })
+      output$plot_tl1a_4 <- renderPlotly({
+        tl1a_overlap_result()$plot
+      })
+      output$tl1a_overlap_table <- renderDT({
+        datatable(tl1a_overlap_result()$table, options = list(scrollX = TRUE, pageLength = 10))
+      })
+      
+      output$plot_tl1a_5<- renderPlotly({
+        tl1a_path_overlap_result()$plot
+      })
+      
+      output$tl1a_path_overlap_table <- renderDT({
+        datatable(tl1a_path_overlap_result()$table, options = list(scrollX = TRUE, pageLength = 10))
+      })
+      
+    }
+  })
+  
+  observeEvent(input$tabs, {
+    if (input$tabs == "SLC_HFD") {
+      output$plot_slc_hfd_1 <- renderPlot({ print(plot_hfd_1) })
+      output$plot_slc_hfd_2 <- renderPlot({ print(plot_hfd_2) })
+      plot_hfd_1 <- plot_histology(csv_filepath= here("data/phenotype/SLC_HFD/HFD_Histo.csv"),
+                                   title_string = "Ileum Histology",
+                                   subtitle_string =  "HFD Cohort",
+                                   stat_comparisons =  full_comparisons) 
+      plot_hfd_2 <- plot_fitc(csv_filepath = here("data/phenotype/SLC_HFD/HFD_FITC_Analysis.csv"),
+                              title_string = "FITC",
+                              subtitle_string = "HFD Cohort",
+                              stat_comparisons = full_comparisons) + 
+        facet_wrap(~Size)
+      
+      hfd_overlap_result <- reactive({
+        make_overlap_plot(
+          het_input = "results/RNA_seq/DESEQ2/DESEQ2_HFD_HET_vs_WT_results.csv",
+          mut_input = "results/RNA_seq/DESEQ2/DESEQ2_HFD_MUT_vs_WT_results.csv",
+          threshold = input$hfd_threshold,
+          type = "DEG"
+        )
+      })
+      
+      hfd_path_overlap_result <- reactive({
+        make_overlap_plot(het_input = here("results/RNA_seq/GSEA/M2_GSEA_HFD_Positive_HET_vs_WT.csv"),
+                          mut_input = here("results/RNA_seq/GSEA/M2_GSEA_HFD_Positive_MUT_vs_WT.csv"),
+                          threshold = input$hfd_gsea_threshold,
+                          type="GSEA",
+                          padj_cutoff=0.25)
+      })
+      
+      output$plot_hfd_4 <- renderPlotly({
+        hfd_overlap_result()$plot
+      })
+      output$hfd_overlap_table <- renderDT({
+        datatable(hfd_overlap_result()$table, options = list(scrollX = TRUE, pageLength = 10))
+      })
+      
+      output$plot_hfd_5<- renderPlotly({
+        hfd_path_overlap_result()$plot
+      })
+      
+      output$hfd_path_overlap_table <- renderDT({
+        datatable(hfd_path_overlap_result()$table, options = list(scrollX = TRUE, pageLength = 10))
+      })
+      
+    }
+  })
+  
   
 }
 
