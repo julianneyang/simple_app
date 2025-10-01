@@ -293,7 +293,7 @@ make_overlap_plot <- function(het_input,
 
 
 
-make_comparison_plot <- function(
+make_comparison_plot_smt <- function(
     gsea_file_smt,
     gsea_file_spont,
     threshold = 1,
@@ -393,6 +393,106 @@ make_comparison_plot <- function(
   return(list(plot = fig, table = full_wide))
 }
 
+make_comparison_plot <- function(
+    gsea_file_1,
+    gsea_file_spont,
+    threshold = 1,
+    filter_concordant = FALSE,
+    apply_threshold = FALSE
+) {
+  # 1. Read and format both datasets
+  deg_smt <- data.frame(gsea_file_1) %>%
+    mutate(value = "CURRENT") %>%
+    dplyr::select(pathway, mean_coef, value, padj_MUT,padj_HET)
+  
+  deg_spont <- read.csv(gsea_file_spont) %>%
+    mutate(value = "SPONT") %>%
+    dplyr::select(pathway, mean_coef, value, padj_MUT,padj_HET)
+  
+  # 2. Combine them
+  full <- rbind(deg_smt, deg_spont)
+  
+  # 3. Keep significant features in either dataset
+  significant_smt <- deg_smt %>% pull(pathway)
+  significant_spont <- deg_spont %>% pull(pathway)
+  combined_significant_features <- union(significant_smt, significant_spont)
+  full <- full %>% filter(pathway %in% combined_significant_features)
+  
+  # 4. Require both conditions to exist
+  full_filtered <- full %>%
+    group_by(pathway) %>%
+    filter(all(c("CURRENT", "SPONT") %in% value)) %>%
+    ungroup()
+  
+  # 5. Optionally filter for concordance
+  if (filter_concordant) {
+    full_filtered <- full_filtered %>%
+      group_by(pathway) %>%
+      filter({
+        smt_coef <- mean_coef[value == "CURRENT"]
+        spont_coef <- mean_coef[value == "SPONT"]
+        length(smt_coef) == 1 && length(spont_coef) == 1 &&
+          ((smt_coef > 0 & spont_coef > 0) | (smt_coef < 0 & spont_coef < 0))
+      }) %>%
+      ungroup()
+  }
+  
+  # 6. Optionally filter by effect size threshold
+  if (apply_threshold) {
+    full_filtered <- full_filtered %>%
+      group_by(pathway) %>%
+      filter({
+        smt_coef <- mean_coef[value == "CURRENT"]
+        spont_coef <- mean_coef[value == "SPONT"]
+        abs(smt_coef) >= threshold | abs(spont_coef) >= threshold
+      }) %>%
+      ungroup()
+  }
+  
+  # 7. Calculate mean effect size per pathway for ordering
+  ordered_pathways <- full_filtered %>%
+    group_by(pathway) %>%
+    summarise(avg_coef = mean(mean_coef, na.rm = TRUE)) %>%
+    arrange(avg_coef) %>%
+    pull(pathway)
+  
+  # 8. Prepare data for plotting
+  full_plot <- full_filtered %>%
+    mutate(pathway = factor(pathway, levels = ordered_pathways))
+  
+  # 9. Create the interactive plot
+  fig <- plot_ly(
+    data = full_plot,
+    x = ~mean_coef,
+    y = ~pathway,
+    color = ~value,
+    colors = c("steelblue", "tomato"),
+    type = "bar",
+    orientation = "h",
+    hoverinfo = "text",
+    text = ~paste0(
+      "<b>", pathway, "</b><br>",
+      "Condition: ", value, "<br>",
+      "Effect size: ", round(mean_coef, 2), "<br>",
+      "padj_MUT: ", signif(padj_MUT, 3),
+      "padj_HET: ", signif(padj_HET, 3)
+    )
+  ) %>%
+    layout(
+      barmode = "group",
+      yaxis = list(title = "", categoryorder = "array", categoryarray = ordered_pathways),
+      xaxis = list(title = "Effect size"),
+      hoverlabel = list(bgcolor = "white")
+    )
+  
+  # 10. Wide-format table
+  full_wide <- full_filtered %>%
+    dplyr::select(pathway, value, mean_coef, padj_HET,padj_MUT) %>%
+    tidyr::pivot_wider(names_from = value, values_from = c(mean_coef, padj_HET,padj_MUT))
+  print(head(full_wide))
+  
+  return(list(plot = fig, table = full_wide))
+}
 
 # ---- UI ----
 ui <- fluidPage(
@@ -479,6 +579,12 @@ ui <- fluidPage(
                          h3("DESeq2: MUT vs WT"),
                          textOutput("filepath13"),
                          DTOutput("preview13"),
+                         h3("GSEA: HET vs WT"),
+                         textOutput("filepath15"),
+                         DTOutput("preview15"),
+                         h3("GSEA: MUT vs WT"),
+                         textOutput("filepath14"),
+                         DTOutput("preview14"),
                          h3("DEG with concordant directionality between HET and MUT, and padj < 0.25 in at least one"),
                          sliderInput("threshold", "Absolute log2FC threshold:", 
                                      min = 0, max = 3, value = 1, step = 0.1),
@@ -488,7 +594,14 @@ ui <- fluidPage(
                          sliderInput("gsea_threshold", "Absolute log2FC threshold:", 
                                      min = 0, max = 3, value = 1, step = 0.1),
                          DTOutput("tl1a_path_overlap_table"),
-                         plotlyOutput("plot_tl1a_5")
+                         plotlyOutput("plot_tl1a_5"),
+                         h3("Concordance with SPONT FITC"),
+                         checkboxInput("tl1a_filter_concordant", "Filter for concordant direction", value = FALSE),
+                         checkboxInput("tl1a_apply_threshold", "Filter by effect size", value = FALSE),
+                         sliderInput("tl1a_threshold", "Effect size threshold", min = 0, max = 3, step = 0.1, value = 1),
+                         DTOutput("tl1a_comparison_table"),
+                         downloadButton("tl1a_download_comparison"),
+                         plotlyOutput("tl1a_comparison_plot")
                        )
               ),
               
@@ -509,9 +622,15 @@ ui <- fluidPage(
                          h3("DESeq2: MUT vs WT"),
                          textOutput("filepath10"),
                          DTOutput("preview10"),
+                         h3("DESeq2: MUT vs WT"),
+                         textOutput("filepath16"),
+                         DTOutput("preview16"),
                          h3("GSEA: MUT vs WT"),
                          textOutput("filepath11"),
                          DTOutput("preview11"),
+                         h3("GSEA: MUT vs WT"),
+                         textOutput("filepath17"),
+                         DTOutput("preview17"),
                          br(),
                          h3("DEG with concordant directionality between HET and MUT, and padj < 0.25 in at least one"),
                          sliderInput("hfd_threshold", "Absolute log2FC threshold:", 
@@ -522,7 +641,16 @@ ui <- fluidPage(
                          sliderInput("hfd_gsea_threshold", "Absolute log2FC threshold:", 
                                      min = 0, max = 3, value = 1, step = 0.1),
                          DTOutput("hfd_path_overlap_table"),
-                         plotlyOutput("plot_hfd_5")
+                         downloadButton("download_hfd_path_table", "Download Concordant Pathways CSV"),
+                         plotlyOutput("plot_hfd_5"),
+                         h3("Concordance with SPONT FITC"),
+                         checkboxInput("hfd_filter_concordant", "Filter for concordant direction", value = FALSE),
+                         checkboxInput("hfd_apply_threshold", "Filter by effect size", value = FALSE),
+                         sliderInput("hfd_threshold", "Effect size threshold", min = 0, max = 3, step = 0.1, value = 1),
+                         DTOutput("hfd_comparison_table"),
+                         downloadButton("hfd_download_comparison"),
+                         plotlyOutput("hfd_comparison_plot")
+                         
                        )
                     ),
               
@@ -653,8 +781,18 @@ server <- function(input, output) {
       reader = function(p) read.csv(p, row.names = 1)
       ),
   list(
+    id = "preview16",
+    path = here("results/RNA_seq/DESEQ2/DESEQ2_HFD_HET_vs_WT_results.csv"),
+    reader = function(p) read.csv(p, row.names = 1)
+  ),
+  list(
     id = "preview11",
-    path = here("results/RNA_seq/GSEA/M2_GSEA_SMT_Neg_MUT_vs_WT.csv"),
+    path = here("results/RNA_seq/GSEA/M2_GSEA_HFD_Positive_MUT_vs_WT.csv"),
+    reader = function(p) read.csv(p, row.names = 1)
+  ),
+  list(
+    id = "preview17",
+    path = here("results/RNA_seq/GSEA/M2_GSEA_HFD_Positive_HET_vs_WT.csv"),
     reader = function(p) read.csv(p, row.names = 1)
   ),
   list(
@@ -666,7 +804,17 @@ server <- function(input, output) {
     id = "preview13",
     path = here("results/RNA_seq/DESEQ2/DESEQ2_STL_MUT_vs_WT_results.csv"),
     reader = function(p) read.csv(p, row.names = 1)
-    )
+    ),
+  list(
+    id = "preview14",
+    path = here("results/RNA_seq/GSEA/M2_GSEA_STL_Positive_MUT_vs_WT.csv"),
+    reader = function(p) read.csv(p, row.names = 1)
+  ),
+  list(
+    id = "preview15",
+    path = here("results/RNA_seq/GSEA/M2_GSEA_STL_Positive_HET_vs_WT.csv"),
+    reader = function(p) read.csv(p, row.names = 1)
+  )
   )
   
   # Loop over file definitions
@@ -808,7 +956,7 @@ server <- function(input, output) {
       })
       
       comparison_results <- reactive({
-        make_comparison_plot(
+        make_comparison_plot_smt(
           gsea_file_smt = here("results/RNA_seq/GSEA/M2_GSEA_SMT_Neg_MUT_vs_WT.csv"),
           gsea_file_spont = here("results/RNA_seq/GSEA/SPONT_FITC_PATH_CONCORDANT.csv"),
           threshold = input$threshold,
@@ -876,6 +1024,40 @@ server <- function(input, output) {
         datatable(tl1a_path_overlap_result()$table, options = list(scrollX = TRUE, pageLength = 10))
       })
       
+      output$download_tl1a_path_table <- downloadHandler(
+        filename = function() {
+          paste0("tl1a_path_table_", Sys.Date(), ".csv")
+        },
+        content = function(file) {
+          write.csv(tl1a_path_overlap_result()$table, file, row.names = FALSE)
+        }
+      )
+      
+      tl1a_comparison_results <- reactive({
+        make_comparison_plot(
+          #gsea_file_1 = here("results/RNA_seq/GSEA/HFD_PATH_CONCORDANT.csv"),
+          gsea_file_1 = tl1a_path_overlap_result()$table,
+          gsea_file_spont = here("results/RNA_seq/GSEA/SPONT_FITC_PATH_CONCORDANT.csv"),
+          threshold = input$tl1a_threshold,
+          filter_concordant = input$tl1a_filter_concordant,
+          apply_threshold = input$tl1a_apply_threshold
+        )
+      })
+      
+      output$tl1a_comparison_plot <- renderPlotly({
+        tl1a_comparison_results()$plot
+      })
+      
+      output$tl1a_comparison_table <- renderDT({
+        datatable(tl1a_comparison_results()$table, options = list(scrollX = TRUE))
+      })
+      
+      
+      output$tl1a_download_comparison <- downloadHandler(
+        filename = function() paste0("comparison_", Sys.Date(), ".csv"),
+        content = function(file) write.csv(tl1a_comparison_results()$full_wide, file, row.names = FALSE)
+      )
+      
     }
   })
   
@@ -924,6 +1106,40 @@ server <- function(input, output) {
       output$hfd_path_overlap_table <- renderDT({
         datatable(hfd_path_overlap_result()$table, options = list(scrollX = TRUE, pageLength = 10))
       })
+      
+      output$download_hfd_path_table <- downloadHandler(
+        filename = function() {
+          paste0("hfd_path_table_", Sys.Date(), ".csv")
+        },
+        content = function(file) {
+          write.csv(hfd_path_overlap_result()$table, file, row.names = FALSE)
+        }
+      )
+      
+      hfd_comparison_results <- reactive({
+        make_comparison_plot(
+          #gsea_file_1 = here("results/RNA_seq/GSEA/HFD_PATH_CONCORDANT.csv"),
+          gsea_file_1 = hfd_path_overlap_result()$table,
+          gsea_file_spont = here("results/RNA_seq/GSEA/SPONT_FITC_PATH_CONCORDANT.csv"),
+          threshold = input$hfd_threshold,
+          filter_concordant = input$hfd_filter_concordant,
+          apply_threshold = input$hfd_apply_threshold
+        )
+      })
+
+      output$hfd_comparison_plot <- renderPlotly({
+        hfd_comparison_results()$plot
+      })
+
+      output$hfd_comparison_table <- renderDT({
+        datatable(hfd_comparison_results()$table, options = list(scrollX = TRUE))
+      })
+
+
+      output$hfd_download_comparison <- downloadHandler(
+        filename = function() paste0("comparison_", Sys.Date(), ".csv"),
+        content = function(file) write.csv(hfd_comparison_results()$full_wide, file, row.names = FALSE)
+      )
       
     }
   })
