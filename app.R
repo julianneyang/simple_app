@@ -39,6 +39,17 @@ plot_fitc <- function(csv_filepath, title_string, subtitle_string, stat_comparis
   df <- readr::read_csv(csv_filepath)
   df$Genotype <- factor(df$Genotype, levels=c("WT", "HET", "MUT"))
   
+  df_150 <- df %>% filter(Size=="150_kDa")
+  df_4 <- df %>% filter(Size=="4_kDa")
+  
+  lm <- lme(Plasma_FITC ~ Sex + Genotype, data = df_150, random = ~ 1| MouseID)
+  print("150 kDa")
+  print(summary(lm))
+  
+  lm_4kDa <- lme(Plasma_FITC ~ Sex + Genotype, data = df_4, random = ~ 1| MouseID)
+  print("4 kDa")
+  print(summary(lm_4kDa))
+  
   ggplot(df, aes(x = Genotype, y = Plasma_FITC, fill = Genotype)) +
     geom_boxplot(alpha=0.5) +
     scale_fill_manual(values=color_vector) +
