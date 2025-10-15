@@ -147,13 +147,10 @@ make_gsea_plot <- function(path) {
     )
 }
 
-df <- read.csv(here("data/phenotype/SE_Supp/Se_Supp_ICP_MS_Analysis.csv"))
-df_long <- df %>% 
-  pivot_longer(cols = 3:9, names_to = "Element", values_to = "Concentration")
-control_diet <- df_long %>% filter(Diet=="Control")
-se_supp_diet <- df_long %>% filter(Diet == "Selenium")
 
-make_icp_ms_plot <- function(df, title_string, subtitle_string, 
+
+set.seed(123)
+make_icp_ms_plot <- function(df, subtitle_string, 
                              stat_comparisons,
                              color_vector = c("WT"="black","HET"= "navy","MUT"="firebrick")){
   
@@ -166,23 +163,27 @@ make_icp_ms_plot <- function(df, title_string, subtitle_string,
 
   
   plots <- lapply(seq_along(element_list), function(i) {
-    value_range <- range(element_list[[i]]$Concentration, na.rm = TRUE)
-    new_ylim <- c(0, value_range[2] + (value_range[2]))
+    maximum <- max(element_list[[i]]$Concentration)
+    print(summary(element_list[[i]]$Concentration))
+    new_ylim <- c(0, 1.5*maximum)
+    print(new_ylim)
     
     ggplot(element_list[[i]], aes(x = Genotype, y = Concentration, fill = Genotype)) +
       geom_boxplot(alpha=0.5) +
       scale_fill_manual(values=color_vector) +
-      geom_jitter(width = 0.2, alpha=0.8) +
+      geom_jitter(width = 0.05, alpha=0.8) +
       theme_cowplot(12) +
       theme(legend.position = "none")+
-      ggtitle({{title_string}})+
+      ggtitle(as.character(element_list[[i]]$Element))+
       labs(subtitle = {{subtitle_string}})+
-      stat_compare_means(comparisons = {{stat_comparisons}},method = "t.test")+
-      ylab("Score")+
+      stat_compare_means(comparisons = {{stat_comparisons}},method = "wilcox",
+                        step.increase = 0.2)+
+      ylab("Concentration [ug/g]")+
+      xlab(NULL)+
       theme(plot.title = element_text(hjust = 0.5),
             plot.subtitle = element_text(hjust=0.5)) + 
-      scale_y_continuous(limits = new_ylim) +
-      facet_wrap(~Element)
+      scale_y_continuous(limits = new_ylim) 
+    
   })
     
   agg_fig <- plot_grid(plotlist = plots, nrow = 1,  ncol = 7)
@@ -190,9 +191,7 @@ make_icp_ms_plot <- function(df, title_string, subtitle_string,
 }
 
 
-make_icp_ms_plot(control_diet, "ICP-MS", "Control Diet", stat_comparisons = full_comparisons)
 
-make_icp_ms_plot(se_supp_diet, "ICP-MS", "Se Supp Diet", stat_comparisons = full_comparisons)
 
 # Show only DEG or pathway that overlap -
 make_overlap_plot <- function(het_input,
@@ -726,13 +725,18 @@ ui <- fluidPage(
                          column(3, plotOutput("plot_se_supp_2")),
                          column(3, plotOutput("plot_se_supp_3")),
                          column(3, plotOutput("plot_se_supp_4"))
+                       ),
+                       fluidRow(
+                         column(12, plotOutput("plot_se_supp_5")),
+                       ),
+                       fluidRow(
+                         column(12, plotOutput("plot_se_supp_6")),
                        )
               ),
               
               tabPanel("SLC_ICP-MS",
                        fluidRow(
-                         column(6, plotOutput("plot_slc_icp_1")),
-                         column(6, plotOutput("plot_slc_icp_2"))
+                         column(12, plotOutput("plot_icp_1"))
                        )
               )
   )
@@ -799,6 +803,24 @@ server <- function(input, output) {
                                   subtitle_string =  "Indomethacin Positive Se and Ctrl Histology",
                                   stat_comparisons =  full_comparisons) +
     facet_wrap(~Diet)
+  
+  se_supp_icpms <- read.csv(here("data/phenotype/SE_Supp/Se_Supp_ICP_MS_Analysis.csv"))
+  se_supp_icpms_long <- se_supp_icpms %>% 
+    pivot_longer(cols = 3:9, names_to = "Element", values_to = "Concentration")
+  control_diet <- se_supp_icpms_long %>% filter(Diet=="Control")
+  se_supp_diet <- se_supp_icpms_long %>% filter(Diet == "Selenium")
+  
+  control_icpms <- make_icp_ms_plot(control_diet, "Control Diet", stat_comparisons = full_comparisons)
+  
+  se_supp_icpms <- make_icp_ms_plot(se_supp_diet,  "Se Supp Diet", stat_comparisons = full_comparisons)
+  
+  
+  icpms <- read.csv(here("data/phenotype/SLC_ICP-MS/Analysis_ICP_MS.csv"))
+  icpms_long <- icpms %>% 
+    filter(SampleType=="MUC-SI") %>%
+    pivot_longer(cols = 2:8, names_to = "Element", values_to = "Concentration")
+  
+  icpms <- make_icp_ms_plot(icpms_long, "ICP-MS Cohort", stat_comparisons = list(c("WT","MUT")))
   
   # Define files and readers in a list
   files <- list(
@@ -972,8 +994,10 @@ server <- function(input, output) {
   output$plot_se_supp_2 <- renderPlot({ print(plot_se_supp_2) })
   output$plot_se_supp_3 <- renderPlot({ print(se_histo_ctrl) })
   output$plot_se_supp_4 <- renderPlot({ print(se_histo_indo) })
+  output$plot_se_supp_5 <- renderPlot({ print(control_icpms) })
+  output$plot_se_supp_6 <- renderPlot({ print(se_supp_icpms) })
   
- 
+  output$plot_icp_1 <- renderPlot({ print(icpms) })
   
   # Use the helper inside your outputs
   output$gsea_manhattan_mut <- renderPlotly({
