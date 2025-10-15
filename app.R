@@ -147,6 +147,53 @@ make_gsea_plot <- function(path) {
     )
 }
 
+df <- read.csv(here("data/phenotype/SE_Supp/Se_Supp_ICP_MS_Analysis.csv"))
+df_long <- df %>% 
+  pivot_longer(cols = 3:9, names_to = "Element", values_to = "Concentration")
+control_diet <- df_long %>% filter(Diet=="Control")
+se_supp_diet <- df_long %>% filter(Diet == "Selenium")
+
+make_icp_ms_plot <- function(df, title_string, subtitle_string, 
+                             stat_comparisons,
+                             color_vector = c("WT"="black","HET"= "navy","MUT"="firebrick")){
+  
+  df <- as.data.frame(df)
+  df$Genotype <- factor(df$Genotype, levels=c("WT","HET","MUT"))
+  
+  # Split into list by element
+  element_list <- split(df, df$Element)
+  
+
+  
+  plots <- lapply(seq_along(element_list), function(i) {
+    value_range <- range(element_list[[i]]$Concentration, na.rm = TRUE)
+    new_ylim <- c(0, value_range[2] + (value_range[2]))
+    
+    ggplot(element_list[[i]], aes(x = Genotype, y = Concentration, fill = Genotype)) +
+      geom_boxplot(alpha=0.5) +
+      scale_fill_manual(values=color_vector) +
+      geom_jitter(width = 0.2, alpha=0.8) +
+      theme_cowplot(12) +
+      theme(legend.position = "none")+
+      ggtitle({{title_string}})+
+      labs(subtitle = {{subtitle_string}})+
+      stat_compare_means(comparisons = {{stat_comparisons}},method = "t.test")+
+      ylab("Score")+
+      theme(plot.title = element_text(hjust = 0.5),
+            plot.subtitle = element_text(hjust=0.5)) + 
+      scale_y_continuous(limits = new_ylim) +
+      facet_wrap(~Element)
+  })
+    
+  agg_fig <- plot_grid(plotlist = plots, nrow = 1,  ncol = 7)
+  return(agg_fig)
+}
+
+
+make_icp_ms_plot(control_diet, "ICP-MS", "Control Diet", stat_comparisons = full_comparisons)
+
+make_icp_ms_plot(se_supp_diet, "ICP-MS", "Se Supp Diet", stat_comparisons = full_comparisons)
+
 # Show only DEG or pathway that overlap -
 make_overlap_plot <- function(het_input,
                               mut_input,
