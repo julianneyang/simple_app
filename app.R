@@ -151,7 +151,7 @@ make_gsea_plot <- function(path) {
 
 set.seed(123)
 make_icp_ms_plot <- function(df, subtitle_string, 
-                             stat_comparisons,
+                             stat_comparisons = list( c("WT", "HET"), c("HET","MUT"),c("WT", "MUT")),
                              color_vector = c("WT"="black","HET"= "navy","MUT"="firebrick")){
   
   df <- as.data.frame(df)
@@ -726,7 +726,9 @@ ui <- fluidPage(
                          column(3, plotOutput("plot_se_supp_3")),
                          column(3, plotOutput("plot_se_supp_4"))
                        ),
+                       h4("Wilcoxon rank sum comparisons due to outliers"),
                        fluidRow(
+                         
                          column(12, plotOutput("plot_se_supp_5")),
                        ),
                        fluidRow(
@@ -735,6 +737,7 @@ ui <- fluidPage(
               ),
               
               tabPanel("SLC_ICP-MS",
+                       h4("Wilcoxon rank sum comparisons due to outliers"),
                        fluidRow(
                          column(12, plotOutput("plot_icp_1"))
                        )
