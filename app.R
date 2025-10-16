@@ -809,6 +809,7 @@ server <- function(input, output) {
   
   se_supp_icpms <- read.csv(here("data/phenotype/SE_Supp/Se_Supp_ICP_MS_Analysis.csv"))
   se_supp_icpms_long <- se_supp_icpms %>% 
+    filter(Weight>=3) %>%
     pivot_longer(cols = 3:9, names_to = "Element", values_to = "Concentration")
   control_diet <- se_supp_icpms_long %>% filter(Diet=="Control")
   se_supp_diet <- se_supp_icpms_long %>% filter(Diet == "Selenium")
