@@ -34,7 +34,7 @@ plot_histology <- function(csv_filepath, title_string, subtitle_string, stat_com
   
 }
 
-plot_fitc <- function(csv_filepath, title_string, subtitle_string, stat_comparisons,
+plot_fitc <- function(csv_filepath, title_string, subtitle_string, stat_comparisons = list( c("WT", "HET"), c("HET","MUT"),c("WT", "MUT")),
                       color_vector = c("WT"="black","HET"= "navy","MUT"="firebrick")) {
   df <- readr::read_csv(csv_filepath)
   df$Genotype <- factor(df$Genotype, levels=c("WT", "HET", "MUT"))
@@ -42,13 +42,17 @@ plot_fitc <- function(csv_filepath, title_string, subtitle_string, stat_comparis
   df_150 <- df %>% filter(Size=="150_kDa")
   df_4 <- df %>% filter(Size=="4_kDa")
   
-  lm <- lme(Plasma_FITC ~ Sex + Genotype, data = df_150, random = ~ 1| MouseID)
-  print("150 kDa")
-  print(summary(lm))
-  
-  lm_4kDa <- lme(Plasma_FITC ~ Sex + Genotype, data = df_4, random = ~ 1| MouseID)
-  print("4 kDa")
-  print(summary(lm_4kDa))
+  if(dim(df_150)[1]!=0){
+    lm <- lm(Plasma_FITC ~ Sex + Genotype, data = df_150)
+    print("150 kDa")
+    print(summary(lm))
+  }
+
+  if(dim(df_4)[1]!=0){
+    lm_4kDa <- lm(Plasma_FITC ~ Sex + Genotype, data = df_4)
+    print("4 kDa")
+    print(summary(lm_4kDa))
+  }
   
   ggplot(df, aes(x = Genotype, y = Plasma_FITC, fill = Genotype)) +
     geom_boxplot(alpha=0.5) +
@@ -724,7 +728,11 @@ ui <- fluidPage(
                          column(3, plotOutput("plot_se_supp_1")),
                          column(3, plotOutput("plot_se_supp_2")),
                          column(3, plotOutput("plot_se_supp_3")),
-                         column(3, plotOutput("plot_se_supp_4"))
+                         column(3, plotOutput("plot_se_supp_4")),
+                       ),
+                       fluidRow(
+                         column(3, plotOutput("plot_se_supp_7")),
+                         column(3, plotOutput("plot_se_supp_8")),
                        ),
                        h4("Wilcoxon rank sum comparisons due to outliers"),
                        fluidRow(
@@ -787,38 +795,7 @@ server <- function(input, output) {
                                     subtitle_string =  "SLC Indomethacin Cohort",
                                     stat_comparisons =  full_comparisons) 
   
-  se_indo <- read.csv(here("data/phenotype/SE_Supp/SE_Supp_Indomethacin_DAI.csv"))
-  se_indo_ctrl <- se_indo %>% filter(Diet =="Control")
-  plot_se_supp_1 <- plot_avg_trajectory(se_indo_ctrl, title_string = "SE SUPP Control Diet", subtitle_string = "HET p = 0.5727, MUT p = 0.5037")
-  
-  se_indo_supp <- se_indo %>% filter(Diet =="Selenium")
-  plot_se_supp_2 <- plot_avg_trajectory(se_indo_supp, title_string = "SE SUPP Selenium Diet", subtitle_string = "HET p = 0.7391, MUT p = 0.6525")
-  
-  se_histo_ctrl <- plot_histology(csv_filepath= here("data/phenotype/SE_Supp/Control_Histology.csv"),
-                                  title_string = "Ileum Histology",
-                                  subtitle_string =  "Indomethacin Negative Se and Ctrl Histology",
-                                  stat_comparisons =  full_comparisons) +
-    facet_wrap(~Diet)
-  
-  
-  se_histo_indo <- plot_histology(csv_filepath= here("data/phenotype/SE_Supp/Se_Supp_Histology_Indomethacin_Analysis.csv"),
-                                  title_string = "Ileum Histology",
-                                  subtitle_string =  "Indomethacin Positive Se and Ctrl Histology",
-                                  stat_comparisons =  full_comparisons) +
-    facet_wrap(~Diet)
-  
-  se_supp_icpms <- read.csv(here("data/phenotype/SE_Supp/Se_Supp_ICP_MS_Analysis.csv"))
-  se_supp_icpms_long <- se_supp_icpms %>% 
-    filter(Weight>=3) %>%
-    pivot_longer(cols = 3:9, names_to = "Element", values_to = "Concentration")
-  control_diet <- se_supp_icpms_long %>% filter(Diet=="Control")
-  se_supp_diet <- se_supp_icpms_long %>% filter(Diet == "Selenium")
-  
-  control_icpms <- make_icp_ms_plot(control_diet, "Control Diet", stat_comparisons = full_comparisons)
-  
-  se_supp_icpms <- make_icp_ms_plot(se_supp_diet,  "Se Supp Diet", stat_comparisons = full_comparisons)
-  
-  
+    
   icpms <- read.csv(here("data/phenotype/SLC_ICP-MS/Analysis_ICP_MS.csv"))
   icpms_long <- icpms %>% 
     filter(SampleType=="MUC-SI") %>%
@@ -1000,6 +977,8 @@ server <- function(input, output) {
   output$plot_se_supp_4 <- renderPlot({ print(se_histo_indo) })
   output$plot_se_supp_5 <- renderPlot({ print(control_icpms) })
   output$plot_se_supp_6 <- renderPlot({ print(se_supp_icpms) })
+  output$plot_se_supp_7 <- renderPlot({ print(control_fitc) })
+  output$plot_se_supp_8 <- renderPlot({ print(se_supp_fitc) })
   
   output$plot_icp_1 <- renderPlot({ print(icpms) })
   
@@ -1010,6 +989,46 @@ server <- function(input, output) {
 
   output$gsea_manhattan_het <- renderPlotly({
     make_gsea_plot("results/RNA_seq/GSEA/M2_GSEA_HFD_Positive_HET_vs_WT.csv")
+  })
+  
+  observeEvent(input$tabs, {
+    if (input$tabs == "SE_Supp") {
+      se_indo <- read.csv(here("data/phenotype/SE_Supp/SE_Supp_Indomethacin_DAI.csv"))
+      se_indo_ctrl <- se_indo %>% filter(Diet =="Control")
+      plot_se_supp_1 <- plot_avg_trajectory(se_indo_ctrl, title_string = "Indomethacin", subtitle_string = "Control Diet; HET p = 0.5727, MUT p = 0.5037")
+      
+      se_indo_supp <- se_indo %>% filter(Diet =="Selenium")
+      plot_se_supp_2 <- plot_avg_trajectory(se_indo_supp, title_string = "Indomethacin", subtitle_string = "Selenium Diet; HET p = 0.7391, MUT p = 0.6525")
+      
+      se_histo_ctrl <- plot_histology(csv_filepath= here("data/phenotype/SE_Supp/Control_Histology.csv"),
+                                      title_string = "Ileum Histology",
+                                      subtitle_string =  "Indomethacin Negative Se and Ctrl Histology",
+                                      stat_comparisons =  full_comparisons) +
+        facet_wrap(~Diet)
+      
+      
+      se_histo_indo <- plot_histology(csv_filepath= here("data/phenotype/SE_Supp/Se_Supp_Histology_Indomethacin_Analysis.csv"),
+                                      title_string = "Ileum Histology",
+                                      subtitle_string =  "Indomethacin Positive Se and Ctrl Histology",
+                                      stat_comparisons =  full_comparisons) +
+        facet_wrap(~Diet)
+      
+      se_supp_icpms <- read.csv(here("data/phenotype/SE_Supp/Se_Supp_ICP_MS_Analysis.csv"))
+      se_supp_icpms_long <- se_supp_icpms %>% 
+        filter(Weight>=3) %>%
+        pivot_longer(cols = 3:9, names_to = "Element", values_to = "Concentration")
+      control_diet <- se_supp_icpms_long %>% filter(Diet=="Control")
+      se_supp_diet <- se_supp_icpms_long %>% filter(Diet == "Selenium")
+      
+      control_icpms <- make_icp_ms_plot(control_diet, "Control Diet", stat_comparisons = full_comparisons)
+      
+      se_supp_icpms <- make_icp_ms_plot(se_supp_diet,  "Se Supp Diet", stat_comparisons = full_comparisons)
+      
+      se_supp_fitc <- plot_fitc(here("data/phenotype/SE_Supp/Se_Supp_FITC_Running_Total_2025Oct.csv"), "FITC", "Selenium Diet; HET p= 0.5557, MUT p=0.0656") 
+      
+      control_fitc <- plot_fitc(here("data/phenotype/SE_Supp/Control_FITC_Running_Total_2025Oct.csv"), "FITC", "Control Diet; HET p = 0.3787, MUT p = 0.9314") 
+      
+    }
   })
   
   observeEvent(input$tabs, {
