@@ -1427,6 +1427,23 @@
       ],
       "Hash": "938e6bbc4ac57534f8b43224506a8966"
     },
+    "pheatmap": {
+      "Package": "pheatmap",
+      "Version": "1.0.13",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "RColorBrewer",
+        "grDevices",
+        "graphics",
+        "grid",
+        "gtable",
+        "scales",
+        "stats"
+      ],
+      "Hash": "30e5b56762942d319561e5ebaab69c74"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.9.0",
