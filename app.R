@@ -9,7 +9,7 @@ library(DT)
 library(plotly)
 library(stringi)
 library(nlme)
-
+library(pheatmap)
 
 # ---- Load data ----
 
@@ -595,7 +595,8 @@ ui <- fluidPage(
                                      min = 0, max = 3, value = 1, step = 0.1),
                          DTOutput("path_overlap_table"),
                          downloadButton("download_path_wide", "Download Concordant Pathways CSV"),
-                         plotlyOutput("plot_slc_spont_5")
+                         plotlyOutput("plot_slc_spont_5"),
+                         plotOutput("plot_slc_spont_proteomics")
                        )
                        
               ),
@@ -962,10 +963,53 @@ server <- function(input, output) {
     datatable(slc_spont_path_overlap_result()$table, options = list(scrollX = TRUE, pageLength = 10))
   })
   
-
   
+  combined_matrix <- read.csv(here("data/proteomics/combined_matrix.csv"), row.names=1)
+  names(combined_matrix) <- gsub("X","", names(combined_matrix))
+  s_meta <- read.csv(here("data/proteomics/Proteomics_Data - Metadata.csv"))
   
+  selenoproteins_only <- combined_matrix %>% 
+    filter(str_detect(Protein.names,"seleno")| 
+             str_detect(Protein.names,"glutathione") |
+             str_detect(Protein.names,"thioredoxin") |
+             str_detect(Gene.Names,"Slc39") |
+             str_detect(Gene.Names, "Iodothyronine")) %>%
+    pivot_longer(2:37, names_to = "SampleID", values_to = "intensity") %>% 
+    left_join(s_meta, by= "SampleID") 
+  
+  heatmap_mat <- selenoproteins_only %>%
+    #filter(Sex=="Male") %>%
+    #filter(UniprotID %in% top_proteins) %>%
+    select(UniprotID, SampleID, intensity) %>%
+    pivot_wider(names_from = SampleID, values_from = intensity) %>%
+    column_to_rownames("UniprotID") %>%
+    as.matrix()
+  
+  annotation_col <- s_meta %>%
+    select(Genotype, Sex,Batch) %>%
+    data.frame(row.names = s_meta$SampleID)
+  
+  annotation_row <- selenoproteins_only %>%
+    dplyr::select(c("UniprotID", "Protein.names")) %>%
+    unique() %>%
+    column_to_rownames("UniprotID")
+  
+  heatmap <- pheatmap(
+    heatmap_mat,
+    annotation_col = annotation_col,
+    #annotation_row= annotation_row,
+    scale = "row",
+    cluster_rows = TRUE,
+    cluster_cols = TRUE,
+    show_rownames = TRUE,
+    show_colnames = TRUE,
+    color = colorRampPalette(c("navy", "white", "firebrick3"))(50)
+  )
 
+  output$plot_slc_spont_proteomics <- renderPlot({
+    print(heatmap)
+  })
+  # output$plot_slc_spont_proteomics <- renderPlot({ print(heatmap)})
   
   output$plot_smt_indo_1 <- renderPlot({ print(plot_smt_indo_1) })
   output$plot_slc_indo_1 <- renderPlot({ print(plot_slc_indo_1) })
