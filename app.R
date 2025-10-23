@@ -69,6 +69,9 @@ plot_fitc <- function(csv_filepath, title_string, subtitle_string, stat_comparis
   
 }
 
+
+
+
 plot_avg_trajectory <- function(df, subtitle_string, title_string,                       
                                 color_vector = c("WT"="black","HET"= "navy","MUT"="firebrick")) {
   
@@ -190,6 +193,53 @@ make_icp_ms_plot <- function(df, subtitle_string,
     
   })
     
+  agg_fig <- plot_grid(plotlist = plots, nrow = 1,  ncol = 7)
+  return(agg_fig)
+}
+
+make_icp_ms_plot_diet_comparison <- function(df, subtitle_string, 
+                             stat_comparisons = list( c("Control_WT", "Selenium_WT"), 
+                                                      c("Control_HET","Selenium_HET"),
+                                                      c("Control_MUT", "Selenium_MUT")),
+                             color_vector = c("WT"="black","HET"= "navy","MUT"="firebrick")){
+  
+  df <- as.data.frame(df)
+  df$Diet_Genotype <- paste0(df$Diet, "_", df$Genotype)
+  df$Diet_Genotype <- factor(df$Diet_Genotype, levels=c(
+    "Control_WT", "Selenium_WT",
+    "Control_HET","Selenium_HET",
+    "Control_MUT", "Selenium_MUT"))
+  
+  # Split into list by element
+  element_list <- split(df, df$Element)
+  
+  
+  
+  plots <- lapply(seq_along(element_list), function(i) {
+    maximum <- max(element_list[[i]]$Concentration)
+    print(summary(element_list[[i]]$Concentration))
+    new_ylim <- c(0, 1.5*maximum)
+    print(new_ylim)
+    
+    ggplot(element_list[[i]], aes(x = Diet_Genotype, y = Concentration, fill = Genotype)) +
+      geom_boxplot(alpha=0.5) +
+      scale_fill_manual(values=color_vector) +
+      geom_jitter(width = 0.05, alpha=0.8) +
+      theme_cowplot(12) +
+      theme(legend.position = "none") + 
+      ggtitle(as.character(element_list[[i]]$Element))+
+      labs(subtitle = {{subtitle_string}})+
+      stat_compare_means(comparisons = {{stat_comparisons}},method = "wilcox",
+                         step.increase = 0.2)+
+      ylab("Concentration [ug/g]")+
+      xlab(NULL)+
+      theme(plot.title = element_text(hjust = 0.5),
+            plot.subtitle = element_text(hjust=0.5)) + 
+      scale_y_continuous(limits = new_ylim) +
+      theme(axis.text.x = element_text(angle = 60, vjust=0.1))
+    
+  })
+  
   agg_fig <- plot_grid(plotlist = plots, nrow = 1,  ncol = 7)
   return(agg_fig)
 }
@@ -742,6 +792,9 @@ ui <- fluidPage(
                        ),
                        fluidRow(
                          column(12, plotOutput("plot_se_supp_6")),
+                       ),
+                       fluidRow(
+                         column(12, plotOutput("plot_se_supp_9")),
                        )
               ),
               
@@ -1062,6 +1115,8 @@ server <- function(input, output) {
       
       se_supp_icpms <- make_icp_ms_plot(se_supp_diet,  "Se Supp Diet", stat_comparisons = full_comparisons)
       
+      diet_icpms <- make_icp_ms_plot_diet_comparison(se_supp_icpms_long, "Within Diet")
+      
       se_supp_fitc <- plot_fitc(here("data/phenotype/SE_Supp/Se_Supp_FITC_Running_Total_2025Oct.csv"), "FITC", "Selenium Diet; HET p= 0.5557, MUT p=0.0656") 
       
       control_fitc <- plot_fitc(here("data/phenotype/SE_Supp/Control_FITC_Running_Total_2025Oct.csv"), "FITC", "Control Diet; HET p = 0.3787, MUT p = 0.9314") 
@@ -1074,6 +1129,7 @@ server <- function(input, output) {
       output$plot_se_supp_6 <- renderPlot({ print(se_supp_icpms) })
       output$plot_se_supp_7 <- renderPlot({ print(control_fitc) })
       output$plot_se_supp_8 <- renderPlot({ print(se_supp_fitc) })
+      output$plot_se_supp_9 <- renderPlot({ print(diet_icpms) })
     }
   })
   
