@@ -8,11 +8,19 @@ server <- function(input, output) {
   
   full_comparisons <- list( c("WT", "HET"), c("HET","MUT"),c("WT", "MUT"))
   
-  plot_slc_spont_1 <- plot_fitc(csv_filepath = here("data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_FITC_Results.csv"),
+  spont_fitc_df <- read.csv(here("data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_FITC_Results.csv"))
+  plot_slc_spont_1A <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa"),
                                 title_string = "FITC",
                                 subtitle_string = "SPONT FITC Cohort",
                                 stat_comparisons = full_comparisons) + 
     facet_wrap(~Size)
+  
+  plot_slc_spont_1B <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size=="4_kDa"),
+                                title_string = "FITC",
+                                subtitle_string = "SPONT FITC Cohort",
+                                stat_comparisons = full_comparisons) + 
+    facet_wrap(~Size)
+  
   plot_slc_spont_2 <- plot_histology(csv_filepath= here("data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_Jejunum_Histo.csv"),
                                      title_string = "Jejunum Histology",
                                      subtitle_string =  "SPONT FITC Cohort",
@@ -166,7 +174,8 @@ server <- function(input, output) {
   
   
   # Render them
-  output$plot_slc_spont_1 <- renderPlot({ print(plot_slc_spont_1) })
+  output$plot_slc_spont_1A <- renderPlot({ print(plot_slc_spont_1A) })
+  output$plot_slc_spont_1B <- renderPlot({ print(plot_slc_spont_1B) })
   output$plot_slc_spont_2 <- renderPlot({ print(plot_slc_spont_2 ) })
   output$plot_slc_spont_3 <- renderPlot({ print(plot_slc_spont_3 ) })
   

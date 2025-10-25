@@ -8,7 +8,9 @@ observeEvent(input$tabs, {
                                  title_string = "Ileum Histology",
                                  subtitle_string =  "HFD Cohort",
                                  stat_comparisons =  full_comparisons) 
-    plot_hfd_2 <- plot_fitc(csv_filepath = here("data/phenotype/SLC_HFD/HFD_FITC_Analysis.csv"),
+    
+    hfd_fitc <- read.csv(here("data/phenotype/SLC_HFD/HFD_FITC_Analysis.csv"))
+    plot_hfd_2 <- plot_fitc(dataframe = hfd_fitc,
                             title_string = "FITC",
                             subtitle_string = "HFD Cohort",
                             stat_comparisons = full_comparisons) + 

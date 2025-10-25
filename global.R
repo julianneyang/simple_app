@@ -12,6 +12,7 @@ library(stringi)
 library(nlme)
 library(pheatmap)
 
+here::i_am("global.R")
 
 # ---- Global functions ----
 plot_histology <- function(csv_filepath, title_string, subtitle_string, stat_comparisons,
@@ -34,9 +35,9 @@ plot_histology <- function(csv_filepath, title_string, subtitle_string, stat_com
   
 }
 
-plot_fitc <- function(csv_filepath, title_string, subtitle_string, stat_comparisons = list( c("WT", "HET"), c("HET","MUT"),c("WT", "MUT")),
+plot_fitc <- function(dataframe, title_string, subtitle_string, stat_comparisons = list( c("WT", "HET"), c("HET","MUT"),c("WT", "MUT")),
                       color_vector = c("WT"="black","HET"= "navy","MUT"="firebrick")) {
-  df <- readr::read_csv(csv_filepath)
+  df <- as.data.frame(dataframe)
   df$Genotype <- factor(df$Genotype, levels=c("WT", "HET", "MUT"))
   
   df_150 <- df %>% filter(Size=="150_kDa")
@@ -69,6 +70,48 @@ plot_fitc <- function(csv_filepath, title_string, subtitle_string, stat_comparis
   
 }
 
+plot_fitc_diet_comparison <- function(dataframe, title_string, subtitle_string, stat_comparisons = list( c("WT", "HET"), c("HET","MUT"),c("WT", "MUT")),
+                      color_vector = c("WT"="black","HET"= "navy","MUT"="firebrick")) {
+  df <- as.data.frame(dataframe)
+  df$Genotype <- factor(df$Genotype, levels=c("WT", "HET", "MUT"))
+  
+  df_WT <- df %>% filter(Genotype=="WT")
+  df_HET <- df %>% filter(Size=="HET")
+  df_MUT <- df %>% filter(Size=="MUT")
+  
+  if(dim(df_WT)[1]!=0){
+    lm <- lm(Plasma_FITC ~ Sex + Diet, data = df_WT)
+    print("WT Se vs Ctrl")
+    print(summary(lm))
+  }
+  
+  if(dim(df_HET)[1]!=0){
+    lm <- lm(Plasma_FITC ~ Sex + Diet, data = df_HET)
+    print("HET Se vs Ctrl")
+    print(summary(lm))
+  }
+  
+  if(dim(df_MUT)[1]!=0){
+    lm <- lm(Plasma_FITC ~ Sex + Diet, data = df_MUT)
+    print("MUT Se vs Ctrl")
+    print(summary(lm))
+  }
+  
+  
+  ggplot(df, aes(x = Diet_Genotype, y = Plasma_FITC, fill = Genotype)) +
+    geom_boxplot(alpha=0.5) +
+    scale_fill_manual(values=color_vector) +
+    geom_jitter(width = 0.2, alpha=0.8) +
+    theme_cowplot(12) +
+    theme(legend.position = "none")+
+    ggtitle({{title_string}})+
+    labs(subtitle = {{subtitle_string}})+
+    stat_compare_means(comparisons = {{stat_comparisons}},method = "t.test")+
+    ylab("Score")+
+    theme(plot.title = element_text(hjust = 0.5),
+          plot.subtitle = element_text(hjust=0.5))
+  
+}
 
 
 

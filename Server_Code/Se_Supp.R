@@ -36,9 +36,30 @@ observeEvent(input$tabs, {
     
     diet_icpms <- make_icp_ms_plot_diet_comparison(se_supp_icpms_long, "Within Diet")
     
-    se_supp_fitc <- plot_fitc(here("data/phenotype/SE_Supp/Se_Supp_FITC_Running_Total_2025Oct.csv"), "FITC", "Selenium Diet; HET p= 0.5557, MUT p=0.0656") 
+    se_fitc_df <- read.csv(here("data/phenotype/SE_Supp/Se_Supp_FITC_Running_Total_2025Oct.csv"))
+    se_supp_fitc <- plot_fitc(dataframe = se_fitc_df, "FITC", "Selenium Diet; HET p= 0.5557, MUT p=0.0656") 
     
-    control_fitc <- plot_fitc(here("data/phenotype/SE_Supp/Control_FITC_Running_Total_2025Oct.csv"), "FITC", "Control Diet; HET p = 0.3787, MUT p = 0.9314") 
+    control_fitc_df <- read.csv(here("data/phenotype/SE_Supp/Control_FITC_Running_Total_2025Oct.csv")) 
+    control_fitc <- plot_fitc(dataframe=control_fitc_df, "FITC", "Control Diet; HET p = 0.3787, MUT p = 0.9314") 
+    
+    merged_fitc <- rbind(se_fitc_df, control_fitc_df) %>%
+      mutate(Diet = str_replace_all(Diet, "Selenium", "Se")) %>%
+      mutate(Diet = str_replace_all(Diet, "Control", "C")) %>%
+      mutate(Diet_Genotype = paste0(Diet,"_",Genotype))
+    
+    merged_fitc$Diet_Genotype <- factor(merged_fitc$Diet_Genotype, levels=c(
+      "C_WT", "Se_WT",
+      "C_HET","Se_HET",
+      "C_MUT", "Se_MUT"))
+    
+    merged_fitc_plot <- plot_fitc_diet_comparison(dataframe = merged_fitc, 
+                             title_string = "FITC",
+                             subtitle_string = "Se vs Ctrl Diet",
+                             stat_comparisons = list( c("C_WT", "Se_WT"), 
+                                                      c("C_HET","Se_HET"),
+                                                      c("C_MUT", "Se_MUT")))
+    
+
     
     output$plot_se_supp_1 <- renderPlot({ print(plot_se_supp_1) })
     output$plot_se_supp_2 <- renderPlot({ print(plot_se_supp_2) })
@@ -48,6 +69,7 @@ observeEvent(input$tabs, {
     output$plot_se_supp_6 <- renderPlot({ print(se_supp_icpms) })
     output$plot_se_supp_7 <- renderPlot({ print(control_fitc) })
     output$plot_se_supp_8 <- renderPlot({ print(se_supp_fitc) })
+    output$plot_se_supp_10 <- renderPlot({ print(merged_fitc_plot) })
     output$plot_se_supp_9 <- renderPlot({ print(diet_icpms) })
   }
 })

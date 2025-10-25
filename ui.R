@@ -10,9 +10,10 @@ ui <- fluidPage(
               tabPanel("SLC_Spontaneous",
                        fluidRow(
                          h2("Phenotype Results"),
-                         column(4, plotOutput("plot_slc_spont_1")),
-                         column(4, plotOutput("plot_slc_spont_2")),
-                         column(4, plotOutput("plot_slc_spont_3")),
+                         column(3, plotOutput("plot_slc_spont_1A")),
+                         column(3, plotOutput("plot_slc_spont_1B")),
+                         column(3, plotOutput("plot_slc_spont_2")),
+                         column(3, plotOutput("plot_slc_spont_3")),
                          h2("RNA-sequencing Results"),
                          br(),
                          h3("DESeq2: MUT vs WT"),
@@ -179,8 +180,9 @@ ui <- fluidPage(
                          column(3, plotOutput("plot_se_supp_4")),
                        ),
                        fluidRow(
-                         column(3, plotOutput("plot_se_supp_7")),
-                         column(3, plotOutput("plot_se_supp_8")),
+                         column(4, plotOutput("plot_se_supp_7")),
+                         column(4, plotOutput("plot_se_supp_8")),
+                         column(4, plotOutput("plot_se_supp_10")),
                        ),
                        h4("Wilcoxon rank sum comparisons due to outliers"),
                        fluidRow(

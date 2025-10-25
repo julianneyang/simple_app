@@ -7,7 +7,9 @@ observeEvent(input$tabs, {
                                           subtitle_string =  "SMT Cohort",
                                           stat_comparisons =  list( c("WT", "MUT"))) +
       facet_wrap(~Treatment)
-    plot_smt_negative_2 <- plot_fitc(csv_filepath = here("data/phenotype/SMT_Negative/SMT_Neg_FITC.csv"),
+    
+    smt_fitc <- read.csv(here("data/phenotype/SMT_Negative/SMT_Neg_FITC.csv"))
+    plot_smt_negative_2 <- plot_fitc(dataframe = smt_fitc,
                                      title_string = "FITC",
                                      subtitle_string = "SMT Negative FITC",
                                      stat_comparisons =  list( c("WT", "MUT"))) + 
