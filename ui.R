@@ -184,6 +184,11 @@ ui <- fluidPage(
                          column(4, plotOutput("plot_se_supp_8")),
                          column(4, plotOutput("plot_se_supp_10")),
                        ),
+                       h4("Combining Control Diet with SPONT FITC"),
+                       fluidRow(
+                         column(4, plotOutput("plot_se_supp_11")),
+                         column(8, plotOutput("plot_se_supp_12"))
+                       ),
                        h4("Wilcoxon rank sum comparisons due to outliers"),
                        fluidRow(
                          

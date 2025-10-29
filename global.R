@@ -60,6 +60,7 @@ plot_fitc <- function(dataframe, title_string, subtitle_string, stat_comparisons
     scale_fill_manual(values=color_vector) +
     geom_jitter(width = 0.2, alpha=0.8) +
     theme_cowplot(12) +
+    #geom_beeswarm(cex = 1,priority = "density",size=3)+
     theme(legend.position = "none")+
     ggtitle({{title_string}})+
     labs(subtitle = {{subtitle_string}})+
