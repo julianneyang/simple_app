@@ -5,7 +5,6 @@ source("global.R")
 # ---- UI ----
 ui <- fluidPage(
   titlePanel("Aggregated Data from the SLC SI Project"),
-  
   tabsetPanel(id = "tabs",
               tabPanel("SLC_Spontaneous",
                        fluidRow(
@@ -206,7 +205,17 @@ ui <- fluidPage(
                        h4("Wilcoxon rank sum comparisons due to outliers"),
                        fluidRow(
                          column(12, plotOutput("plot_icp_1"))
-                       )
+                        )
+              ),
+              tabPanel(
+                "SPONT_Proteomics",         
+                selectInput(
+                  inputId = "proteomics_folder",
+                  label = "Choose dataset:",
+                  choices = c("2025_only", "Combined"),
+                  selected = "2025_only"
+                ),
+                uiOutput("tables_ui")
               )
   )
 )
