@@ -10,16 +10,15 @@ server <- function(input, output) {
   
   spont_fitc_df <- read.csv(here("data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_FITC_Results.csv"))
   plot_slc_spont_1A <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa"),
-                                title_string = "FITC",
+                                title_string = "FITC 150 kDa",
                                 subtitle_string = "SPONT FITC Cohort",
-                                stat_comparisons = full_comparisons) + 
-    facet_wrap(~Size)
+                                stat_comparisons = full_comparisons) 
   
   plot_slc_spont_1C <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa"),
-                                 title_string = "FITC",
+                                 title_string = "FITC 150 kDa",
                                  subtitle_string = "SPONT FITC Cohort",
                                  stat_comparisons = full_comparisons) + 
-    facet_wrap(~Sex + Size)
+    facet_wrap(~Sex)
   
   # Summarize counts by Sex and Genotype
   summary_fitc <- spont_fitc_df %>% 
