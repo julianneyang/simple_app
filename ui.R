@@ -12,7 +12,15 @@ ui <- fluidPage(
                          column(3, plotOutput("plot_slc_spont_1A")),
                          column(3, plotOutput("plot_slc_spont_1B")),
                          column(3, plotOutput("plot_slc_spont_2")),
-                         column(3, plotOutput("plot_slc_spont_3")),
+                         column(3, plotOutput("plot_slc_spont_3"))
+                       ),
+                       fluidRow(
+                         column(3, h3("150 kDa Sample Size", align = "center"), tableOutput("spont_fitc_summary_table")),
+                         column(3, h3("4 KDa Sample Size"), tableOutput("spont_fitc_4_summary_table")),
+                         column(3, plotOutput("plot_slc_spont_1C")),
+                         column(3, plotOutput("plot_slc_spont_1D"))
+                       ),
+                       fluidRow(
                          h2("RNA-sequencing Results"),
                          br(),
                          h3("DESeq2: MUT vs WT"),

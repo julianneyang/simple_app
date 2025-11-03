@@ -15,11 +15,46 @@ server <- function(input, output) {
                                 stat_comparisons = full_comparisons) + 
     facet_wrap(~Size)
   
+  plot_slc_spont_1C <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa"),
+                                 title_string = "FITC",
+                                 subtitle_string = "SPONT FITC Cohort",
+                                 stat_comparisons = full_comparisons) + 
+    facet_wrap(~Sex + Size)
+  
+  # Summarize counts by Sex and Genotype
+  summary_fitc <- spont_fitc_df %>% 
+    filter(Size =="150_kDa") %>%
+    group_by(Sex, Genotype) %>%
+    summarise(Num_Mice = n_distinct(MouseID), .groups = "drop")
+  
+  # Render as table
+  output$spont_fitc_summary_table <- renderTable({
+    summary_fitc
+  })
+  
   plot_slc_spont_1B <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size=="4_kDa"),
                                 title_string = "FITC",
                                 subtitle_string = "SPONT FITC Cohort",
                                 stat_comparisons = full_comparisons) + 
     facet_wrap(~Size)
+  
+  plot_slc_spont_1D <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size=="4_kDa"),
+                                 title_string = "FITC",
+                                 subtitle_string = "SPONT FITC Cohort",
+                                 stat_comparisons = full_comparisons) + 
+    facet_wrap(~Sex + Size)
+  
+  # Summarize counts by Sex and Genotype
+  summary_fitc_4 <- spont_fitc_df %>% 
+    filter(Size =="4_kDa") %>%
+    group_by(Sex, Genotype) %>%
+    summarise(Num_Mice = n_distinct(MouseID), .groups = "drop")
+  
+  # Render as table
+  output$spont_fitc_4_summary_table <- renderTable({
+    summary_fitc_4
+  })
+  
   
   plot_slc_spont_2 <- plot_histology(csv_filepath= here("data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_Jejunum_Histo.csv"),
                                      title_string = "Jejunum Histology",
@@ -178,6 +213,8 @@ server <- function(input, output) {
   output$plot_slc_spont_1B <- renderPlot({ print(plot_slc_spont_1B) })
   output$plot_slc_spont_2 <- renderPlot({ print(plot_slc_spont_2 ) })
   output$plot_slc_spont_3 <- renderPlot({ print(plot_slc_spont_3 ) })
+  output$plot_slc_spont_1C <- renderPlot({ print(plot_slc_spont_1C) })
+  output$plot_slc_spont_1D <- renderPlot({ print(plot_slc_spont_1D) })
   
   full_wide <- reactive({
     slc_spont_overlap_result()$table
