@@ -65,7 +65,9 @@ observeEvent(input$tabs, {
       dplyr::select(c(MouseID, Genotype, Sex, Plasma_FITC,Size, Diet)) 
     
     spont_fitc_agg <- spont_fitc_df %>% 
-      mutate(Diet="Control")
+      mutate(Diet="Control") %>% 
+      filter(Omit=="No") %>% 
+      dplyr::select(-c("Batch", "Omit"))
     
     merged_control_agg <- rbind(control_spont_fitc, spont_fitc_agg) 
     
