@@ -64,7 +64,7 @@ plot_fitc <- function(dataframe, title_string, subtitle_string, stat_comparisons
     theme(legend.position = "none")+
     ggtitle({{title_string}})+
     labs(subtitle = {{subtitle_string}})+
-    stat_compare_means(comparisons = {{stat_comparisons}},method = "t.test")+
+    stat_compare_means(comparisons = {{stat_comparisons}},method = "wilcox")+
     ylab("Score")+
     theme(plot.title = element_text(hjust = 0.5),
           plot.subtitle = element_text(hjust=0.5))

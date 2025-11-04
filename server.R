@@ -9,12 +9,16 @@ server <- function(input, output) {
   full_comparisons <- list( c("WT", "HET"), c("HET","MUT"),c("WT", "MUT"))
   
   spont_fitc_df <- read.csv(here("data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_FITC_Results.csv"))
-  plot_slc_spont_1A <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa"),
+  plot_slc_spont_1A <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa") %>% filter(Omit=="No"),
                                 title_string = "FITC 150 kDa",
                                 subtitle_string = "SPONT FITC Cohort",
                                 stat_comparisons = full_comparisons) 
   
-  plot_slc_spont_1C <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa"),
+  dataframe <- spont_fitc_df %>% filter(Batch=="One" | Batch == "Two")
+  kruskal.test(Plasma_FITC ~ Genotype, data = dataframe)
+   
+  
+   plot_slc_spont_1C <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa"),
                                  title_string = "FITC 150 kDa",
                                  subtitle_string = "SPONT FITC Cohort",
                                  stat_comparisons = full_comparisons) + 
@@ -337,3 +341,4 @@ server <- function(input, output) {
   
   
 }
+
