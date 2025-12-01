@@ -14,8 +14,6 @@ server <- function(input, output) {
                                 subtitle_string = "SPONT FITC Cohort",
                                 stat_comparisons = full_comparisons) 
   
-  dataframe <- spont_fitc_df %>% filter(Batch=="One" | Batch == "Two")
-  kruskal.test(Plasma_FITC ~ Genotype, data = dataframe)
    
   
    plot_slc_spont_1C <- plot_fitc(dataframe = spont_fitc_df %>% filter(Size =="150_kDa"),
