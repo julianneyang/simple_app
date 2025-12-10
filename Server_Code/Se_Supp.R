@@ -34,7 +34,7 @@ observeEvent(input$tabs, {
     
     se_supp_icpms <- make_icp_ms_plot(se_supp_diet,  "Se Supp Diet", stat_comparisons = full_comparisons)
     
-    diet_icpms <- make_icp_ms_plot_diet_comparison(se_supp_icpms_long, "Within Diet")
+    diet_icpms <- make_icp_ms_plot_diet_comparison(se_supp_icpms_long, "Within Genotype")
     
     se_fitc_df <- read.csv(here("data/phenotype/SE_Supp/Se_Supp_FITC_Running_Total_2025Oct.csv")) %>%
       filter(Omit=="No")
