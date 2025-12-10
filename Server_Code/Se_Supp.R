@@ -66,7 +66,8 @@ observeEvent(input$tabs, {
     
     spont_fitc_agg <- spont_fitc_df %>% 
       mutate(Diet="Control") %>% 
-      filter(Omit=="No") %>% 
+      filter(Size=="4_kDa") %>%
+      #filter(Omit=="No") %>% 
       dplyr::select(-c("Batch", "Omit", "Hemolysis"))
     
     merged_control_agg <- rbind(control_spont_fitc, spont_fitc_agg) 
