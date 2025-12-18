@@ -2870,6 +2870,34 @@
         "RemoteSha": "0.9.3"
       }
     },
+    "paletteer": {
+      "Source": "CRAN",
+      "Repository": "https://cloud.r-project.org",
+      "description": {
+        "Package": "paletteer",
+        "Title": "Comprehensive Collection of Color Palettes",
+        "Version": "1.6.0",
+        "Author": "See AUTHORS file.",
+        "Maintainer": "Emil Hvitfeldt <emilhhvitfeldt@gmail.com>",
+        "Description": "The choices of color palettes in R can be quite\n    overwhelming with palettes spread over many packages with many\n    different API's. This packages aims to collect all color palettes\n    across the R ecosystem under the same package with a streamlined API.",
+        "License": "GPL-3",
+        "URL": "https://github.com/EmilHvitfeldt/paletteer",
+        "BugReports": "https://github.com/EmilHvitfeldt/paletteer/issues",
+        "Depends": "R (>= 2.10)",
+        "Imports": "prismatic, rematch2, rlang, rstudioapi",
+        "Suggests": "covr, ggplot2 (>= 3.3.0), ggthemes (>= 4.0.0), harrypotter\n(>= 2.1.0), knitr, oompaBase, palr, pals, rmarkdown, scico,\ntestthat (>= 2.1.0), vdiffr, viridisLite",
+        "Copyright": "See LICENSE.note file.",
+        "Config/testthat/edition": "3",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.3.0",
+        "NeedsCompilation": "no",
+        "Packaged": "2024-01-21 02:33:27 UTC; emilhvitfeldt",
+        "Repository": "CRAN",
+        "Date/Publication": "2024-01-21 18:00:02 UTC",
+        "Built": "R 4.4.0; ; 2024-05-12 19:32:18 UTC; unix"
+      }
+    },
     "pbkrtest": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -3068,6 +3096,33 @@
         "Repository": "CRAN",
         "Date/Publication": "2023-09-24 21:10:02 UTC",
         "Built": "R 4.4.0; ; 2024-05-09 01:27:27 UTC; unix"
+      }
+    },
+    "prismatic": {
+      "Source": "CRAN",
+      "Repository": "https://cloud.r-project.org",
+      "description": {
+        "Package": "prismatic",
+        "Title": "Color Manipulation Tools",
+        "Version": "1.1.2",
+        "Authors@R": "\n    person(\"Emil\", \"Hvitfeldt\", , \"emilhhvitfeldt@gmail.com\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-0679-1945\"))",
+        "Description": "Manipulate and visualize colors in a intuitive,\n    low-dependency and functional way.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://emilhvitfeldt.github.io/prismatic/,\nhttps://github.com/EmilHvitfeldt/prismatic",
+        "BugReports": "https://github.com/EmilHvitfeldt/prismatic/issues",
+        "Depends": "R (>= 3.2)",
+        "Imports": "graphics, farver (>= 2.0.1), grDevices",
+        "Suggests": "covr, cli, testthat (>= 3.0.0)",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.3.1",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "no",
+        "Packaged": "2024-04-10 22:54:31 UTC; emilhvitfeldt",
+        "Author": "Emil Hvitfeldt [aut, cre] (<https://orcid.org/0000-0002-0679-1945>)",
+        "Maintainer": "Emil Hvitfeldt <emilhhvitfeldt@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2024-04-10 23:10:03 UTC",
+        "Built": "R 4.4.0; ; 2024-05-09 11:50:58 UTC; unix"
       }
     },
     "processx": {
@@ -4660,10 +4715,10 @@
       "checksum": "0c4a2c091e33e663b7688e0c4e17f0f5"
     },
     "manifest.json": {
-      "checksum": "84ab430910348927980dc25d786b1281"
+      "checksum": "5018e82eefedc8bd66b6095d66d8aebd"
     },
     "renv.lock": {
-      "checksum": "0fa32fd35a096684613a486407fb3a98"
+      "checksum": "f3d383fbd176ab6d7cf050af767561c2"
     },
     "results/phenotype/ICP_MS_Histo.RDS": {
       "checksum": "721af588e07340b18f64820cebc6d146"
