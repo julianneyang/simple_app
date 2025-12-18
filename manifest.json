@@ -4552,13 +4552,13 @@
       "checksum": "4d438e0e4125f9d8ae4d2da16839468a"
     },
     "data/phenotype/SE_Supp/Control_FITC_Running_Total_2025Oct.csv": {
-      "checksum": "1874dd6fe2ab2971eae4ef5e29743497"
+      "checksum": "c393a546eb1283320a3502e1c664ca75"
     },
     "data/phenotype/SE_Supp/Control_Histology.csv": {
       "checksum": "eab2b81a0f6d6d0187a93893116d12fc"
     },
     "data/phenotype/SE_Supp/Se_Supp_FITC_Running_Total_2025Oct.csv": {
-      "checksum": "887f0db9c3dc123ec139e0c5e1d7f77c"
+      "checksum": "50e84077750920cb0c2dbeeef79267da"
     },
     "data/phenotype/SE_Supp/Se_Supp_Histology_Indomethacin_Analysis.csv": {
       "checksum": "d7f98bc7b6f96e92f906b395270fa89d"
@@ -4597,7 +4597,7 @@
       "checksum": "039eb28a86e0e0e6fa3c32d3dfa342ff"
     },
     "data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_FITC_Results.csv": {
-      "checksum": "7a88ea1b542c06f995d26ba301baeeeb"
+      "checksum": "ea532c107f149e21227618207ddd33da"
     },
     "data/phenotype/SLC_Spontaneous/FITC/SPONT_FITC_Jejunum_Histo.csv": {
       "checksum": "5549a771674158142d35861e94985b45"
@@ -4650,11 +4650,17 @@
     "data/proteomics/Proteomics_Data - Uniprot_2025.csv": {
       "checksum": "4b5702af78aa6174d5a2b8a5fb61b959"
     },
+    "data/sequencing_data/Metagenomics/Filtered_SMT_Shotgun_counts.csv": {
+      "checksum": "763be930e589a73de6545d22c4440964"
+    },
+    "data/sequencing_data/Metagenomics/Filtered_SMT_Shotgun_metadata.csv": {
+      "checksum": "2bd1ee660523f126053fcac2390083c2"
+    },
     "global.R": {
-      "checksum": "ac3113c1727af2205bb78a6f15e9e53f"
+      "checksum": "0c4a2c091e33e663b7688e0c4e17f0f5"
     },
     "manifest.json": {
-      "checksum": "77b42e59fb6b3deb7cbfa88b519b9667"
+      "checksum": "84ab430910348927980dc25d786b1281"
     },
     "renv.lock": {
       "checksum": "0fa32fd35a096684613a486407fb3a98"
@@ -4673,6 +4679,54 @@
     },
     "results/phenotype/Spont_FITC_Jej_Histo.RDS": {
       "checksum": "153abdfae709de94e49222f3632020f0"
+    },
+    "results/proteomics/2025_only/all_proteins_GenotypeHET.csv": {
+      "checksum": "8fd30346074a2a8e69fdfca1cb2e8a4f"
+    },
+    "results/proteomics/2025_only/all_proteins_GenotypeMUT.csv": {
+      "checksum": "381183f01d8f06d85645f549cf545409"
+    },
+    "results/proteomics/2025_only/all_proteins_in_Females_GenotypeHET.csv": {
+      "checksum": "5750439bdd11ecb09307f8b0ca7fd486"
+    },
+    "results/proteomics/2025_only/all_proteins_in_Females_GenotypeMUT.csv": {
+      "checksum": "fb44dca2003154c5256b1e03febb79ec"
+    },
+    "results/proteomics/2025_only/all_proteins_in_Males_GenotypeHET.csv": {
+      "checksum": "005fb8abd00b3e28208f090f164d5c0a"
+    },
+    "results/proteomics/2025_only/all_proteins_in_Males_GenotypeMUT.csv": {
+      "checksum": "3b840c150269f4a333fcddc235f82810"
+    },
+    "results/proteomics/2025_only/all_proteins_with_low_qual_omitted_GenotypeHET.csv": {
+      "checksum": "6ddaee96d891150d29ac27e61dc6b18f"
+    },
+    "results/proteomics/2025_only/all_proteins_with_low_qual_omitted_GenotypeMUT.csv": {
+      "checksum": "f0f290c4747ff79d5914e2100057aa2a"
+    },
+    "results/proteomics/combined/all_proteins_GenotypeHET.csv": {
+      "checksum": "58a8d15b160ce4b1ed9fda2a21866266"
+    },
+    "results/proteomics/combined/all_proteins_GenotypeMUT.csv": {
+      "checksum": "d1710b78da5e39dc25bb5c7892a69448"
+    },
+    "results/proteomics/combined/all_proteins_in_Females_GenotypeHET.csv": {
+      "checksum": "03cec1bbd2717a02ffe6f10899cd89c8"
+    },
+    "results/proteomics/combined/all_proteins_in_Females_GenotypeMUT.csv": {
+      "checksum": "9929529ee61cd7cbdc2b902e23b71fd8"
+    },
+    "results/proteomics/combined/all_proteins_in_Males_GenotypeHET.csv": {
+      "checksum": "8c103cf37578c48e4812007b2ac5c7da"
+    },
+    "results/proteomics/combined/all_proteins_in_Males_GenotypeMUT.csv": {
+      "checksum": "816a5498f9cf12b3ba794fca03a41c07"
+    },
+    "results/proteomics/combined/all_proteins_with_low_qual_omitted_GenotypeHET.csv": {
+      "checksum": "1e45b917e9eec4b3415b6c7b110a0f90"
+    },
+    "results/proteomics/combined/all_proteins_with_low_qual_omitted_GenotypeMUT.csv": {
+      "checksum": "ca960aef778c7a74101a6c89b99bdbf7"
     },
     "results/RNA_seq/DESEQ2/DESEQ2_HFD_dds_object.RDS": {
       "checksum": "60fd9cc101c6ce076601f216d9c3e528"
@@ -4912,19 +4966,25 @@
       "checksum": "6330ee3a8ada3d6f8902228b9038cd89"
     },
     "Server_Code/Se_Supp.R": {
-      "checksum": "bffc967b5306be1d6d4cddfaf6c5463e"
+      "checksum": "084c1c2ad33fe0ca84211355821cd1f5"
     },
     "Server_Code/SLC_HFD.R": {
-      "checksum": "18e86ae0c04170a94d2b48a695990279"
+      "checksum": "7151d2ca560e582af44e7557ed6caba7"
     },
     "Server_Code/SLC_TL1A.R": {
       "checksum": "fea39820937421869eee7ba354650117"
     },
+    "Server_Code/SMT_Metagenomics.R": {
+      "checksum": "c5845eeecbfc5029a9270626d8cad88d"
+    },
     "Server_Code/SMT_Negative.R": {
-      "checksum": "ca53429b4634ab56ffb6bb14d472b39e"
+      "checksum": "937408e2bf78658b8bdd5634e9fec4c9"
+    },
+    "Server_Code/SPONT_Proteomics.R": {
+      "checksum": "158a5bc2b3ae49fab1c0ff6c1d58d6e5"
     },
     "server.R": {
-      "checksum": "3c897f85b6bfbe8d541ea25c4311009f"
+      "checksum": "ac54e8b3b5b94d7482ea17195bf93caa"
     },
     "simple_app.Rproj": {
       "checksum": "c8d3f84a410f46d4d8b03a268e313e35"
@@ -4933,7 +4993,7 @@
       "checksum": "8c0a0512eba7d1d84c64abcb611f69e5"
     },
     "ui.R": {
-      "checksum": "9cf505a31d4a48c281091f0833138838"
+      "checksum": "f81250235ed6f58ab61bdac38976f0b6"
     }
   },
   "users": null
