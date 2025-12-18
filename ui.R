@@ -226,8 +226,16 @@ ui <- fluidPage(
                 uiOutput("tables_ui")
               ),
               tabPanel(
-                "SMT_Negative_Metagenomics",         
-                plotlyOutput("smt_microbiome_barplot")
+                "SMT_Negative_Metagenomics", 
+                plotlyOutput("smt_microbiome_barplot"),
+                fluidRow(
+                  column(6, plotOutput("labeled_smt_pcoa_plot")),
+                  column(6, plotOutput("smt_pcoa_plot"))
+                ),
+                fluidRow(
+                  column(6, plotlyOutput("smt_DAT")),
+                  column(6, plotlyOutput("smt_DPT"))
+                )
               )
   )
 )

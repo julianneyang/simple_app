@@ -12,6 +12,7 @@ library(stringi)
 library(nlme)
 library(pheatmap)
 library(paletteer)
+library(vegan)
 
 here::i_am("global.R")
 

@@ -878,6 +878,38 @@
         "Built": "R 4.4.0; ; 2024-05-09 01:28:41 UTC; unix"
       }
     },
+    "cluster": {
+      "Source": "CRAN",
+      "Repository": "https://cloud.r-project.org",
+      "description": {
+        "Package": "cluster",
+        "Version": "2.1.6",
+        "Date": "2023-11-30",
+        "Priority": "recommended",
+        "Title": "\"Finding Groups in Data\": Cluster Analysis Extended Rousseeuw et\nal.",
+        "Description": "Methods for Cluster analysis.  Much extended the original from\n\tPeter Rousseeuw, Anja Struyf and Mia Hubert,\n\tbased on Kaufman and Rousseeuw (1990) \"Finding Groups in Data\".",
+        "Maintainer": "Martin Maechler <maechler@stat.math.ethz.ch>",
+        "Authors@R": "c(person(\"Martin\",\"Maechler\", role = c(\"aut\",\"cre\"),\n\t   email=\"maechler@stat.math.ethz.ch\", comment = c(ORCID = \"0000-0002-8685-9910\"))\n ,person(\"Peter\", \"Rousseeuw\", role=\"aut\", email=\"peter.rousseeuw@kuleuven.be\",\n         comment = c(\"Fortran original\", ORCID = \"0000-0002-3807-5353\"))\n ,person(\"Anja\", \"Struyf\", role=\"aut\", comment= \"S original\")\n ,person(\"Mia\", \"Hubert\", role=\"aut\", email= \"Mia.Hubert@uia.ua.ac.be\",\n         comment = c(\"S original\", ORCID = \"0000-0001-6398-4850\"))\n ,person(\"Kurt\", \"Hornik\", role=c(\"trl\", \"ctb\"),\n         email=\"Kurt.Hornik@R-project.org\",\n         comment=c(\"port to R; maintenance(1999-2000)\", ORCID=\"0000-0003-4198-9911\"))\n ,person(\"Matthias\", \"Studer\", role=\"ctb\")\n ,person(\"Pierre\", \"Roudier\", role=\"ctb\")\n ,person(\"Juan\",   \"Gonzalez\", role=\"ctb\")\n ,person(\"Kamil\",  \"Kozlowski\", role=\"ctb\")\n ,person(\"Erich\",  \"Schubert\", role=\"ctb\", comment = c(\"fastpam options for pam()\",\n                                                       ORCID = \"0000-0001-9143-4880\"))\n ,person(\"Keefe\",  \"Murphy\", role=\"ctb\", comment = \"volume.ellipsoid({d >= 3})\")\n #not yet ,person(\"Fischer-Rasmussen\", \"Kasper\", role = \"ctb\", comment = \"Gower distance for CLARA\")\n )",
+        "Depends": "R (>= 3.5.0)",
+        "Imports": "graphics, grDevices, stats, utils",
+        "Suggests": "MASS, Matrix",
+        "SuggestsNote": "MASS: two examples using cov.rob() and mvrnorm(); Matrix\ntools for testing",
+        "Enhances": "mvoutlier, fpc, ellipse, sfsmisc",
+        "EnhancesNote": "xref-ed in man/*.Rd",
+        "LazyLoad": "yes",
+        "LazyData": "yes",
+        "ByteCompile": "yes",
+        "BuildResaveData": "no",
+        "License": "GPL (>= 2)",
+        "URL": "https://svn.r-project.org/R-packages/trunk/cluster/",
+        "NeedsCompilation": "yes",
+        "Packaged": "2023-11-30 17:52:28 UTC; maechler",
+        "Author": "Martin Maechler [aut, cre] (<https://orcid.org/0000-0002-8685-9910>),\n  Peter Rousseeuw [aut] (Fortran original,\n    <https://orcid.org/0000-0002-3807-5353>),\n  Anja Struyf [aut] (S original),\n  Mia Hubert [aut] (S original, <https://orcid.org/0000-0001-6398-4850>),\n  Kurt Hornik [trl, ctb] (port to R; maintenance(1999-2000),\n    <https://orcid.org/0000-0003-4198-9911>),\n  Matthias Studer [ctb],\n  Pierre Roudier [ctb],\n  Juan Gonzalez [ctb],\n  Kamil Kozlowski [ctb],\n  Erich Schubert [ctb] (fastpam options for pam(),\n    <https://orcid.org/0000-0001-9143-4880>),\n  Keefe Murphy [ctb] (volume.ellipsoid({d >= 3}))",
+        "Repository": "CRAN",
+        "Date/Publication": "2023-12-01 22:10:03 UTC",
+        "Built": "R 4.3.2; x86_64-pc-linux-gnu; 'Sun, 24 Dec 2023 00:38:35 +0000'; unix"
+      }
+    },
     "colorspace": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -1503,6 +1535,34 @@
         "Repository": "CRAN",
         "Date/Publication": "2024-04-25 12:50:02 UTC",
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-05-09 01:28:46 UTC; unix"
+      }
+    },
+    "funrar": {
+      "Source": "CRAN",
+      "Repository": "https://cloud.r-project.org",
+      "description": {
+        "Package": "funrar",
+        "Title": "Functional Rarity Indices Computation",
+        "Version": "1.5.0",
+        "Authors@R": "c(\n  person(\"Matthias\", \"Grenié\", email = \"matthias.grenie@gmail.com\",\n         role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4659-7522\")),\n  person(\"Pierre\", \"Denelle\", email = \"pierre.denelle@cefe.cnrs.fr\",\n         role = \"aut\", comment = c(ORCID = \"0000-0001-5037-2281\")),\n  person(\"Caroline\", \"Tucker\", email = \"carolinemtucker@gmail.com\",\n         role = \"aut\", comment = c(ORCID = \"0000-0002-4871-2010\")),\n  person(\"François\", \"Munoz\", email = \"fmunoz@univ-grenoble-alpes.fr\",\n         role = \"ths\", comment = c(ORCID = \"0000-0001-8776-4705\")),\n  person(\"Cyrille\", \"Violle\", email = \"cyrille.violle@cefe.cnrs.fr\",\n         role = \"ths\", comment = c(ORCID = \"0000-0002-2471-9226\"))\n  )",
+        "Description": "Computes functional rarity indices as proposed by Violle et al.\n    (2017) <doi:10.1016/j.tree.2017.02.002>. Various indices can be computed\n    using both regional and local information. Functional Rarity combines both\n    the functional aspect of rarity as well as the extent aspect of rarity.\n    'funrar' is presented in Grenié et al. (2017) <doi:10.1111/ddi.12629>.",
+        "Depends": "R (>= 3.2.2)",
+        "License": "GPL (>= 2)",
+        "Imports": "cluster, Matrix, methods, stats",
+        "URL": "https://rekyt.github.io/funrar/, https://github.com/Rekyt/funrar",
+        "BugReports": "https://github.com/Rekyt/funrar/issues",
+        "RoxygenNote": "7.2.1",
+        "Suggests": "ade4, ggplot2, knitr, rmarkdown, testthat (>= 2.99.0),\ntidytext",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-09-23 14:58:15 UTC; ke76dimu",
+        "Author": "Matthias Grenié [aut, cre] (<https://orcid.org/0000-0002-4659-7522>),\n  Pierre Denelle [aut] (<https://orcid.org/0000-0001-5037-2281>),\n  Caroline Tucker [aut] (<https://orcid.org/0000-0002-4871-2010>),\n  François Munoz [ths] (<https://orcid.org/0000-0001-8776-4705>),\n  Cyrille Violle [ths] (<https://orcid.org/0000-0002-2471-9226>)",
+        "Maintainer": "Matthias Grenié <matthias.grenie@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2022-09-23 15:50:02 UTC",
+        "Built": "R 4.4.0; ; 2024-05-27 19:37:48 UTC; unix"
       }
     },
     "gargle": {
@@ -2924,6 +2984,41 @@
         "Repository": "CRAN",
         "Date/Publication": "2024-06-26 22:20:02 UTC",
         "Built": "R 4.4.0; ; 2024-09-15 18:29:33 UTC; unix"
+      }
+    },
+    "permute": {
+      "Source": "CRAN",
+      "Repository": "https://cloud.r-project.org",
+      "description": {
+        "Package": "permute",
+        "Title": "Functions for Generating Restricted Permutations of Data",
+        "Version": "0.9-8",
+        "Date": "2025-06-25",
+        "Authors@R": "c(person(given = \"Gavin L.\", family = \"Simpson\",\n                    email = \"ucfagls@gmail.com\",\n                    role = c(\"aut\", \"cph\", \"cre\"),\n\t\t                comment = c(ORCID = \"0000-0002-9084-8413\")),\n             person(given = \"R Core Team\", role = \"cph\"),\n             person(given = \"Douglas M.\", family = \"Bates\", role = \"ctb\"),\n             person(given = \"Jari\", family = \"Oksanen\", role = \"ctb\"))",
+        "Depends": "R (>= 3.6.0)",
+        "Imports": "stats",
+        "Suggests": "vegan (>= 2.0-0), testthat (>= 0.5), parallel, knitr,\nrmarkdown, bookdown, sessioninfo",
+        "Description": "A set of restricted permutation designs for freely exchangeable, line transects (time series), and spatial grid designs plus permutation of blocks (groups of samples) is provided. 'permute' also allows split-plot designs, in which the whole-plots or split-plots or both can be freely-exchangeable or one of the restricted designs. The 'permute' package is modelled after the permutation schemes of 'Canoco 3.1' (and later) by Cajo ter Braak.",
+        "License": "GPL-2",
+        "ByteCompile": "true",
+        "URL": "https://github.com/gavinsimpson/permute",
+        "BugReports": "https://github.com/gavinsimpson/permute/issues",
+        "Copyright": "see file COPYRIGHTS",
+        "VignetteBuilder": "knitr",
+        "NeedsCompilation": "no",
+        "Packaged": "2025-06-25 13:13:08 UTC; gavin",
+        "Author": "Gavin L. Simpson [aut, cph, cre] (ORCID:\n    <https://orcid.org/0000-0002-9084-8413>),\n  R Core Team [cph],\n  Douglas M. Bates [ctb],\n  Jari Oksanen [ctb]",
+        "Maintainer": "Gavin L. Simpson <ucfagls@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2025-06-25 14:00:02 UTC",
+        "Built": "R 4.4.0; ; 2025-09-02 11:32:56 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "permute",
+        "RemoteRef": "permute",
+        "RemoteRepos": "https://cloud.r-project.org",
+        "RemoteReposName": "CRAN",
+        "RemotePkgPlatform": "source",
+        "RemoteSha": "0.9-8"
       }
     },
     "pheatmap": {
@@ -4370,6 +4465,38 @@
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-05-05 22:54:45 UTC; unix"
       }
     },
+    "vegan": {
+      "Source": "CRAN",
+      "Repository": "https://cloud.r-project.org",
+      "description": {
+        "Package": "vegan",
+        "Title": "Community Ecology Package",
+        "Version": "2.7-2",
+        "Authors@R": "c(person(\"Jari\", \"Oksanen\", role=c(\"aut\",\"cre\"),\n                    email=\"jhoksane@gmail.com\"),\n\t   person(\"Gavin L.\", \"Simpson\", role=\"aut\",\n\t            email=\"ucfagls@gmail.com\"),\n\t   person(\"F. Guillaume\", \"Blanchet\", role=\"aut\"),\n\t   person(\"Roeland\", \"Kindt\", role=\"aut\"),\n\t   person(\"Pierre\", \"Legendre\", role=\"aut\"),\n\t   person(\"Peter R.\", \"Minchin\", role=\"aut\"),\n\t   person(\"R.B.\", \"O'Hara\", role=\"aut\"),\n\t   person(\"Peter\", \"Solymos\", role=\"aut\"),\n\t   person(\"M. Henry H.\", \"Stevens\", role=\"aut\"),\n\t   person(\"Eduard\", \"Szoecs\", role=\"aut\"),\n\t   person(\"Helene\", \"Wagner\", role=\"aut\"),\n\t   person(\"Matt\", \"Barbour\", role=\"aut\"),\n\t   person(\"Michael\", \"Bedward\", role=\"aut\"),\n\t   person(\"Ben\", \"Bolker\", role=\"aut\"),\n\t   person(\"Daniel\", \"Borcard\", role=\"aut\"),\n\t   person(\"Tuomas\", \"Borman\", role=\"aut\"),\n\t   person(\"Gustavo\", \"Carvalho\", role=\"aut\"),\n\t   person(\"Michael\", \"Chirico\", role=\"aut\"),\n\t   person(\"Miquel\", \"De Caceres\", role=\"aut\"),\n\t   person(\"Sebastien\", \"Durand\", role=\"aut\"),\n\t   person(\"Heloisa Beatriz Antoniazi\", \"Evangelista\", role=\"aut\"),\n\t   person(\"Rich\", \"FitzJohn\", role=\"aut\"),\n\t   person(\"Michael\", \"Friendly\", role=\"aut\"),\n\t   person(\"Brendan\",\"Furneaux\", role=\"aut\"),\n\t   person(\"Geoffrey\", \"Hannigan\", role=\"aut\"),\n\t   person(\"Mark O.\", \"Hill\", role=\"aut\"),\n\t   person(\"Leo\", \"Lahti\", role=\"aut\"),\n\t   person(\"Cameron\", \"Martino\", role=\"aut\"),\n\t   person(\"Dan\", \"McGlinn\", role=\"aut\"),\n\t   person(\"Marie-Helene\", \"Ouellette\", role=\"aut\"),\n\t   person(\"Eduardo\", \"Ribeiro Cunha\", role=\"aut\"),\n\t   person(\"Tyler\", \"Smith\", role=\"aut\"),\n\t   person(\"Adrian\", \"Stier\", role=\"aut\"),\n\t   person(\"Cajo J.F.\", \"Ter Braak\", role=\"aut\"),\n\t   person(\"James\", \"Weedon\", role=\"aut\"))",
+        "Depends": "permute (>= 0.9-0), R (>= 4.1.0)",
+        "Suggests": "parallel, knitr, markdown",
+        "Imports": "MASS, cluster, lattice, mgcv",
+        "VignetteBuilder": "utils, knitr",
+        "Description": "Ordination methods, diversity analysis and other\n  functions for community and vegetation ecologists.",
+        "License": "GPL-2",
+        "BugReports": "https://github.com/vegandevs/vegan/issues",
+        "URL": "https://vegandevs.github.io/vegan/,\nhttps://github.com/vegandevs/vegan",
+        "NeedsCompilation": "yes",
+        "Packaged": "2025-10-08 10:33:50 UTC; jarioksa",
+        "Author": "Jari Oksanen [aut, cre],\n  Gavin L. Simpson [aut],\n  F. Guillaume Blanchet [aut],\n  Roeland Kindt [aut],\n  Pierre Legendre [aut],\n  Peter R. Minchin [aut],\n  R.B. O'Hara [aut],\n  Peter Solymos [aut],\n  M. Henry H. Stevens [aut],\n  Eduard Szoecs [aut],\n  Helene Wagner [aut],\n  Matt Barbour [aut],\n  Michael Bedward [aut],\n  Ben Bolker [aut],\n  Daniel Borcard [aut],\n  Tuomas Borman [aut],\n  Gustavo Carvalho [aut],\n  Michael Chirico [aut],\n  Miquel De Caceres [aut],\n  Sebastien Durand [aut],\n  Heloisa Beatriz Antoniazi Evangelista [aut],\n  Rich FitzJohn [aut],\n  Michael Friendly [aut],\n  Brendan Furneaux [aut],\n  Geoffrey Hannigan [aut],\n  Mark O. Hill [aut],\n  Leo Lahti [aut],\n  Cameron Martino [aut],\n  Dan McGlinn [aut],\n  Marie-Helene Ouellette [aut],\n  Eduardo Ribeiro Cunha [aut],\n  Tyler Smith [aut],\n  Adrian Stier [aut],\n  Cajo J.F. Ter Braak [aut],\n  James Weedon [aut]",
+        "Maintainer": "Jari Oksanen <jhoksane@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2025-10-08 14:30:02 UTC",
+        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2025-12-18 21:21:58 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "vegan",
+        "RemoteRef": "vegan",
+        "RemoteRepos": "https://cloud.r-project.org",
+        "RemoteReposName": "CRAN",
+        "RemotePkgPlatform": "source",
+        "RemoteSha": "2.7-2"
+      }
+    },
     "vipor": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -4712,13 +4839,13 @@
       "checksum": "2bd1ee660523f126053fcac2390083c2"
     },
     "global.R": {
-      "checksum": "0c4a2c091e33e663b7688e0c4e17f0f5"
+      "checksum": "b49fcaf6390a11d9e2b504c8910eca30"
     },
     "manifest.json": {
-      "checksum": "5018e82eefedc8bd66b6095d66d8aebd"
+      "checksum": "0f0dcf7ab690239f6878e432ff4618de"
     },
     "renv.lock": {
-      "checksum": "f3d383fbd176ab6d7cf050af767561c2"
+      "checksum": "7cf7a32a38a327acbeb0a8d31c76d6f7"
     },
     "results/phenotype/ICP_MS_Histo.RDS": {
       "checksum": "721af588e07340b18f64820cebc6d146"
@@ -4982,7 +5109,7 @@
       "checksum": "0b4579477c7acd2d5f15d17bb74220d6"
     },
     "results/SMT_Maaslin2/pca_scores.csv": {
-      "checksum": "34541401b2e3cc4c085d7d097e238f94"
+      "checksum": "845158235404b75366418cb549f2b46e"
     },
     "results/SMT_Maaslin2/Relative_Abundance_Species_Luminal_SI_ASV.RDS": {
       "checksum": "9a1ce0fbfe3dfd27d20eff8b8b534abd"
@@ -5014,6 +5141,549 @@
     "results/SMT_Maaslin2/Species_Luminal_SISex_Site_Genotype/significant_results.tsv": {
       "checksum": "b59c2eec5465c3f9d6f2433017297c53"
     },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/all_results.tsv": {
+      "checksum": "08fd9a8987e79aef09499dc205351330"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/features/data_norm.tsv": {
+      "checksum": "db62c9193f74de5c9c6e462a4ddb7c6a"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/features/data_transformed.tsv": {
+      "checksum": "dd5254de59eaa308a7711609f81ced58"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/features/filtered_data.tsv": {
+      "checksum": "7776d831214fbc667650f93f10bb6841"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Genotype_gg_associations.RDS": {
+      "checksum": "d71d1c8b611e044f2aab28fff38def19"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_Caniella_muris_linear.png": {
+      "checksum": "78db5dc17c878ef471735082690641fb"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_GGB14001_SGB21428_linear.png": {
+      "checksum": "09a717fea322e0ce4b867eccb44b4e1e"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Genotype/logistic/Genotype_GGB1503_SGB2082_logistic.png": {
+      "checksum": "995251ad4696e2434b61d7f33235f6e1"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Genotype/logistic/Genotype_GGB27919_SGB40357_logistic.png": {
+      "checksum": "638ebea484c7703bdfb8f7c3840b2f63"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Genotype/logistic/Genotype_GGB75879_SGB103683_logistic.png": {
+      "checksum": "0eb7a2cf4a970106e6c55881fea48f5f"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sequencing_Depth_gg_associations.RDS": {
+      "checksum": "992a79ddd62647a2a31aea20aecb94c8"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sequencing_Depth/logistic/Sequencing_Depth_Acutalibacter_muris_logistic.png": {
+      "checksum": "f20679585545c0dc8c2081a4a4b129d4"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex_gg_associations.RDS": {
+      "checksum": "12250d675424724b390864e3ee7503d5"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB22635_SGB63107_linear.png": {
+      "checksum": "6ac1a4807f505cc61e01d57d0e5471b3"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30045_SGB42945_linear.png": {
+      "checksum": "523c771806c209ef4587ba33da43d90d"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30046_SGB42947_linear.png": {
+      "checksum": "95b510226b765d161ae9c0bcd89ffde8"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB46159_SGB63927_linear.png": {
+      "checksum": "e7e9eb4b6406dacad1a4f149ee481989"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB70852_SGB95305_linear.png": {
+      "checksum": "cdac61d15d3cb96593e56532a52aa7e3"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Adlercreutzia_caecimuris_logistic.png": {
+      "checksum": "35c1279db62f10c60eb4ca85c3ee5cd2"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Bacteroidales_bacterium_logistic.png": {
+      "checksum": "f8e538d520b6ba283aae836392e35cee"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB22635_SGB63107_logistic.png": {
+      "checksum": "71c505c891ec870473d82a6091ec7db5"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB24132_SGB35935_logistic.png": {
+      "checksum": "ef451c2ab5488c4e2f73cf3988bd088f"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB24146_SGB35950_logistic.png": {
+      "checksum": "e9bd128ac4795ff003ae1f1640bd02d2"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB27876_SGB40310_logistic.png": {
+      "checksum": "5dbb5ec0f16b9573dec7cb6ba39971c5"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB27884_SGB40318_logistic.png": {
+      "checksum": "36302f5995c4cba971bb28ae2a30f97d"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB75725_SGB102612_logistic.png": {
+      "checksum": "e5a224a05e8fe118962a0e0dec4216df"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Lactobacillus_intestinalis_logistic.png": {
+      "checksum": "9b1861db5a1d22c01859f01461247d3a"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/summary_plot_gg.RDS": {
+      "checksum": "d3155c5b2bb225443c363bca0b99d0cc"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/summary_plot.pdf": {
+      "checksum": "fab29f3fcb708eada8ee0a7568df535e"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/figures/summary_plot.png": {
+      "checksum": "ab9c19d8f54027464a19d82f0105e678"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/fits/fitted_linear.rds": {
+      "checksum": "49d5dfa5bde9a3d088fdefe77fc1d227"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/fits/fitted_logistic.rds": {
+      "checksum": "9f2dceec5ee736f20e4b310470e1352a"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/fits/models_linear.rds": {
+      "checksum": "fa6183714815a858145eb5e1c1190671"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/fits/models_logistic.rds": {
+      "checksum": "70a8b244f398abd6c0836a4ca27ec33a"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/fits/residuals_linear.rds": {
+      "checksum": "d8f731bdabe1d84893ef9b789be14794"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/fits/residuals_logistic.rds": {
+      "checksum": "01e97f97d07c2e4b324d32f596323b08"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/maaslin3.log": {
+      "checksum": "c86a42468b47d26720ded950da92e419"
+    },
+    "results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/significant_results.tsv": {
+      "checksum": "0d71caf7baeb46b3a0f76a175a0a14c6"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/all_results.tsv": {
+      "checksum": "e4b9c58a3535c2f5b0e5610a4d731449"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/features/data_norm.tsv": {
+      "checksum": "db62c9193f74de5c9c6e462a4ddb7c6a"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/features/data_transformed.tsv": {
+      "checksum": "dd5254de59eaa308a7711609f81ced58"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/features/filtered_data.tsv": {
+      "checksum": "7776d831214fbc667650f93f10bb6841"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Genotype_gg_associations.RDS": {
+      "checksum": "5ff8c3e1fc2ec71904eef4da5bc048e5"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_GGB14001_SGB21428_linear.png": {
+      "checksum": "d0f54f716b797bc387de37762ebeed41"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex_gg_associations.RDS": {
+      "checksum": "fda6cb58fa9a362d4abf5f8e7f4eef1d"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_Adlercreutzia_caecimuris_linear.png": {
+      "checksum": "1222d8b363fbce308827f333a3b68a85"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB22635_SGB63107_linear.png": {
+      "checksum": "53069aca642db3cf86a4c8a5828e1d85"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB28310_SGB40880_linear.png": {
+      "checksum": "16d593a91de9ec2a7de842c1648c54ce"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30045_SGB42945_linear.png": {
+      "checksum": "29db7d18f50369fa9807e7ebd1f3797a"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30046_SGB42947_linear.png": {
+      "checksum": "5c741e46ace15d5904d427e9eed9046e"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB9439_SGB42949_linear.png": {
+      "checksum": "d066c1a6db620eb8a5e84193bb7937d5"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Adlercreutzia_aquisgranensis_logistic.png": {
+      "checksum": "6a25f6652dfc1a7b0ebd4feac2f08eb7"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Adlercreutzia_mucosicola_logistic.png": {
+      "checksum": "7aeb3acd00eb2e10f84b61b6897b7dab"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Bacteroidales_bacterium_logistic.png": {
+      "checksum": "b6fc8df194c441dc293fc23706d1a529"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Coriobacteriaceae_bacterium_logistic.png": {
+      "checksum": "9a9513f1a01e052b866a95d44ca1ebc3"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB22635_SGB63107_logistic.png": {
+      "checksum": "717661766b1e3310effb4dc18e1a3aca"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB24146_SGB35950_logistic.png": {
+      "checksum": "b1a55d3a3831e5a1896abb1185e2c955"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB27876_SGB40310_logistic.png": {
+      "checksum": "efe3d3dddbb9d1c03972f0c2e0255d6f"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB27884_SGB40318_logistic.png": {
+      "checksum": "25c552522871c00e2d6e22fa333b309c"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB30046_SGB42947_logistic.png": {
+      "checksum": "1265e1140c970b5493d22da1a795c400"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB75725_SGB102612_logistic.png": {
+      "checksum": "2fc31bc3dc37f63e48cd0800ec276bd2"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Lactobacillus_intestinalis_logistic.png": {
+      "checksum": "74846b1aa96af5e5bdd2627fba74e76e"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Muribaculaceae_bacterium_logistic.png": {
+      "checksum": "7c8e6546fbb34ba4c49168e5468cf48e"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Parvibacter_caecicola_logistic.png": {
+      "checksum": "9f0e06a94a04264da001b555e6d9f29a"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/summary_plot_gg.RDS": {
+      "checksum": "8c92034e248988099dfc093b29887d4f"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/summary_plot.pdf": {
+      "checksum": "248af4ecd22d70480ec5404481cb2408"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/figures/summary_plot.png": {
+      "checksum": "ffc9ee0221f3da427acc7b9dd51b01d8"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/fits/fitted_linear.rds": {
+      "checksum": "9d56b0db0b2f8ba4821f77bd3633e993"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/fits/fitted_logistic.rds": {
+      "checksum": "ac45fd2175af073c92b83d62e36aecbe"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/fits/models_linear.rds": {
+      "checksum": "5241e08f8fa27626dc8debe55cb11536"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/fits/models_logistic.rds": {
+      "checksum": "1b07cc3f840af389f4ca210a766b82dc"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/fits/residuals_linear.rds": {
+      "checksum": "5d7605c40d803c921ea27c512768866c"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/fits/residuals_logistic.rds": {
+      "checksum": "d363e6c6648686288fbf769978d79054"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/maaslin3.log": {
+      "checksum": "78f776ade3e1cf3a3a2806396e8a26e7"
+    },
+    "results/SMT_Maaslin3/Full/Site_Sex_Genotype/significant_results.tsv": {
+      "checksum": "5be83d14b5a08ebce0c5c25ef62eff21"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/all_results.tsv": {
+      "checksum": "c850f87909e2464ab8fa9386787ec13f"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/features/data_norm.tsv": {
+      "checksum": "dc7eee83d77841206a7b82e50651533f"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/features/data_transformed.tsv": {
+      "checksum": "49383aabdd44fc3adea47173c854da00"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/features/filtered_data.tsv": {
+      "checksum": "23d6f884fecfcfe5105d5883aecbd6df"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Genotype_gg_associations.RDS": {
+      "checksum": "eae3c8562b229807653308140f948689"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_Caniella_muris_linear.png": {
+      "checksum": "a47f894c899c8143cb4a112c32579252"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_GGB14001_SGB21428_linear.png": {
+      "checksum": "a6bd52226c78aff3f4cbedaa30ebf0b7"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_Parvibacter_caecicola_linear.png": {
+      "checksum": "2dbd52861e65b411562b1228c7415a34"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Genotype/logistic/Genotype_GGB1503_SGB2082_logistic.png": {
+      "checksum": "02907f0736b3badbdf3ef637fc019af0"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Genotype/logistic/Genotype_GGB27919_SGB40357_logistic.png": {
+      "checksum": "6e35d2ee79c83ee554d4b00180bd7395"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Genotype/logistic/Genotype_GGB70852_SGB95305_logistic.png": {
+      "checksum": "405ebd9bc8ced7a92eff9acba1626be4"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sequencing_Depth_gg_associations.RDS": {
+      "checksum": "531d777061f2a4965c9fb86c2ca596e2"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sequencing_Depth/linear/Sequencing_Depth_Faecalibaculum_rodentium_linear.png": {
+      "checksum": "491933317ceb6c19318c11bdb31288cc"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sequencing_Depth/linear/Sequencing_Depth_GGB28310_SGB40880_linear.png": {
+      "checksum": "bc2877420b98d614debcd94dead74d0d"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sequencing_Depth/logistic/Sequencing_Depth_Acutalibacter_muris_logistic.png": {
+      "checksum": "e1436fe23e9b863872877ed376fd5515"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex_gg_associations.RDS": {
+      "checksum": "d3eba1515f951f5282592922ae9894ec"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/linear/Sex_Faecalibaculum_rodentium_linear.png": {
+      "checksum": "286ac1f33b53b87c7245dcd8ad9ed9b0"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB22635_SGB63107_linear.png": {
+      "checksum": "942496a6a5036d77d23da87d8bdf3f19"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30045_SGB42945_linear.png": {
+      "checksum": "9ef042d0819f8099d55778f135e2e4c1"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30046_SGB42947_linear.png": {
+      "checksum": "c32f0c7597d7056d5d083f5949155425"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB46159_SGB63927_linear.png": {
+      "checksum": "81b9ee43b1488b52a49164c20c3bc48d"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Adlercreutzia_caecimuris_logistic.png": {
+      "checksum": "338c3bb761aad4bd83d2312b600795de"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Bacteroidales_bacterium_logistic.png": {
+      "checksum": "767cf136780172d11e796d8ad9ae115b"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB22635_SGB63107_logistic.png": {
+      "checksum": "61c7b8d909a8ac9925ec6f949f81bdb9"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB24132_SGB35935_logistic.png": {
+      "checksum": "e2b3ccd0f4beb68914826aa6dbb8a49b"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB27876_SGB40310_logistic.png": {
+      "checksum": "820518b28e14c0691a8f31e9668347b8"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB27884_SGB40318_logistic.png": {
+      "checksum": "6682665ecea562aeb1eaff1b67594cd5"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/summary_plot_gg.RDS": {
+      "checksum": "b7a9ab735951f499a25d8adf4db30963"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/summary_plot.pdf": {
+      "checksum": "4e22e2359f559ab045c7074641db9fb8"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/figures/summary_plot.png": {
+      "checksum": "5b805026e0e12c7a531d81cdcf034905"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/fits/fitted_linear.rds": {
+      "checksum": "5e55afc7d391ce0221e0a1a4e03a36d5"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/fits/fitted_logistic.rds": {
+      "checksum": "4342f28a8847843b3a4b826ce0137b49"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/fits/models_linear.rds": {
+      "checksum": "1165aea8b80e926f877ab262d35065c8"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/fits/models_logistic.rds": {
+      "checksum": "e4dae6d12d0c33103d7638a291a1185d"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/fits/residuals_linear.rds": {
+      "checksum": "d793e32dbe768bbe1c5e478be065e31e"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/fits/residuals_logistic.rds": {
+      "checksum": "e7fbe1862fefb2407f9b665c883fb48a"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/maaslin3.log": {
+      "checksum": "dfbe7aeaa01e794f4335b1ba09297ca5"
+    },
+    "results/SMT_Maaslin3/Ileum/Sequencing_Depth_Sex_Genotype/significant_results.tsv": {
+      "checksum": "1c94a3de9f1b3bdb85ee6adce79594e1"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/all_results.tsv": {
+      "checksum": "dc0cceddf1baa7020951d727e41fadeb"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/features/data_norm.tsv": {
+      "checksum": "dc7eee83d77841206a7b82e50651533f"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/features/data_transformed.tsv": {
+      "checksum": "49383aabdd44fc3adea47173c854da00"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/features/filtered_data.tsv": {
+      "checksum": "23d6f884fecfcfe5105d5883aecbd6df"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Genotype_gg_associations.RDS": {
+      "checksum": "ec03acc3b3f571dd54fbcf51ce505d94"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_Caniella_muris_linear.png": {
+      "checksum": "a0ac491f9d526d9b6259a33657e164a8"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_GGB14001_SGB21428_linear.png": {
+      "checksum": "8a87937f59a3fac7670f421694bcd047"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_GGB18828_SGB27767_linear.png": {
+      "checksum": "26d476e535afc5a3a40b35aaec6c9f12"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Genotype/linear/Genotype_GGB9439_SGB42949_linear.png": {
+      "checksum": "d4cef8b079f0c49c0eccb9e8cfe1a35f"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex_gg_associations.RDS": {
+      "checksum": "30ba69f869b251bdd7ab86875a462fd3"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_Adlercreutzia_aquisgranensis_linear.png": {
+      "checksum": "2d37090f7e6524926628a716027c75be"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_Adlercreutzia_caecimuris_linear.png": {
+      "checksum": "4549a907e5040651f9a292b7df18031d"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_Adlercreutzia_muris_linear.png": {
+      "checksum": "d0b374388e04c962b0ee0e31abfd3dfa"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB22635_SGB63107_linear.png": {
+      "checksum": "2651ad552a557505818f244d1ac5e3a6"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB28310_SGB40880_linear.png": {
+      "checksum": "d6eac4acfb83a8fe5351ba28fc97500f"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30045_SGB42945_linear.png": {
+      "checksum": "5005843f32b91521f02ade983eb74a36"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30046_SGB42947_linear.png": {
+      "checksum": "e0bc508379b5840fe4c2289d3cc068da"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB30861_SGB44083_linear.png": {
+      "checksum": "57088cbcfbacd949f0114c1b4069ec5a"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_GGB9439_SGB42949_linear.png": {
+      "checksum": "f6cb9661f4d93e6f72efcb9093007887"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/linear/Sex_Muribaculum_gordoncarteri_linear.png": {
+      "checksum": "51df73571455c177e07b50323eeeffde"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Adlercreutzia_aquisgranensis_logistic.png": {
+      "checksum": "5a9ea3a0eaf0ee86c9f527a50adcbde0"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Adlercreutzia_caecimuris_logistic.png": {
+      "checksum": "17420901d9bd657c5385649b9bef6182"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Bacteroidales_bacterium_logistic.png": {
+      "checksum": "a894acafd74477cbf3ebfa3c3326de86"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/logistic/Sex_Coriobacteriaceae_bacterium_logistic.png": {
+      "checksum": "f3c4f80275fe9e7b489d69445cfd93e4"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB22635_SGB63107_logistic.png": {
+      "checksum": "a7c1765ef41e37b66fa41312d6209232"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB24132_SGB35935_logistic.png": {
+      "checksum": "482cce82369cb6530e9979f28102c71d"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/association_plots/Sex/logistic/Sex_GGB24146_SGB35950_logistic.png": {
+      "checksum": "9187320a8828cf897ad52ff82b660e61"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/summary_plot_gg.RDS": {
+      "checksum": "1cdbe0633787f0b629844e22a9d50c79"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/summary_plot.pdf": {
+      "checksum": "036f973bade5fd5ea0f80caf76f15be7"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/figures/summary_plot.png": {
+      "checksum": "7d4ec4c0cd0954844338a4aa7e13ed38"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/fits/fitted_linear.rds": {
+      "checksum": "c237d90591dd36df4042484f693d2128"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/fits/fitted_logistic.rds": {
+      "checksum": "7809d7f2fb10adfdf9d1aa1c7740c4ee"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/fits/models_linear.rds": {
+      "checksum": "64db80f4d5f510161a5199cdab300633"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/fits/models_logistic.rds": {
+      "checksum": "5f879ba1ff754ab56251a88cb5fe4189"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/fits/residuals_linear.rds": {
+      "checksum": "ca31b0ce23236dc75a4b0ae03f8a9025"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/fits/residuals_logistic.rds": {
+      "checksum": "dca67b89d8a035a112c1d1db5945f5ac"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/maaslin3.log": {
+      "checksum": "801436ee01a05d2767772be176cd0b72"
+    },
+    "results/SMT_Maaslin3/Ileum/Sex_Genotype/significant_results.tsv": {
+      "checksum": "0c7673c375a48a12b21a25707dc55436"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/all_results.tsv": {
+      "checksum": "1f550f6eb6cda3c8d65bf2af4a0f4098"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/features/data_norm.tsv": {
+      "checksum": "1cab9cfc6e151c1f4c45552df0769d05"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/features/data_transformed.tsv": {
+      "checksum": "eff4148e5b0b67effe84100ead5c4ad3"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/features/filtered_data.tsv": {
+      "checksum": "d0c4e5521e77ac8d30040070c8f65437"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/figures/summary_plot_gg.RDS": {
+      "checksum": "d6501ecadefcc431c80536285e2dcb4d"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/figures/summary_plot.pdf": {
+      "checksum": "1230c24c5d9bb65a90a2a728702b81b5"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/figures/summary_plot.png": {
+      "checksum": "677686a7db1a54bc6f44ccf2ae9d5dd1"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/fits/fitted_linear.rds": {
+      "checksum": "89edef7e56a8a62b34f2aab2043ee507"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/fits/fitted_logistic.rds": {
+      "checksum": "00ab0b93c190520690da0cfd36f76875"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/fits/models_linear.rds": {
+      "checksum": "ede2d30ef2e9efe0aa86edfdd29ab827"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/fits/models_logistic.rds": {
+      "checksum": "96d8a740cb32a26cac0b4930ceba1f40"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/fits/residuals_linear.rds": {
+      "checksum": "c6bdb00545a7d8d3af49f973570f8b5e"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/fits/residuals_logistic.rds": {
+      "checksum": "83896c14d63d2451adb6eeed0c1e7e9c"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/maaslin3.log": {
+      "checksum": "a463af31e1a01e5ac555b599680917e7"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sequencing_Depth_Sex_Genotype/significant_results.tsv": {
+      "checksum": "f66d962d6f09cbb774713e8af8e20422"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/all_results.tsv": {
+      "checksum": "8d6dd441bb57c322e1c85b59ae51d5a4"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/features/data_norm.tsv": {
+      "checksum": "1cab9cfc6e151c1f4c45552df0769d05"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/features/data_transformed.tsv": {
+      "checksum": "eff4148e5b0b67effe84100ead5c4ad3"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/features/filtered_data.tsv": {
+      "checksum": "d0c4e5521e77ac8d30040070c8f65437"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/figures/summary_plot_gg.RDS": {
+      "checksum": "9bc61f27b06c6163d36ca8bdfa449d05"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/figures/summary_plot.pdf": {
+      "checksum": "7a2f0d962316905c3f4d5ecf9982d5cf"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/figures/summary_plot.png": {
+      "checksum": "da379e743d2ec1b516ecf786419624ec"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/fits/fitted_linear.rds": {
+      "checksum": "5d2ea7ca37b09daa531fc2803a9b84d9"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/fits/fitted_logistic.rds": {
+      "checksum": "2f11616767d742b20a82fb4f2dcb83c8"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/fits/models_linear.rds": {
+      "checksum": "379c820a30524a6f19c10ee462730e03"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/fits/models_logistic.rds": {
+      "checksum": "c856348bb5af7e8620645b919162c73f"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/fits/residuals_linear.rds": {
+      "checksum": "f521c2c360bab7ea6774593e3bb55df5"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/fits/residuals_logistic.rds": {
+      "checksum": "14f7b13b69023b9c6d8adce7adf230aa"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/maaslin3.log": {
+      "checksum": "e0a3ba2b00997d7de4ee2329eaafd497"
+    },
+    "results/SMT_Maaslin3/Jejunum/Sex_Genotype/significant_results.tsv": {
+      "checksum": "f66d962d6f09cbb774713e8af8e20422"
+    },
     "results/SMT_Shotgun_Beta_Diversity.RDS": {
       "checksum": "db3ab1a8ac31c3368540200c78cab197"
     },
@@ -5030,7 +5700,7 @@
       "checksum": "fea39820937421869eee7ba354650117"
     },
     "Server_Code/SMT_Metagenomics.R": {
-      "checksum": "c5845eeecbfc5029a9270626d8cad88d"
+      "checksum": "64828f2423cd2ca50e5d163c59a813bf"
     },
     "Server_Code/SMT_Negative.R": {
       "checksum": "937408e2bf78658b8bdd5634e9fec4c9"
@@ -5047,8 +5717,11 @@
     "src/00_REPOS_SETUP.R": {
       "checksum": "8c0a0512eba7d1d84c64abcb611f69e5"
     },
+    "src/Functions.R": {
+      "checksum": "87d7bf3fe0cee7157893004db272289c"
+    },
     "ui.R": {
-      "checksum": "f81250235ed6f58ab61bdac38976f0b6"
+      "checksum": "7d40d5b697771b794e444596fe221cbe"
     }
   },
   "users": null

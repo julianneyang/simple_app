@@ -1,0 +1,601 @@
+2025-11-20 08:03:40.383211 INFO::Writing function arguments to log file
+2025-11-20 08:03:40.383861 DEBUG::Function arguments
+2025-11-20 08:03:40.384164 DEBUG::Output folder: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype
+2025-11-20 08:03:40.384416 DEBUG::Formula:
+2025-11-20 08:03:40.384652 DEBUG::Fixed effects: Sequencing_Depth,Sex,Genotype
+2025-11-20 08:03:40.384889 DEBUG::Reference:
+2025-11-20 08:03:40.385116 DEBUG::Random effects:
+2025-11-20 08:03:40.385323 DEBUG::Group effects:
+2025-11-20 08:03:40.385528 DEBUG::Ordered effects:
+2025-11-20 08:03:40.385753 DEBUG::Strata effects:
+2025-11-20 08:03:40.385974 DEBUG::Min Abundance: 0.000000
+2025-11-20 08:03:40.386185 DEBUG::Min Prevalence: 0.000000
+2025-11-20 08:03:40.386495 DEBUG::Max Prevalence: 1.000000
+2025-11-20 08:03:40.386931 DEBUG::Zero Threshold: 0.000000
+2025-11-20 08:03:40.387408 DEBUG::Min variance: 0.000000
+2025-11-20 08:03:40.387743 DEBUG::Max significance: 0.250000
+2025-11-20 08:03:40.387982 DEBUG::Normalization: TSS
+2025-11-20 08:03:40.388194 DEBUG::Transform: LOG
+2025-11-20 08:03:40.388399 DEBUG::Correction method: BH
+2025-11-20 08:03:40.388609 DEBUG::Standardize: TRUE
+2025-11-20 08:03:40.388824 DEBUG::Abundance median comparison: TRUE
+2025-11-20 08:03:40.389034 DEBUG::Prevalence median comparison: FALSE
+2025-11-20 08:03:40.389242 DEBUG::Abundance median comparison threshold: 0
+2025-11-20 08:03:40.389447 DEBUG::Prevalence median comparison threshold: 0
+2025-11-20 08:03:40.389647 DEBUG::Subtract median: FALSE
+2025-11-20 08:03:40.389866 DEBUG::Warn prevalence: TRUE
+2025-11-20 08:03:40.39007 DEBUG::Small random effects: FALSE
+2025-11-20 08:03:40.39027 DEBUG::Augment: TRUE
+2025-11-20 08:03:40.390473 DEBUG::Evaluate only:
+2025-11-20 08:03:40.390676 DEBUG::Cores: 1
+2025-11-20 08:03:40.390875 DEBUG::Balanced Summary plot: FALSE
+2025-11-20 08:03:40.39109 INFO::Verifying options selected are valid
+2025-11-20 08:03:40.391634 INFO::Determining format of input files
+2025-11-20 08:03:40.392094 INFO::Input format is data samples as columns and metadata samples as rows
+2025-11-20 08:03:40.393592 DEBUG::Transformed data so samples are rows
+2025-11-20 08:03:40.393956 DEBUG::A total of 20 samples were found in both the data and metadata
+2025-11-20 08:03:40.394234 DEBUG::Reordering data/metadata to use same sample ordering
+2025-11-20 08:03:40.396858 INFO::Formula for fixed effects: expr ~  Sequencing_Depth + Sex + Genotype
+2025-11-20 08:03:40.39741 INFO::Running selected normalization method: TSS
+2025-11-20 08:03:40.403679 INFO::Writing normalized data to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/features/data_norm.tsv
+2025-11-20 08:03:40.407801 INFO::Filter data based on min abundance, min prevalence, and max prevalence
+2025-11-20 08:03:40.408418 INFO::Total samples in data: 20
+2025-11-20 08:03:40.40888 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2025-11-20 08:03:40.409266 INFO::Max samples allowed with min abundance for a feature not to be filtered: 20.000000
+2025-11-20 08:03:40.4478 INFO::Total filtered features: 174
+2025-11-20 08:03:40.448892 INFO::Filtered feature names from abundance, min prevalence, and max prevalence filtering: Acinetobacter_courvalinii, Anaerotruncus_sp_1XD42_93, Bacteria_unclassified_SGB41508, Bacteria_unclassified_SGB43539, Bacteria_unclassified_SGB43541, Bacteria_unclassified_SGB44461, Bacteroides_acidifaciens, Bacteroides_thetaiotaomicron, Bacteroides_uniformis, Clostridium_SGB65123, Clostridium_cocleatum, Cutibacterium_acnes, Dorea_sp_5_2, Enterococcus_faecalis, Erysipelotrichales_bacterium, GGB115278_SGB160297, GGB143833_SGB43513, GGB15004_SGB41589, GGB23844_SGB35575, GGB27476_SGB39769, GGB27476_SGB43516, GGB27481_SGB39777, GGB27485_SGB39778, GGB27485_SGB41588, GGB27697_SGB40070, GGB27770_SGB40184, GGB28250_SGB40793, GGB28330_SGB40904, GGB28386_SGB40966, GGB28387_SGB40967, GGB28388_SGB40968, GGB28393_SGB40973, GGB28394_SGB40975, GGB28395_SGB40976, GGB28402_SGB40984, GGB28403_SGB40190, GGB28409_SGB40991, GGB28416_SGB40998, GGB28418_SGB41001, GGB28419_SGB41002, GGB28421_SGB41004, GGB28422_SGB41005, GGB28428_SGB41011, GGB28433_SGB41016, GGB28437_SGB41020, GGB28456_SGB41039, GGB28784_SGB41437, GGB28791_SGB41444, GGB28828_SGB41484, GGB28831_SGB41487, GGB28839_SGB41503, GGB28840_SGB102297, GGB28842_SGB41507, GGB28846_SGB41513, GGB28849_SGB41516, GGB28851_SGB41518, GGB28854_SGB41523, GGB28870_SGB41548, GGB28875_SGB41555, GGB28879_SGB41559, GGB28881_SGB41561, GGB28887_SGB41568, GGB28888_SGB41569, GGB28903_SGB41594, GGB28908_SGB41656, GGB28925_SGB41622, GGB28926_SGB41623, GGB28933_SGB59816, GGB28945_SGB41650, GGB28951_SGB102295, GGB28954_SGB41661, GGB28954_SGB41662, GGB28958_SGB41667, GGB28959_SGB41668, GGB28963_SGB41672, GGB28967_SGB41417, GGB28968_SGB41679, GGB28980_SGB41692, GGB28981_SGB41693, GGB28989_SGB41703, GGB29001_SGB41717, GGB29004_SGB41721, GGB29005_SGB41723, GGB29559_SGB42355, GGB30048_SGB42949, GGB30141_SGB43066, GGB30142_SGB43067, GGB30290_SGB43252, GGB30301_SGB43265, GGB30302_SGB43266, GGB30302_SGB43267, GGB30303_SGB43268, GGB30409_SGB43439, GGB30451_SGB102185, GGB30454_SGB100837, GGB30457_SGB63218, GGB30463_SGB102197, GGB30463_SGB43537, GGB30466_SGB63211, GGB30620_SGB43754, GGB30667_SGB43809, GGB31064_SGB44328, GGB31109_SGB44380, GGB31111_SGB44382, GGB31179_SGB44472, GGB31312_SGB44628, GGB31701_SGB45057, GGB31793_SGB45163, GGB31822_SGB45198, GGB31823_SGB45199, GGB31841_SGB45219, GGB3583_SGB21441, GGB3661_SGB41629, GGB42321_SGB59488, GGB42327_SGB59494, GGB42342_SGB59510, GGB42343_SGB59511, GGB42344_SGB59512, GGB42601_SGB59797, GGB42608_SGB59804, GGB45293_SGB41002, GGB45506_SGB63178, GGB45513_SGB63185, GGB45515_SGB63187, GGB45536_SGB63216, GGB45650_SGB63364, GGB45977_SGB41021, GGB5207_SGB43496, GGB62427_SGB41546, GGB75053_SGB43494, GGB75055_SGB43513, GGB75064_SGB102200, GGB75064_SGB43546, GGB75072_SGB102164, GGB75085_SGB102286, GGB75112_SGB102247, GGB75314_SGB102498, GGB75896_SGB102365, GGB79592_SGB45219, GGB79594_SGB41414, GGB79628_SGB35895, GGB79698_SGB41545, GGB79729_SGB45197, GGB79760_SGB63182, GGB79804_SGB41650, GGB79844_SGB41536, GGB79848_SGB41595, GGB79854_SGB41662, GGB79948_SGB41679, GGB79989_SGB41645, Halomonas_SGB40985, Hungateiclostridiaceae_bacterium_KB18, Lachnospiraceae_bacterium_A4, Lachnospiraceae_bacterium_MD335, Lachnospiraceae_unclassified_SGB41402, Lachnospiraceae_unclassified_SGB41424, Lactobacillus_SGB5158, Lactococcus_SGB40208, Limosilactobacillus_SGB43493, Muribaculaceae_bacterium_Isolate_013_NCI, Muribaculaceae_bacterium_Isolate_110_HZI, Oscillibacter_SGB43502, Oscillibacter_SGB43505, Parabacteroides_SGB1950, Parabacteroides_goldsteinii, Piscinibacter_SGB44477, Prevotella_sp_MGM1, bacterium_0_1xD8_82, bacterium_1XD21_13, bacterium_1XD42_76, bacterium_1xD8_48, bacterium_D16_29, bacterium_D16_63, bacterium_D16_76
+2025-11-20 08:03:40.452771 INFO::Total features filtered by non-zero variance filtering: 86
+2025-11-20 08:03:40.453892 INFO::Filtered feature names from variance filtering: Acetatifactor_aquisgranensis, Alistipes_finegoldii, Alistipes_muris, Anaerostipes_hominis, Atopobiaceae_bacterium_FL090493, Bacillota_unclassified_SGB102205, Bacillota_unclassified_SGB43546, Bacillota_unclassified_SGB43549, Bacillota_unclassified_SGB43550, Bacteria_unclassified_SGB63107, Bacteroides_SGB40318, Bacteroides_caecimuris, Bacteroides_intestinalis, Barnesiella_sp_CU968, Candidatus_Metalachnospira_SGB63370, Clostridium_SGB40327, Eggerthellaceae_bacterium, Enterococcus_gallinarum, Enterorhabdus_sp_P55, Escherichia_coli, Flintibacter_SGB43538, GGB128437_SGB159705, GGB140903_SGB63218, GGB141797_SGB41693, GGB1690_SGB40190, GGB24149_SGB35953, GGB27872_SGB40306, GGB28439_SGB41022, GGB28772_SGB41425, GGB28814_SGB41469, GGB28845_SGB41512, GGB28865_SGB41536, GGB28865_SGB41537, GGB28869_SGB41543, GGB28870_SGB41546, GGB28879_SGB43526, GGB28898_SGB41580, GGB28927_SGB41625, GGB28928_SGB41627, GGB28942_SGB41646, GGB28948_SGB41654, GGB28949_SGB41656, GGB28957_SGB41666, GGB28961_SGB41670, GGB28967_SGB41678, GGB28981_SGB41694, GGB28988_SGB41701, GGB29546_SGB42339, GGB30147_SGB43074, GGB30408_SGB43438, GGB30414_SGB43453, GGB30450_SGB43507, GGB30450_SGB43508, GGB30454_SGB43514, GGB30460_SGB43527, GGB30461_SGB63204, GGB30461_SGB63208, GGB30468_SGB43552, GGB30472_SGB43556, GGB30621_SGB43756, GGB31108_SGB44379, GGB31184_SGB44478, GGB42322_SGB59489, GGB45656_SGB63370, GGB73359_SGB46611, GGB74395_SGB43523, GGB74408_SGB43542, GGB75060_SGB102173, GGB75094_SGB102310, GGB79741_SGB1950, GGB80032_SGB42945, GGB80168_SGB43527, Lachnospiraceae_bacterium_MD308, Oscillibacter_SGB102176, Oscillibacter_SGB94990, Oscillibacter_sp_1_3, Oscillibacter_sp_CU971, Oscillospiraceae_unclassified_SGB102175, Parabacteroides_distasonis, Parasutterella_sp_NM82_D38, Pseudoflavonifractor_sp_524_17, Pseudomonas_aeruginosa, Thomasclavelia_cocleata, Turicibacter_sp_TS3, bacterium_1XD42_54, bacterium_1xD42_67
+2025-11-20 08:03:40.454792 INFO::Writing filtered data to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/features/filtered_data.tsv
+2025-11-20 08:03:40.457236 INFO::Running selected transform method: LOG
+2025-11-20 08:03:40.459229 INFO::Writing normalized, filtered, transformed data to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/features/data_transformed.tsv
+2025-11-20 08:03:40.462849 INFO::Factor detected for categorial metadata 'Genotype'. Using as-is.
+2025-11-20 08:03:40.46373 INFO::Applying z-score to standardize continuous metadata
+2025-11-20 08:03:40.467993 INFO::Running the linear model component
+2025-11-20 08:03:40.470371 DEBUG::Object: augment, Size: 56
+2025-11-20 08:03:40.470773 DEBUG::Object: cluster, Size: 0
+2025-11-20 08:03:40.471063 DEBUG::Object: cores, Size: 56
+2025-11-20 08:03:40.471324 DEBUG::Object: correction, Size: 112
+2025-11-20 08:03:40.471567 DEBUG::Object: extract_out, Size: 1696
+2025-11-20 08:03:40.471798 DEBUG::Object: feature_specific_covariate, Size: 0
+2025-11-20 08:03:40.47202 DEBUG::Object: feature_specific_covariate_name, Size: 0
+2025-11-20 08:03:40.472242 DEBUG::Object: feature_specific_covariate_record, Size: 0
+2025-11-20 08:03:40.472477 DEBUG::Object: features, Size: 41512
+2025-11-20 08:03:40.472693 DEBUG::Object: formula, Size: 1288
+2025-11-20 08:03:40.472928 DEBUG::Object: fun_list, Size: 58768
+2025-11-20 08:03:40.47325 DEBUG::Object: func_to_run, Size: 435336
+2025-11-20 08:03:40.473471 DEBUG::Object: groups, Size: 48
+2025-11-20 08:03:40.473709 DEBUG::Object: median_comparison, Size: 56
+2025-11-20 08:03:40.473933 DEBUG::Object: median_comparison_threshold, Size: 56
+2025-11-20 08:03:40.474156 DEBUG::Object: metadata, Size: 7904
+2025-11-20 08:03:40.47437 DEBUG::Object: model, Size: 112
+2025-11-20 08:03:40.474592 DEBUG::Object: model_function, Size: 8864
+2025-11-20 08:03:40.474804 DEBUG::Object: ordereds, Size: 48
+2025-11-20 08:03:40.475013 DEBUG::Object: random_effects_formula, Size: 0
+2025-11-20 08:03:40.475219 DEBUG::Object: ranef_function, Size: 0
+2025-11-20 08:03:40.475426 DEBUG::Object: save_models, Size: 56
+2025-11-20 08:03:40.475636 DEBUG::Object: small_random_effects, Size: 56
+2025-11-20 08:03:40.475862 DEBUG::Object: strata, Size: 48
+2025-11-20 08:03:40.476092 DEBUG::Object: subtract_median, Size: 56
+2025-11-20 08:03:40.476325 DEBUG::Object: summary_function, Size: 49424
+2025-11-20 08:03:40.476642 DEBUG::Object: func_to_run, Size: 435336
+2025-11-20 08:03:40.476958 INFO::Fitting model to feature number 1, Acutalibacter_caecimuris
+2025-11-20 08:03:40.479197 WARNING::Fitting problem for feature 1 returning NA
+2025-11-20 08:03:40.480845 INFO::Fitting model to feature number 2, Acutalibacter_intestini
+2025-11-20 08:03:40.485305 INFO::Fitting model to feature number 3, Acutalibacter_muris
+2025-11-20 08:03:40.488234 INFO::Fitting model to feature number 4, Acutalibacter_sp_1XD8_33
+2025-11-20 08:03:40.490507 INFO::Fitting model to feature number 5, Adlercreutzia_SGB42953
+2025-11-20 08:03:40.492353 WARNING::Fitting problem for feature 5 returning NA
+2025-11-20 08:03:40.493857 INFO::Fitting model to feature number 6, Adlercreutzia_aquisgranensis
+2025-11-20 08:03:40.497838 INFO::Fitting model to feature number 7, Adlercreutzia_caecimuris
+2025-11-20 08:03:40.501781 INFO::Fitting model to feature number 8, Adlercreutzia_mucosicola
+2025-11-20 08:03:40.506146 INFO::Fitting model to feature number 9, Adlercreutzia_muris
+2025-11-20 08:03:40.510021 INFO::Fitting model to feature number 10, Akkermansia_muciniphila
+2025-11-20 08:03:40.514084 INFO::Fitting model to feature number 11, Alistipes_timonensis
+2025-11-20 08:03:40.516237 INFO::Fitting model to feature number 12, Anaerostipes_hominis_ex_Lee_et_al_2021
+2025-11-20 08:03:40.518311 INFO::Fitting model to feature number 13, Bacillota_unclassified_SGB43543
+2025-11-20 08:03:40.520709 INFO::Fitting model to feature number 14, Bacillota_unclassified_SGB63211
+2025-11-20 08:03:40.523718 INFO::Fitting model to feature number 15, Bacteroidales_bacterium
+2025-11-20 08:03:40.529778 INFO::Fitting model to feature number 16, Bifidobacterium_pseudolongum
+2025-11-20 08:03:40.533938 INFO::Fitting model to feature number 17, Blautia_pseudococcoides
+2025-11-20 08:03:40.536245 INFO::Fitting model to feature number 18, Caniella_muris
+2025-11-20 08:03:40.540447 INFO::Fitting model to feature number 19, Clostridia_bacterium
+2025-11-20 08:03:40.544218 INFO::Fitting model to feature number 20, Clostridiaceae_bacterium
+2025-11-20 08:03:40.549095 INFO::Fitting model to feature number 21, Clostridiales_bacterium
+2025-11-20 08:03:40.553379 INFO::Fitting model to feature number 22, Coriobacteriaceae_bacterium
+2025-11-20 08:03:40.557707 INFO::Fitting model to feature number 23, Duncaniella_dubosii
+2025-11-20 08:03:40.561892 INFO::Fitting model to feature number 24, Duncaniella_freteri
+2025-11-20 08:03:40.563897 WARNING::Fitting problem for feature 24 returning NA
+2025-11-20 08:03:40.565459 INFO::Fitting model to feature number 25, Duncaniella_muricolitica
+2025-11-20 08:03:40.569192 INFO::Fitting model to feature number 26, Duncaniella_muris
+2025-11-20 08:03:40.573446 INFO::Fitting model to feature number 27, Eubacteriaceae_bacterium
+2025-11-20 08:03:40.579244 INFO::Fitting model to feature number 28, Faecalibaculum_rodentium
+2025-11-20 08:03:40.584377 INFO::Fitting model to feature number 29, GGB115370_SGB161393
+2025-11-20 08:03:40.586829 WARNING::Fitting problem for feature 29 returning NA
+2025-11-20 08:03:40.58875 INFO::Fitting model to feature number 30, GGB14001_SGB21428
+2025-11-20 08:03:40.593199 INFO::Fitting model to feature number 31, GGB143828_SGB43507
+2025-11-20 08:03:40.595587 WARNING::Fitting problem for feature 31 returning NA
+2025-11-20 08:03:40.597351 INFO::Fitting model to feature number 32, GGB1503_SGB2082
+2025-11-20 08:03:40.601497 INFO::Fitting model to feature number 33, GGB18828_SGB27767
+2025-11-20 08:03:40.606336 INFO::Fitting model to feature number 34, GGB22635_SGB33556
+2025-11-20 08:03:40.611232 INFO::Fitting model to feature number 35, GGB22635_SGB63107
+2025-11-20 08:03:40.615964 INFO::Fitting model to feature number 36, GGB24132_SGB35935
+2025-11-20 08:03:40.621747 INFO::Fitting model to feature number 37, GGB24146_SGB35950
+2025-11-20 08:03:40.627493 INFO::Fitting model to feature number 38, GGB24148_SGB35952
+2025-11-20 08:03:40.631595 INFO::Fitting model to feature number 39, GGB25041_SGB36960
+2025-11-20 08:03:40.636089 INFO::Fitting model to feature number 40, GGB27478_SGB39772
+2025-11-20 08:03:40.641599 INFO::Fitting model to feature number 41, GGB27480_SGB39776
+2025-11-20 08:03:40.647474 INFO::Fitting model to feature number 42, GGB27482_SGB39778
+2025-11-20 08:03:40.652907 INFO::Fitting model to feature number 43, GGB27849_SGB40283
+2025-11-20 08:03:40.65731 INFO::Fitting model to feature number 44, GGB27860_SGB40294
+2025-11-20 08:03:40.661481 INFO::Fitting model to feature number 45, GGB27861_SGB40295
+2025-11-20 08:03:40.665516 INFO::Fitting model to feature number 46, GGB27866_SGB40300
+2025-11-20 08:03:40.669358 INFO::Fitting model to feature number 47, GGB27873_SGB41457
+2025-11-20 08:03:40.671584 WARNING::Fitting problem for feature 47 returning NA
+2025-11-20 08:03:40.673298 INFO::Fitting model to feature number 48, GGB27876_SGB40310
+2025-11-20 08:03:40.677093 INFO::Fitting model to feature number 49, GGB27884_SGB40318
+2025-11-20 08:03:40.681155 INFO::Fitting model to feature number 50, GGB27885_SGB40319
+2025-11-20 08:03:40.684912 INFO::Fitting model to feature number 51, GGB27894_SGB40329
+2025-11-20 08:03:40.687355 INFO::Fitting model to feature number 52, GGB27919_SGB40357
+2025-11-20 08:03:40.691397 INFO::Fitting model to feature number 53, GGB27929_SGB40368
+2025-11-20 08:03:40.695321 INFO::Fitting model to feature number 54, GGB28310_SGB40880
+2025-11-20 08:03:40.699207 INFO::Fitting model to feature number 55, GGB28317_SGB40889
+2025-11-20 08:03:40.701104 WARNING::Fitting problem for feature 55 returning NA
+2025-11-20 08:03:40.702689 INFO::Fitting model to feature number 56, GGB28380_SGB40960
+2025-11-20 08:03:40.705128 INFO::Fitting model to feature number 57, GGB28382_SGB40962
+2025-11-20 08:03:40.709013 INFO::Fitting model to feature number 58, GGB28765_SGB41414
+2025-11-20 08:03:40.711519 INFO::Fitting model to feature number 59, GGB28769_SGB41421
+2025-11-20 08:03:40.713478 WARNING::Fitting problem for feature 59 returning NA
+2025-11-20 08:03:40.715138 INFO::Fitting model to feature number 60, GGB28778_SGB41431
+2025-11-20 08:03:40.716974 WARNING::Fitting problem for feature 60 returning NA
+2025-11-20 08:03:40.718613 INFO::Fitting model to feature number 61, GGB28793_SGB41446
+2025-11-20 08:03:40.720982 INFO::Fitting model to feature number 62, GGB28796_SGB41449
+2025-11-20 08:03:40.725011 INFO::Fitting model to feature number 63, GGB28803_SGB41457
+2025-11-20 08:03:40.727061 WARNING::Fitting problem for feature 63 returning NA
+2025-11-20 08:03:40.728818 INFO::Fitting model to feature number 64, GGB28870_SGB41545
+2025-11-20 08:03:40.731073 INFO::Fitting model to feature number 65, GGB28901_SGB41592
+2025-11-20 08:03:40.734752 INFO::Fitting model to feature number 66, GGB28904_SGB41597
+2025-11-20 08:03:40.738945 INFO::Fitting model to feature number 67, GGB28934_SGB41635
+2025-11-20 08:03:40.741227 INFO::Fitting model to feature number 68, GGB28946_SGB41652
+2025-11-20 08:03:40.743117 WARNING::Fitting problem for feature 68 returning NA
+2025-11-20 08:03:40.744753 INFO::Fitting model to feature number 69, GGB28949_SGB41655
+2025-11-20 08:03:40.747085 INFO::Fitting model to feature number 70, GGB28956_SGB41665
+2025-11-20 08:03:40.749279 INFO::Fitting model to feature number 71, GGB28990_SGB41704
+2025-11-20 08:03:40.751519 INFO::Fitting model to feature number 72, GGB29003_SGB41719
+2025-11-20 08:03:40.754004 INFO::Fitting model to feature number 73, GGB29531_SGB42317
+2025-11-20 08:03:40.758034 INFO::Fitting model to feature number 74, GGB30045_SGB42945
+2025-11-20 08:03:40.762227 INFO::Fitting model to feature number 75, GGB30046_SGB42947
+2025-11-20 08:03:40.766208 INFO::Fitting model to feature number 76, GGB30294_SGB43258
+2025-11-20 08:03:40.770317 INFO::Fitting model to feature number 77, GGB30296_SGB43260
+2025-11-20 08:03:40.772714 INFO::Fitting model to feature number 78, GGB30298_SGB43262
+2025-11-20 08:03:40.774704 WARNING::Fitting problem for feature 78 returning NA
+2025-11-20 08:03:40.77626 INFO::Fitting model to feature number 79, GGB30454_SGB43516
+2025-11-20 08:03:40.778636 WARNING::Fitting problem for feature 79 returning NA
+2025-11-20 08:03:40.781257 INFO::Fitting model to feature number 80, GGB30455_SGB43519
+2025-11-20 08:03:40.786001 INFO::Fitting model to feature number 81, GGB30461_SGB102216
+2025-11-20 08:03:40.788342 WARNING::Fitting problem for feature 81 returning NA
+2025-11-20 08:03:40.790164 INFO::Fitting model to feature number 82, GGB30461_SGB43529
+2025-11-20 08:03:40.792096 WARNING::Fitting problem for feature 82 returning NA
+2025-11-20 08:03:40.793654 INFO::Fitting model to feature number 83, GGB30461_SGB63209
+2025-11-20 08:03:40.795841 WARNING::Fitting problem for feature 83 returning NA
+2025-11-20 08:03:40.797595 INFO::Fitting model to feature number 84, GGB30475_SGB63182
+2025-11-20 08:03:40.799607 WARNING::Fitting problem for feature 84 returning NA
+2025-11-20 08:03:40.801175 INFO::Fitting model to feature number 85, GGB30861_SGB44083
+2025-11-20 08:03:40.805484 INFO::Fitting model to feature number 86, GGB3171_SGB4185
+2025-11-20 08:03:40.807918 INFO::Fitting model to feature number 87, GGB32371_SGB41694
+2025-11-20 08:03:40.810016 WARNING::Fitting problem for feature 87 returning NA
+2025-11-20 08:03:40.811835 INFO::Fitting model to feature number 88, GGB42570_SGB59765
+2025-11-20 08:03:40.815875 INFO::Fitting model to feature number 89, GGB42598_SGB59794
+2025-11-20 08:03:40.819683 INFO::Fitting model to feature number 90, GGB42646_SGB59844
+2025-11-20 08:03:40.821997 WARNING::Fitting problem for feature 90 returning NA
+2025-11-20 08:03:40.823682 INFO::Fitting model to feature number 91, GGB45514_SGB63186
+2025-11-20 08:03:40.825878 INFO::Fitting model to feature number 92, GGB46159_SGB63927
+2025-11-20 08:03:40.829817 INFO::Fitting model to feature number 93, GGB46162_SGB63930
+2025-11-20 08:03:40.833488 INFO::Fitting model to feature number 94, GGB70518_SGB94950
+2025-11-20 08:03:40.835407 WARNING::Fitting problem for feature 94 returning NA
+2025-11-20 08:03:40.837022 INFO::Fitting model to feature number 95, GGB70852_SGB95305
+2025-11-20 08:03:40.841446 INFO::Fitting model to feature number 96, GGB75057_SGB102223
+2025-11-20 08:03:40.843638 WARNING::Fitting problem for feature 96 returning NA
+2025-11-20 08:03:40.845504 INFO::Fitting model to feature number 97, GGB75074_SGB102167
+2025-11-20 08:03:40.847584 WARNING::Fitting problem for feature 97 returning NA
+2025-11-20 08:03:40.849265 INFO::Fitting model to feature number 98, GGB75104_SGB102231
+2025-11-20 08:03:40.851982 INFO::Fitting model to feature number 99, GGB75725_SGB102612
+2025-11-20 08:03:40.85754 INFO::Fitting model to feature number 100, GGB75726_SGB102611
+2025-11-20 08:03:40.861655 INFO::Fitting model to feature number 101, GGB75879_SGB103683
+2025-11-20 08:03:40.868941 INFO::Fitting model to feature number 102, GGB9439_SGB42949
+2025-11-20 08:03:40.87668 INFO::Fitting model to feature number 103, Hominisplanchenecus_murintestinalis
+2025-11-20 08:03:40.883116 INFO::Fitting model to feature number 104, Lachnospiraceae_bacterium
+2025-11-20 08:03:40.889339 INFO::Fitting model to feature number 105, Lachnospiraceae_bacterium_A2
+2025-11-20 08:03:40.892757 INFO::Fitting model to feature number 106, Lachnospiraceae_unclassified_SGB41405
+2025-11-20 08:03:40.898828 INFO::Fitting model to feature number 107, Lachnospiraceae_unclassified_SGB7275
+2025-11-20 08:03:40.90439 INFO::Fitting model to feature number 108, Lactobacillus_intestinalis
+2025-11-20 08:03:40.909099 INFO::Fitting model to feature number 109, Lactobacillus_johnsonii
+2025-11-20 08:03:40.91418 INFO::Fitting model to feature number 110, Lepagella_muris
+2025-11-20 08:03:40.920134 INFO::Fitting model to feature number 111, Ligilactobacillus_murinus
+2025-11-20 08:03:40.924525 INFO::Fitting model to feature number 112, Limosilactobacillus_reuteri
+2025-11-20 08:03:40.928677 INFO::Fitting model to feature number 113, Muribaculaceae_bacterium
+2025-11-20 08:03:40.93285 INFO::Fitting model to feature number 114, Muribaculum_gordoncarteri
+2025-11-20 08:03:40.936833 INFO::Fitting model to feature number 115, Muribaculum_intestinale
+2025-11-20 08:03:40.941153 INFO::Fitting model to feature number 116, Muricaecibacterium_torontonense
+2025-11-20 08:03:40.945411 INFO::Fitting model to feature number 117, Neglectibacter_caecimuris
+2025-11-20 08:03:40.947892 WARNING::Fitting problem for feature 117 returning NA
+2025-11-20 08:03:40.950038 INFO::Fitting model to feature number 118, Neglectibacter_sp_X4
+2025-11-20 08:03:40.952198 WARNING::Fitting problem for feature 118 returning NA
+2025-11-20 08:03:40.954055 INFO::Fitting model to feature number 119, Oscillibacter_SGB43496
+2025-11-20 08:03:40.9566 INFO::Fitting model to feature number 120, Oscillibacter_SGB43499
+2025-11-20 08:03:40.958712 WARNING::Fitting problem for feature 120 returning NA
+2025-11-20 08:03:40.960379 INFO::Fitting model to feature number 121, Oscillospiraceae_bacterium
+2025-11-20 08:03:40.963211 INFO::Fitting model to feature number 122, Oscillospiraceae_unclassified_SGB43526
+2025-11-20 08:03:40.96553 INFO::Fitting model to feature number 123, Paramuribaculum_intestinale
+2025-11-20 08:03:40.969561 INFO::Fitting model to feature number 124, Parasutterella_muris
+2025-11-20 08:03:40.973873 INFO::Fitting model to feature number 125, Parvibacter_caecicola
+2025-11-20 08:03:40.977996 INFO::Fitting model to feature number 126, Sangeribacter_muris
+2025-11-20 08:03:40.98208 INFO::Fitting model to feature number 127, Schaedlerella_arabinosiphila
+2025-11-20 08:03:40.984388 INFO::Fitting model to feature number 128, Turicibacter_sp_1E2
+2025-11-20 08:03:40.986319 WARNING::Fitting problem for feature 128 returning NA
+2025-11-20 08:03:40.988206 INFO::Fitting model to feature number 129, Turicimonas_muris
+2025-11-20 08:03:41.000666 INFO::Performing tests against medians
+2025-11-20 08:03:42.233663 INFO::Counting total values for each feature
+2025-11-20 08:03:42.239964 INFO::Running the logistic model component
+2025-11-20 08:03:42.242055 DEBUG::Object: augment, Size: 56
+2025-11-20 08:03:42.242403 DEBUG::Object: cluster, Size: 0
+2025-11-20 08:03:42.242661 DEBUG::Object: cores, Size: 56
+2025-11-20 08:03:42.24289 DEBUG::Object: correction, Size: 112
+2025-11-20 08:03:42.243173 DEBUG::Object: extract_out, Size: 1696
+2025-11-20 08:03:42.2434 DEBUG::Object: feature_specific_covariate, Size: 0
+2025-11-20 08:03:42.24362 DEBUG::Object: feature_specific_covariate_name, Size: 0
+2025-11-20 08:03:42.243831 DEBUG::Object: feature_specific_covariate_record, Size: 0
+2025-11-20 08:03:42.244047 DEBUG::Object: features, Size: 34176
+2025-11-20 08:03:42.244256 DEBUG::Object: formula, Size: 1288
+2025-11-20 08:03:42.244483 DEBUG::Object: fun_list, Size: 70920
+2025-11-20 08:03:42.244786 DEBUG::Object: func_to_run, Size: 435336
+2025-11-20 08:03:42.244992 DEBUG::Object: groups, Size: 48
+2025-11-20 08:03:42.245252 DEBUG::Object: median_comparison, Size: 56
+2025-11-20 08:03:42.245593 DEBUG::Object: median_comparison_threshold, Size: 56
+2025-11-20 08:03:42.245872 DEBUG::Object: metadata, Size: 7904
+2025-11-20 08:03:42.246097 DEBUG::Object: model, Size: 120
+2025-11-20 08:03:42.246317 DEBUG::Object: model_function, Size: 21016
+2025-11-20 08:03:42.246523 DEBUG::Object: ordereds, Size: 48
+2025-11-20 08:03:42.246752 DEBUG::Object: random_effects_formula, Size: 0
+2025-11-20 08:03:42.246976 DEBUG::Object: ranef_function, Size: 0
+2025-11-20 08:03:42.247184 DEBUG::Object: save_models, Size: 56
+2025-11-20 08:03:42.247394 DEBUG::Object: small_random_effects, Size: 56
+2025-11-20 08:03:42.247597 DEBUG::Object: strata, Size: 48
+2025-11-20 08:03:42.247797 DEBUG::Object: subtract_median, Size: 56
+2025-11-20 08:03:42.248015 DEBUG::Object: summary_function, Size: 49424
+2025-11-20 08:03:42.248328 DEBUG::Object: func_to_run, Size: 435336
+2025-11-20 08:03:42.248586 INFO::Fitting model to feature number 1, Acutalibacter_caecimuris
+2025-11-20 08:03:42.254147 INFO::Fitting model to feature number 2, Acutalibacter_intestini
+2025-11-20 08:03:42.260554 INFO::Fitting model to feature number 3, Acutalibacter_muris
+2025-11-20 08:03:42.266352 INFO::Fitting model to feature number 4, Acutalibacter_sp_1XD8_33
+2025-11-20 08:03:42.272229 INFO::Fitting model to feature number 5, Adlercreutzia_SGB42953
+2025-11-20 08:03:42.277783 INFO::Fitting model to feature number 6, Adlercreutzia_aquisgranensis
+2025-11-20 08:03:42.283422 INFO::Fitting model to feature number 7, Adlercreutzia_caecimuris
+2025-11-20 08:03:42.289483 INFO::Fitting model to feature number 8, Adlercreutzia_mucosicola
+2025-11-20 08:03:42.295044 INFO::Fitting model to feature number 9, Adlercreutzia_muris
+2025-11-20 08:03:42.301386 INFO::Fitting model to feature number 10, Akkermansia_muciniphila
+2025-11-20 08:03:42.307249 INFO::Fitting model to feature number 11, Alistipes_timonensis
+2025-11-20 08:03:42.313165 INFO::Fitting model to feature number 12, Anaerostipes_hominis_ex_Lee_et_al_2021
+2025-11-20 08:03:42.31912 INFO::Fitting model to feature number 13, Bacillota_unclassified_SGB43543
+2025-11-20 08:03:42.324998 INFO::Fitting model to feature number 14, Bacillota_unclassified_SGB63211
+2025-11-20 08:03:42.331864 INFO::Fitting model to feature number 15, Bacteroidales_bacterium
+2025-11-20 08:03:42.339237 INFO::Fitting model to feature number 16, Bifidobacterium_pseudolongum
+2025-11-20 08:03:42.345834 INFO::Fitting model to feature number 17, Blautia_pseudococcoides
+2025-11-20 08:03:42.35191 INFO::Fitting model to feature number 18, Caniella_muris
+2025-11-20 08:03:42.358911 INFO::Fitting model to feature number 19, Clostridia_bacterium
+2025-11-20 08:03:42.365716 INFO::Fitting model to feature number 20, Clostridiaceae_bacterium
+2025-11-20 08:03:42.372828 INFO::Fitting model to feature number 21, Clostridiales_bacterium
+2025-11-20 08:03:42.380196 INFO::Fitting model to feature number 22, Coriobacteriaceae_bacterium
+2025-11-20 08:03:42.386103 INFO::Fitting model to feature number 23, Duncaniella_dubosii
+2025-11-20 08:03:42.392156 INFO::Fitting model to feature number 24, Duncaniella_freteri
+2025-11-20 08:03:42.397962 INFO::Fitting model to feature number 25, Duncaniella_muricolitica
+2025-11-20 08:03:42.403399 INFO::Fitting model to feature number 26, Duncaniella_muris
+2025-11-20 08:03:42.409231 INFO::Fitting model to feature number 27, Eubacteriaceae_bacterium
+2025-11-20 08:03:42.415069 INFO::Fitting model to feature number 28, Faecalibaculum_rodentium
+2025-11-20 08:03:42.416539 INFO::Fitting model to feature number 29, GGB115370_SGB161393
+2025-11-20 08:03:42.422477 INFO::Fitting model to feature number 30, GGB14001_SGB21428
+2025-11-20 08:03:42.42821 INFO::Fitting model to feature number 31, GGB143828_SGB43507
+2025-11-20 08:03:42.433974 INFO::Fitting model to feature number 32, GGB1503_SGB2082
+2025-11-20 08:03:42.43981 INFO::Fitting model to feature number 33, GGB18828_SGB27767
+2025-11-20 08:03:42.445648 INFO::Fitting model to feature number 34, GGB22635_SGB33556
+2025-11-20 08:03:42.451241 INFO::Fitting model to feature number 35, GGB22635_SGB63107
+2025-11-20 08:03:42.457271 INFO::Fitting model to feature number 36, GGB24132_SGB35935
+2025-11-20 08:03:42.463008 INFO::Fitting model to feature number 37, GGB24146_SGB35950
+2025-11-20 08:03:42.469097 INFO::Fitting model to feature number 38, GGB24148_SGB35952
+2025-11-20 08:03:42.474955 INFO::Fitting model to feature number 39, GGB25041_SGB36960
+2025-11-20 08:03:42.480633 INFO::Fitting model to feature number 40, GGB27478_SGB39772
+2025-11-20 08:03:42.487002 INFO::Fitting model to feature number 41, GGB27480_SGB39776
+2025-11-20 08:03:42.493006 INFO::Fitting model to feature number 42, GGB27482_SGB39778
+2025-11-20 08:03:42.498715 INFO::Fitting model to feature number 43, GGB27849_SGB40283
+2025-11-20 08:03:42.504448 INFO::Fitting model to feature number 44, GGB27860_SGB40294
+2025-11-20 08:03:42.510225 INFO::Fitting model to feature number 45, GGB27861_SGB40295
+2025-11-20 08:03:42.516187 INFO::Fitting model to feature number 46, GGB27866_SGB40300
+2025-11-20 08:03:42.521856 INFO::Fitting model to feature number 47, GGB27873_SGB41457
+2025-11-20 08:03:42.527777 INFO::Fitting model to feature number 48, GGB27876_SGB40310
+2025-11-20 08:03:42.534414 INFO::Fitting model to feature number 49, GGB27884_SGB40318
+2025-11-20 08:03:42.541906 INFO::Fitting model to feature number 50, GGB27885_SGB40319
+2025-11-20 08:03:42.550726 INFO::Fitting model to feature number 51, GGB27894_SGB40329
+2025-11-20 08:03:42.55669 INFO::Fitting model to feature number 52, GGB27919_SGB40357
+2025-11-20 08:03:42.562345 INFO::Fitting model to feature number 53, GGB27929_SGB40368
+2025-11-20 08:03:42.568155 INFO::Fitting model to feature number 54, GGB28310_SGB40880
+2025-11-20 08:03:42.574554 INFO::Fitting model to feature number 55, GGB28317_SGB40889
+2025-11-20 08:03:42.581259 INFO::Fitting model to feature number 56, GGB28380_SGB40960
+2025-11-20 08:03:42.587479 INFO::Fitting model to feature number 57, GGB28382_SGB40962
+2025-11-20 08:03:42.593937 INFO::Fitting model to feature number 58, GGB28765_SGB41414
+2025-11-20 08:03:42.600278 INFO::Fitting model to feature number 59, GGB28769_SGB41421
+2025-11-20 08:03:42.607192 INFO::Fitting model to feature number 60, GGB28778_SGB41431
+2025-11-20 08:03:42.614913 INFO::Fitting model to feature number 61, GGB28793_SGB41446
+2025-11-20 08:03:42.622805 INFO::Fitting model to feature number 62, GGB28796_SGB41449
+2025-11-20 08:03:42.628667 INFO::Fitting model to feature number 63, GGB28803_SGB41457
+2025-11-20 08:03:42.634591 INFO::Fitting model to feature number 64, GGB28870_SGB41545
+2025-11-20 08:03:42.640779 INFO::Fitting model to feature number 65, GGB28901_SGB41592
+2025-11-20 08:03:42.646889 INFO::Fitting model to feature number 66, GGB28904_SGB41597
+2025-11-20 08:03:42.654625 INFO::Fitting model to feature number 67, GGB28934_SGB41635
+2025-11-20 08:03:42.661734 INFO::Fitting model to feature number 68, GGB28946_SGB41652
+2025-11-20 08:03:42.667839 INFO::Fitting model to feature number 69, GGB28949_SGB41655
+2025-11-20 08:03:42.703374 INFO::Fitting model to feature number 70, GGB28956_SGB41665
+2025-11-20 08:03:42.709659 INFO::Fitting model to feature number 71, GGB28990_SGB41704
+2025-11-20 08:03:42.715631 INFO::Fitting model to feature number 72, GGB29003_SGB41719
+2025-11-20 08:03:42.721473 INFO::Fitting model to feature number 73, GGB29531_SGB42317
+2025-11-20 08:03:42.727328 INFO::Fitting model to feature number 74, GGB30045_SGB42945
+2025-11-20 08:03:42.732989 INFO::Fitting model to feature number 75, GGB30046_SGB42947
+2025-11-20 08:03:42.738745 INFO::Fitting model to feature number 76, GGB30294_SGB43258
+2025-11-20 08:03:42.744502 INFO::Fitting model to feature number 77, GGB30296_SGB43260
+2025-11-20 08:03:42.750186 INFO::Fitting model to feature number 78, GGB30298_SGB43262
+2025-11-20 08:03:42.756291 INFO::Fitting model to feature number 79, GGB30454_SGB43516
+2025-11-20 08:03:42.761986 INFO::Fitting model to feature number 80, GGB30455_SGB43519
+2025-11-20 08:03:42.767848 INFO::Fitting model to feature number 81, GGB30461_SGB102216
+2025-11-20 08:03:42.773983 INFO::Fitting model to feature number 82, GGB30461_SGB43529
+2025-11-20 08:03:42.779597 INFO::Fitting model to feature number 83, GGB30461_SGB63209
+2025-11-20 08:03:42.786824 INFO::Fitting model to feature number 84, GGB30475_SGB63182
+2025-11-20 08:03:42.792912 INFO::Fitting model to feature number 85, GGB30861_SGB44083
+2025-11-20 08:03:42.798843 INFO::Fitting model to feature number 86, GGB3171_SGB4185
+2025-11-20 08:03:42.804584 INFO::Fitting model to feature number 87, GGB32371_SGB41694
+2025-11-20 08:03:42.810421 INFO::Fitting model to feature number 88, GGB42570_SGB59765
+2025-11-20 08:03:42.816952 INFO::Fitting model to feature number 89, GGB42598_SGB59794
+2025-11-20 08:03:42.825343 INFO::Fitting model to feature number 90, GGB42646_SGB59844
+2025-11-20 08:03:42.833603 INFO::Fitting model to feature number 91, GGB45514_SGB63186
+2025-11-20 08:03:42.841418 INFO::Fitting model to feature number 92, GGB46159_SGB63927
+2025-11-20 08:03:42.847749 INFO::Fitting model to feature number 93, GGB46162_SGB63930
+2025-11-20 08:03:42.853901 INFO::Fitting model to feature number 94, GGB70518_SGB94950
+2025-11-20 08:03:42.86242 INFO::Fitting model to feature number 95, GGB70852_SGB95305
+2025-11-20 08:03:42.871606 INFO::Fitting model to feature number 96, GGB75057_SGB102223
+2025-11-20 08:03:42.881486 INFO::Fitting model to feature number 97, GGB75074_SGB102167
+2025-11-20 08:03:42.888736 INFO::Fitting model to feature number 98, GGB75104_SGB102231
+2025-11-20 08:03:42.895824 INFO::Fitting model to feature number 99, GGB75725_SGB102612
+2025-11-20 08:03:42.902882 INFO::Fitting model to feature number 100, GGB75726_SGB102611
+2025-11-20 08:03:42.909924 INFO::Fitting model to feature number 101, GGB75879_SGB103683
+2025-11-20 08:03:42.916431 INFO::Fitting model to feature number 102, GGB9439_SGB42949
+2025-11-20 08:03:42.922761 INFO::Fitting model to feature number 103, Hominisplanchenecus_murintestinalis
+2025-11-20 08:03:42.928557 INFO::Fitting model to feature number 104, Lachnospiraceae_bacterium
+2025-11-20 08:03:42.93562 INFO::Fitting model to feature number 105, Lachnospiraceae_bacterium_A2
+2025-11-20 08:03:42.941821 INFO::Fitting model to feature number 106, Lachnospiraceae_unclassified_SGB41405
+2025-11-20 08:03:42.948132 INFO::Fitting model to feature number 107, Lachnospiraceae_unclassified_SGB7275
+2025-11-20 08:03:42.953814 INFO::Fitting model to feature number 108, Lactobacillus_intestinalis
+2025-11-20 08:03:42.960193 INFO::Fitting model to feature number 109, Lactobacillus_johnsonii
+2025-11-20 08:03:42.966313 INFO::Fitting model to feature number 110, Lepagella_muris
+2025-11-20 08:03:42.972106 INFO::Fitting model to feature number 111, Ligilactobacillus_murinus
+2025-11-20 08:03:42.978083 INFO::Fitting model to feature number 112, Limosilactobacillus_reuteri
+2025-11-20 08:03:42.98413 INFO::Fitting model to feature number 113, Muribaculaceae_bacterium
+2025-11-20 08:03:42.990405 INFO::Fitting model to feature number 114, Muribaculum_gordoncarteri
+2025-11-20 08:03:42.996415 INFO::Fitting model to feature number 115, Muribaculum_intestinale
+2025-11-20 08:03:43.002306 INFO::Fitting model to feature number 116, Muricaecibacterium_torontonense
+2025-11-20 08:03:43.00834 INFO::Fitting model to feature number 117, Neglectibacter_caecimuris
+2025-11-20 08:03:43.014313 INFO::Fitting model to feature number 118, Neglectibacter_sp_X4
+2025-11-20 08:03:43.020503 INFO::Fitting model to feature number 119, Oscillibacter_SGB43496
+2025-11-20 08:03:43.026846 INFO::Fitting model to feature number 120, Oscillibacter_SGB43499
+2025-11-20 08:03:43.032934 INFO::Fitting model to feature number 121, Oscillospiraceae_bacterium
+2025-11-20 08:03:43.038817 INFO::Fitting model to feature number 122, Oscillospiraceae_unclassified_SGB43526
+2025-11-20 08:03:43.044553 INFO::Fitting model to feature number 123, Paramuribaculum_intestinale
+2025-11-20 08:03:43.050187 INFO::Fitting model to feature number 124, Parasutterella_muris
+2025-11-20 08:03:43.056547 INFO::Fitting model to feature number 125, Parvibacter_caecicola
+2025-11-20 08:03:43.062232 INFO::Fitting model to feature number 126, Sangeribacter_muris
+2025-11-20 08:03:43.068116 INFO::Fitting model to feature number 127, Schaedlerella_arabinosiphila
+2025-11-20 08:03:43.074454 INFO::Fitting model to feature number 128, Turicibacter_sp_1E2
+2025-11-20 08:03:43.080763 INFO::Fitting model to feature number 129, Turicimonas_muris
+2025-11-20 08:03:43.110357 INFO::Counting total values for each feature
+2025-11-20 08:03:43.119432 INFO::Re-running abundances for warn_prevalence
+2025-11-20 08:03:43.120313 INFO::Running selected normalization method: TSS
+2025-11-20 08:03:43.127539 INFO::Running selected transform method: LOG
+2025-11-20 08:03:43.130879 DEBUG::Object: augment, Size: 56
+2025-11-20 08:03:43.131325 DEBUG::Object: cluster, Size: 0
+2025-11-20 08:03:43.131619 DEBUG::Object: cores, Size: 56
+2025-11-20 08:03:43.13187 DEBUG::Object: correction, Size: 112
+2025-11-20 08:03:43.13211 DEBUG::Object: extract_out, Size: 1696
+2025-11-20 08:03:43.13235 DEBUG::Object: feature_specific_covariate, Size: 0
+2025-11-20 08:03:43.132579 DEBUG::Object: feature_specific_covariate_name, Size: 0
+2025-11-20 08:03:43.132803 DEBUG::Object: feature_specific_covariate_record, Size: 0
+2025-11-20 08:03:43.13304 DEBUG::Object: features, Size: 41512
+2025-11-20 08:03:43.133263 DEBUG::Object: formula, Size: 1288
+2025-11-20 08:03:43.133503 DEBUG::Object: fun_list, Size: 58768
+2025-11-20 08:03:43.133895 DEBUG::Object: func_to_run, Size: 435336
+2025-11-20 08:03:43.134167 DEBUG::Object: groups, Size: 48
+2025-11-20 08:03:43.134395 DEBUG::Object: median_comparison, Size: 56
+2025-11-20 08:03:43.134618 DEBUG::Object: median_comparison_threshold, Size: 56
+2025-11-20 08:03:43.134873 DEBUG::Object: metadata, Size: 7904
+2025-11-20 08:03:43.135112 DEBUG::Object: model, Size: 112
+2025-11-20 08:03:43.135347 DEBUG::Object: model_function, Size: 8864
+2025-11-20 08:03:43.135566 DEBUG::Object: ordereds, Size: 48
+2025-11-20 08:03:43.135789 DEBUG::Object: random_effects_formula, Size: 0
+2025-11-20 08:03:43.13601 DEBUG::Object: ranef_function, Size: 0
+2025-11-20 08:03:43.136235 DEBUG::Object: save_models, Size: 56
+2025-11-20 08:03:43.136453 DEBUG::Object: small_random_effects, Size: 56
+2025-11-20 08:03:43.13667 DEBUG::Object: strata, Size: 48
+2025-11-20 08:03:43.136888 DEBUG::Object: subtract_median, Size: 56
+2025-11-20 08:03:43.137126 DEBUG::Object: summary_function, Size: 49424
+2025-11-20 08:03:43.137453 DEBUG::Object: func_to_run, Size: 435336
+2025-11-20 08:03:43.137802 INFO::Fitting model to feature number 1, Acutalibacter_caecimuris
+2025-11-20 08:03:43.140411 WARNING::Fitting problem for feature 1 returning NA
+2025-11-20 08:03:43.142231 INFO::Fitting model to feature number 2, Acutalibacter_intestini
+2025-11-20 08:03:43.146571 INFO::Fitting model to feature number 3, Acutalibacter_muris
+2025-11-20 08:03:43.148925 INFO::Fitting model to feature number 4, Acutalibacter_sp_1XD8_33
+2025-11-20 08:03:43.151263 INFO::Fitting model to feature number 5, Adlercreutzia_SGB42953
+2025-11-20 08:03:43.153189 WARNING::Fitting problem for feature 5 returning NA
+2025-11-20 08:03:43.154792 INFO::Fitting model to feature number 6, Adlercreutzia_aquisgranensis
+2025-11-20 08:03:43.159008 INFO::Fitting model to feature number 7, Adlercreutzia_caecimuris
+2025-11-20 08:03:43.162914 INFO::Fitting model to feature number 8, Adlercreutzia_mucosicola
+2025-11-20 08:03:43.16702 INFO::Fitting model to feature number 9, Adlercreutzia_muris
+2025-11-20 08:03:43.17082 INFO::Fitting model to feature number 10, Akkermansia_muciniphila
+2025-11-20 08:03:43.174968 INFO::Fitting model to feature number 11, Alistipes_timonensis
+2025-11-20 08:03:43.177221 INFO::Fitting model to feature number 12, Anaerostipes_hominis_ex_Lee_et_al_2021
+2025-11-20 08:03:43.179715 INFO::Fitting model to feature number 13, Bacillota_unclassified_SGB43543
+2025-11-20 08:03:43.182096 INFO::Fitting model to feature number 14, Bacillota_unclassified_SGB63211
+2025-11-20 08:03:43.18438 INFO::Fitting model to feature number 15, Bacteroidales_bacterium
+2025-11-20 08:03:43.188152 INFO::Fitting model to feature number 16, Bifidobacterium_pseudolongum
+2025-11-20 08:03:43.192467 INFO::Fitting model to feature number 17, Blautia_pseudococcoides
+2025-11-20 08:03:43.194907 INFO::Fitting model to feature number 18, Caniella_muris
+2025-11-20 08:03:43.198947 INFO::Fitting model to feature number 19, Clostridia_bacterium
+2025-11-20 08:03:43.202957 INFO::Fitting model to feature number 20, Clostridiaceae_bacterium
+2025-11-20 08:03:43.207094 INFO::Fitting model to feature number 21, Clostridiales_bacterium
+2025-11-20 08:03:43.210954 INFO::Fitting model to feature number 22, Coriobacteriaceae_bacterium
+2025-11-20 08:03:43.215079 INFO::Fitting model to feature number 23, Duncaniella_dubosii
+2025-11-20 08:03:43.219169 INFO::Fitting model to feature number 24, Duncaniella_freteri
+2025-11-20 08:03:43.221175 WARNING::Fitting problem for feature 24 returning NA
+2025-11-20 08:03:43.223036 INFO::Fitting model to feature number 25, Duncaniella_muricolitica
+2025-11-20 08:03:43.226948 INFO::Fitting model to feature number 26, Duncaniella_muris
+2025-11-20 08:03:43.230891 INFO::Fitting model to feature number 27, Eubacteriaceae_bacterium
+2025-11-20 08:03:43.234802 INFO::Fitting model to feature number 28, Faecalibaculum_rodentium
+2025-11-20 08:03:43.23863 INFO::Fitting model to feature number 29, GGB115370_SGB161393
+2025-11-20 08:03:43.240809 WARNING::Fitting problem for feature 29 returning NA
+2025-11-20 08:03:43.24249 INFO::Fitting model to feature number 30, GGB14001_SGB21428
+2025-11-20 08:03:43.246286 INFO::Fitting model to feature number 31, GGB143828_SGB43507
+2025-11-20 08:03:43.248343 WARNING::Fitting problem for feature 31 returning NA
+2025-11-20 08:03:43.249946 INFO::Fitting model to feature number 32, GGB1503_SGB2082
+2025-11-20 08:03:43.254012 INFO::Fitting model to feature number 33, GGB18828_SGB27767
+2025-11-20 08:03:43.258482 INFO::Fitting model to feature number 34, GGB22635_SGB33556
+2025-11-20 08:03:43.262358 INFO::Fitting model to feature number 35, GGB22635_SGB63107
+2025-11-20 08:03:43.266259 INFO::Fitting model to feature number 36, GGB24132_SGB35935
+2025-11-20 08:03:43.270494 INFO::Fitting model to feature number 37, GGB24146_SGB35950
+2025-11-20 08:03:43.274617 INFO::Fitting model to feature number 38, GGB24148_SGB35952
+2025-11-20 08:03:43.278504 INFO::Fitting model to feature number 39, GGB25041_SGB36960
+2025-11-20 08:03:43.2825 INFO::Fitting model to feature number 40, GGB27478_SGB39772
+2025-11-20 08:03:43.286332 INFO::Fitting model to feature number 41, GGB27480_SGB39776
+2025-11-20 08:03:43.290407 INFO::Fitting model to feature number 42, GGB27482_SGB39778
+2025-11-20 08:03:43.294254 INFO::Fitting model to feature number 43, GGB27849_SGB40283
+2025-11-20 08:03:43.298273 INFO::Fitting model to feature number 44, GGB27860_SGB40294
+2025-11-20 08:03:43.302541 INFO::Fitting model to feature number 45, GGB27861_SGB40295
+2025-11-20 08:03:43.307151 INFO::Fitting model to feature number 46, GGB27866_SGB40300
+2025-11-20 08:03:43.311309 INFO::Fitting model to feature number 47, GGB27873_SGB41457
+2025-11-20 08:03:43.313659 WARNING::Fitting problem for feature 47 returning NA
+2025-11-20 08:03:43.315432 INFO::Fitting model to feature number 48, GGB27876_SGB40310
+2025-11-20 08:03:43.319696 INFO::Fitting model to feature number 49, GGB27884_SGB40318
+2025-11-20 08:03:43.325483 INFO::Fitting model to feature number 50, GGB27885_SGB40319
+2025-11-20 08:03:43.330162 INFO::Fitting model to feature number 51, GGB27894_SGB40329
+2025-11-20 08:03:43.332747 INFO::Fitting model to feature number 52, GGB27919_SGB40357
+2025-11-20 08:03:43.337094 INFO::Fitting model to feature number 53, GGB27929_SGB40368
+2025-11-20 08:03:43.34184 INFO::Fitting model to feature number 54, GGB28310_SGB40880
+2025-11-20 08:03:43.346514 INFO::Fitting model to feature number 55, GGB28317_SGB40889
+2025-11-20 08:03:43.348931 WARNING::Fitting problem for feature 55 returning NA
+2025-11-20 08:03:43.351038 INFO::Fitting model to feature number 56, GGB28380_SGB40960
+2025-11-20 08:03:43.353852 INFO::Fitting model to feature number 57, GGB28382_SGB40962
+2025-11-20 08:03:43.358805 INFO::Fitting model to feature number 58, GGB28765_SGB41414
+2025-11-20 08:03:43.362198 INFO::Fitting model to feature number 59, GGB28769_SGB41421
+2025-11-20 08:03:43.364994 WARNING::Fitting problem for feature 59 returning NA
+2025-11-20 08:03:43.36673 INFO::Fitting model to feature number 60, GGB28778_SGB41431
+2025-11-20 08:03:43.368766 WARNING::Fitting problem for feature 60 returning NA
+2025-11-20 08:03:43.3704 INFO::Fitting model to feature number 61, GGB28793_SGB41446
+2025-11-20 08:03:43.372814 INFO::Fitting model to feature number 62, GGB28796_SGB41449
+2025-11-20 08:03:43.376957 INFO::Fitting model to feature number 63, GGB28803_SGB41457
+2025-11-20 08:03:43.379073 WARNING::Fitting problem for feature 63 returning NA
+2025-11-20 08:03:43.380955 INFO::Fitting model to feature number 64, GGB28870_SGB41545
+2025-11-20 08:03:43.383394 INFO::Fitting model to feature number 65, GGB28901_SGB41592
+2025-11-20 08:03:43.387325 INFO::Fitting model to feature number 66, GGB28904_SGB41597
+2025-11-20 08:03:43.391685 INFO::Fitting model to feature number 67, GGB28934_SGB41635
+2025-11-20 08:03:43.394002 INFO::Fitting model to feature number 68, GGB28946_SGB41652
+2025-11-20 08:03:43.396063 WARNING::Fitting problem for feature 68 returning NA
+2025-11-20 08:03:43.397892 INFO::Fitting model to feature number 69, GGB28949_SGB41655
+2025-11-20 08:03:43.400132 INFO::Fitting model to feature number 70, GGB28956_SGB41665
+2025-11-20 08:03:43.402355 INFO::Fitting model to feature number 71, GGB28990_SGB41704
+2025-11-20 08:03:43.404536 INFO::Fitting model to feature number 72, GGB29003_SGB41719
+2025-11-20 08:03:43.40712 INFO::Fitting model to feature number 73, GGB29531_SGB42317
+2025-11-20 08:03:43.411037 INFO::Fitting model to feature number 74, GGB30045_SGB42945
+2025-11-20 08:03:43.415264 INFO::Fitting model to feature number 75, GGB30046_SGB42947
+2025-11-20 08:03:43.419253 INFO::Fitting model to feature number 76, GGB30294_SGB43258
+2025-11-20 08:03:43.423584 INFO::Fitting model to feature number 77, GGB30296_SGB43260
+2025-11-20 08:03:43.426019 INFO::Fitting model to feature number 78, GGB30298_SGB43262
+2025-11-20 08:03:43.428096 WARNING::Fitting problem for feature 78 returning NA
+2025-11-20 08:03:43.429804 INFO::Fitting model to feature number 79, GGB30454_SGB43516
+2025-11-20 08:03:43.431963 WARNING::Fitting problem for feature 79 returning NA
+2025-11-20 08:03:43.433567 INFO::Fitting model to feature number 80, GGB30455_SGB43519
+2025-11-20 08:03:43.437532 INFO::Fitting model to feature number 81, GGB30461_SGB102216
+2025-11-20 08:03:43.439804 WARNING::Fitting problem for feature 81 returning NA
+2025-11-20 08:03:43.441522 INFO::Fitting model to feature number 82, GGB30461_SGB43529
+2025-11-20 08:03:43.443402 WARNING::Fitting problem for feature 82 returning NA
+2025-11-20 08:03:43.44494 INFO::Fitting model to feature number 83, GGB30461_SGB63209
+2025-11-20 08:03:43.446982 WARNING::Fitting problem for feature 83 returning NA
+2025-11-20 08:03:43.448615 INFO::Fitting model to feature number 84, GGB30475_SGB63182
+2025-11-20 08:03:43.450557 WARNING::Fitting problem for feature 84 returning NA
+2025-11-20 08:03:43.452164 INFO::Fitting model to feature number 85, GGB30861_SGB44083
+2025-11-20 08:03:43.456285 INFO::Fitting model to feature number 86, GGB3171_SGB4185
+2025-11-20 08:03:43.458783 INFO::Fitting model to feature number 87, GGB32371_SGB41694
+2025-11-20 08:03:43.460738 WARNING::Fitting problem for feature 87 returning NA
+2025-11-20 08:03:43.462312 INFO::Fitting model to feature number 88, GGB42570_SGB59765
+2025-11-20 08:03:43.466287 INFO::Fitting model to feature number 89, GGB42598_SGB59794
+2025-11-20 08:03:43.470172 INFO::Fitting model to feature number 90, GGB42646_SGB59844
+2025-11-20 08:03:43.472355 WARNING::Fitting problem for feature 90 returning NA
+2025-11-20 08:03:43.474213 INFO::Fitting model to feature number 91, GGB45514_SGB63186
+2025-11-20 08:03:43.476546 INFO::Fitting model to feature number 92, GGB46159_SGB63927
+2025-11-20 08:03:43.480432 INFO::Fitting model to feature number 93, GGB46162_SGB63930
+2025-11-20 08:03:43.48422 INFO::Fitting model to feature number 94, GGB70518_SGB94950
+2025-11-20 08:03:43.486814 WARNING::Fitting problem for feature 94 returning NA
+2025-11-20 08:03:43.488439 INFO::Fitting model to feature number 95, GGB70852_SGB95305
+2025-11-20 08:03:43.492649 INFO::Fitting model to feature number 96, GGB75057_SGB102223
+2025-11-20 08:03:43.494627 WARNING::Fitting problem for feature 96 returning NA
+2025-11-20 08:03:43.496396 INFO::Fitting model to feature number 97, GGB75074_SGB102167
+2025-11-20 08:03:43.498404 WARNING::Fitting problem for feature 97 returning NA
+2025-11-20 08:03:43.499959 INFO::Fitting model to feature number 98, GGB75104_SGB102231
+2025-11-20 08:03:43.502328 INFO::Fitting model to feature number 99, GGB75725_SGB102612
+2025-11-20 08:03:43.506259 INFO::Fitting model to feature number 100, GGB75726_SGB102611
+2025-11-20 08:03:43.508693 INFO::Fitting model to feature number 101, GGB75879_SGB103683
+2025-11-20 08:03:43.512613 INFO::Fitting model to feature number 102, GGB9439_SGB42949
+2025-11-20 08:03:43.517703 INFO::Fitting model to feature number 103, Hominisplanchenecus_murintestinalis
+2025-11-20 08:03:43.521595 INFO::Fitting model to feature number 104, Lachnospiraceae_bacterium
+2025-11-20 08:03:43.525971 INFO::Fitting model to feature number 105, Lachnospiraceae_bacterium_A2
+2025-11-20 08:03:43.52831 INFO::Fitting model to feature number 106, Lachnospiraceae_unclassified_SGB41405
+2025-11-20 08:03:43.532828 INFO::Fitting model to feature number 107, Lachnospiraceae_unclassified_SGB7275
+2025-11-20 08:03:43.537352 INFO::Fitting model to feature number 108, Lactobacillus_intestinalis
+2025-11-20 08:03:43.541579 INFO::Fitting model to feature number 109, Lactobacillus_johnsonii
+2025-11-20 08:03:43.545421 INFO::Fitting model to feature number 110, Lepagella_muris
+2025-11-20 08:03:43.550099 INFO::Fitting model to feature number 111, Ligilactobacillus_murinus
+2025-11-20 08:03:43.566715 INFO::Fitting model to feature number 112, Limosilactobacillus_reuteri
+2025-11-20 08:03:43.575563 INFO::Fitting model to feature number 113, Muribaculaceae_bacterium
+2025-11-20 08:03:43.58005 INFO::Fitting model to feature number 114, Muribaculum_gordoncarteri
+2025-11-20 08:03:43.584903 INFO::Fitting model to feature number 115, Muribaculum_intestinale
+2025-11-20 08:03:43.589793 INFO::Fitting model to feature number 116, Muricaecibacterium_torontonense
+2025-11-20 08:03:43.594598 INFO::Fitting model to feature number 117, Neglectibacter_caecimuris
+2025-11-20 08:03:43.597054 WARNING::Fitting problem for feature 117 returning NA
+2025-11-20 08:03:43.598945 INFO::Fitting model to feature number 118, Neglectibacter_sp_X4
+2025-11-20 08:03:43.601316 WARNING::Fitting problem for feature 118 returning NA
+2025-11-20 08:03:43.603115 INFO::Fitting model to feature number 119, Oscillibacter_SGB43496
+2025-11-20 08:03:43.606247 INFO::Fitting model to feature number 120, Oscillibacter_SGB43499
+2025-11-20 08:03:43.609486 WARNING::Fitting problem for feature 120 returning NA
+2025-11-20 08:03:43.61129 INFO::Fitting model to feature number 121, Oscillospiraceae_bacterium
+2025-11-20 08:03:43.613662 INFO::Fitting model to feature number 122, Oscillospiraceae_unclassified_SGB43526
+2025-11-20 08:03:43.616056 INFO::Fitting model to feature number 123, Paramuribaculum_intestinale
+2025-11-20 08:03:43.6199 INFO::Fitting model to feature number 124, Parasutterella_muris
+2025-11-20 08:03:43.624068 INFO::Fitting model to feature number 125, Parvibacter_caecicola
+2025-11-20 08:03:43.628431 INFO::Fitting model to feature number 126, Sangeribacter_muris
+2025-11-20 08:03:43.632551 INFO::Fitting model to feature number 127, Schaedlerella_arabinosiphila
+2025-11-20 08:03:43.635021 INFO::Fitting model to feature number 128, Turicibacter_sp_1E2
+2025-11-20 08:03:43.637057 WARNING::Fitting problem for feature 128 returning NA
+2025-11-20 08:03:43.638732 INFO::Fitting model to feature number 129, Turicimonas_muris
+2025-11-20 08:03:43.696262 WARNING::Deleting existing model objects file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/models_linear.rds
+2025-11-20 08:03:43.698676 INFO::Writing model objects to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/models_linear.rds
+2025-11-20 08:03:43.819792 WARNING::Deleting existing residuals file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/residuals_linear.rds
+2025-11-20 08:03:43.820838 INFO::Writing residuals to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/residuals_linear.rds
+2025-11-20 08:03:43.821965 WARNING::Deleting existing fitted file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/fitted_linear.rds
+2025-11-20 08:03:43.823337 INFO::Writing fitted values to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/fitted_linear.rds
+2025-11-20 08:03:43.824943 WARNING::Deleting existing model objects file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/models_logistic.rds
+2025-11-20 08:03:43.825843 INFO::Writing model objects to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/models_logistic.rds
+2025-11-20 08:03:45.77066 WARNING::Deleting existing residuals file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/residuals_logistic.rds
+2025-11-20 08:03:45.771748 INFO::Writing residuals to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/residuals_logistic.rds
+2025-11-20 08:03:45.77453 WARNING::Deleting existing fitted file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/fitted_logistic.rds
+2025-11-20 08:03:45.775607 INFO::Writing fitted values to file /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/fits/fitted_logistic.rds
+2025-11-20 08:03:45.778998 INFO::Writing all the results to file (ordered 
+            by increasing individual q-values): /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/all_results.tsv
+2025-11-20 08:03:45.787778 INFO::Writing the significant results without errors (those which have joint q-values less than or equal to the threshold of 0.250000 ) to file (ordered by increasing individual q-values): /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/significant_results.tsv
+2025-11-20 08:03:45.789597 INFO::Writing summary plot of significant
+                        results to file: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/figures/summary_plot.pdf
+2025-11-20 08:03:48.011225 INFO::Writing association plots (one for each significant association) to output folder: /home/julianne/Documents/slc_si_paper/results/SMT_Maaslin3/Jejunum//Sequencing_Depth_Sex_Genotype/figures
+2025-11-20 08:03:48.012732 INFO::All associations had errors 
+                                or were insignificant.
