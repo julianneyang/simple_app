@@ -11,6 +11,7 @@ library(plotly)
 library(stringi)
 library(nlme)
 library(pheatmap)
+library(paletteer)
 
 here::i_am("global.R")
 

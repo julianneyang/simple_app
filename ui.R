@@ -224,6 +224,10 @@ ui <- fluidPage(
                   selected = "2025_only"
                 ),
                 uiOutput("tables_ui")
+              ),
+              tabPanel(
+                "SMT_Negative_Metagenomics",         
+                plotlyOutput("smt_microbiome_barplot")
               )
   )
 )
