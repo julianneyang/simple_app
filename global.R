@@ -13,6 +13,7 @@ library(nlme)
 library(pheatmap)
 library(paletteer)
 library(vegan)
+library(quantreg)
 
 here::i_am("global.R")
 
@@ -42,13 +43,19 @@ plot_fitc <- function(dataframe, title_string, subtitle_string, stat_comparisons
   df <- as.data.frame(dataframe)
   df$Genotype <- factor(df$Genotype, levels=c("WT", "HET", "MUT"))
   
-  df_150 <- df %>% filter(Size=="150_kDa")
-  df_4 <- df %>% filter(Size=="4_kDa")
+  df_150 <- df %>% filter(Size=="150_kDa") %>% filter(Omit=="No")
+  df_4 <- df %>% filter(Size=="4_kDa") 
   
   if(dim(df_150)[1]!=0){
     lm <- lm(Plasma_FITC ~ Sex + Genotype, data = df_150)
     print("150 kDa")
     print(summary(lm))
+  }
+  
+  if (nrow(df_150) != 0) {
+    qr_150 <- rq(Plasma_FITC ~ Sex + Genotype, data = df_150, tau = 0.5)
+    cat("150 kDa\n")
+    print(summary(qr_150, se = "boot", R = 1000))
   }
   
   if(dim(df_4)[1]!=0){

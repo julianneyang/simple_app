@@ -232,7 +232,10 @@ ui <- fluidPage(
                   column(6, plotOutput("labeled_smt_pcoa_plot")),
                   column(6, plotOutput("smt_pcoa_plot"))
                 ),
+                sliderInput("cutoff", "Absolute log2FC Cutoff", 
+                            min = 0, max = 5, value = 1, step = 0.1),
                 fluidRow(
+                  
                   column(6, plotlyOutput("smt_DAT")),
                   column(6, plotlyOutput("smt_DPT"))
                 )
