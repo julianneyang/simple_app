@@ -2,12 +2,12 @@
 
 observeEvent(input$tabs, {
   if (input$tabs == "SMT_Negative_Metagenomics") {
-    species <- read.csv(here("data/sequencing_data/Metagenomics/Filtered_SMT_Shotgun_counts.csv")) %>% 
+    species <- read.csv(here("data/sequencing_data/Metagenomics/Filtered_Bracken_SMT_Shotgun_counts.csv")) %>% 
       group_by(X) %>%
       summarise(across(where(is.numeric), \(x) sum(x, na.rm = TRUE))) %>%
       column_to_rownames("X")
     
-    meta <-read.csv(here("data/sequencing_data/Metagenomics/Filtered_SMT_Shotgun_metadata.csv"), row.names=1) %>% 
+    meta <-read.csv(here("data/sequencing_data/Metagenomics/Filtered_Bracken_SMT_Shotgun_metadata.csv"), row.names=1) %>% 
       rownames_to_column("SampleID")
     
     
@@ -86,7 +86,7 @@ observeEvent(input$tabs, {
                                 title="SMT_species",
                                 colorvariable = Genotype,
                                 colorvector = cols,
-                                wa_scores_filepath = here("results/SMT_Maaslin2/pca_scores.csv"))
+                                wa_scores_filepath = here("results/SMT_Maaslin2/bracken_pca_scores.csv"))
     output$smt_pcoa_plot <- renderPlot({
       smt_pcoa
     })
@@ -97,7 +97,7 @@ observeEvent(input$tabs, {
     
     ### Plotting the significant Species ---
     
-    significant_results <- read.delim(here("results/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/significant_results.tsv")) %>%
+    significant_results <- read.delim(here("results/Bracken/SMT_Maaslin3/Full/Sequencing_Depth_Site_Sex_Genotype/significant_results.tsv")) %>%
       filter(metadata=="Genotype") %>%
       filter(coef!="NA")
     
