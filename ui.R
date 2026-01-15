@@ -232,6 +232,13 @@ ui <- fluidPage(
                   column(6, plotOutput("labeled_smt_pcoa_plot")),
                   column(6, plotOutput("smt_pcoa_plot"))
                 ),
+                selectizeInput(
+                  inputId = "selected_features",
+                  label = "Select features to display",
+                  choices = NULL,     # populated server-side
+                  multiple = TRUE,
+                  options = list(placeholder = "Choose one or more features")
+                ),
                 sliderInput("cutoff", "Absolute log2FC Cutoff", 
                             min = 0, max = 5, value = 1, step = 0.1),
                 fluidRow(

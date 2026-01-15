@@ -4,7 +4,7 @@ source("global.R")
 
 
 # ---- SERVER ----
-server <- function(input, output) {
+server <- function(input, output,session) {
   
   full_comparisons <- list( c("WT", "HET"), c("HET","MUT"),c("WT", "MUT"))
   
