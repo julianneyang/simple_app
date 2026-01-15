@@ -8,8 +8,25 @@ observeEvent(input$tabs, {
       column_to_rownames("X")
     
     meta <-read.csv(here("data/sequencing_data/Metagenomics/Filtered_Bracken_SMT_Shotgun_metadata.csv"), row.names=1) %>% 
-      rownames_to_column("SampleID")
+      rownames_to_column("SampleID") %>% 
+      mutate(Group ="Recipients") %>% 
+      dplyr::select(-c("MouseID", "Site","Sex","Sequencing_Depth"))
     
+    donors <- read.csv(here("data/sequencing_data/Metagenomics/smt_donors_bracken_table.csv")) %>% 
+      group_by(X) %>%
+      summarise(across(where(is.numeric), \(x) sum(x, na.rm = TRUE))) %>%
+      column_to_rownames("X")
+    
+    species <- cbind(species, donors)
+    
+    donors_meta <- data.frame("SampleID"=gsub(".*Donor_", "", names(donors))) %>%
+      mutate(Genotype = gsub(".*Donor_","",SampleID)) 
+    
+    donors_meta <- donors_meta %>%
+      mutate(Genotype = gsub("_.*","", Genotype) ) %>% 
+      mutate(Group = "Donors")
+    
+    meta <- rbind(meta,donors_meta)
     
     ### Stacked Column Chart ---
     ld <- species %>% 
@@ -41,6 +58,7 @@ observeEvent(input$tabs, {
     set.seed(11)
     scrambled_cols <- unique(sample(cols_large))
     
+   
     p <- ggplot(
       ld,
       aes(
@@ -109,7 +127,8 @@ observeEvent(input$tabs, {
     
     make_taxa_dotplot <- function(ASV_significant_results_dataset,
                                   titlestring, 
-                                  colorvector=  c("WT"="black", "MUT" = "firebrick"), qvalue=0.05){
+                                  colorvector=  c("WT"="black", "MUT" = "firebrick"), qvalue=0.05,
+                                  coef_cutoff){
       #data <- lc_dat_mut
       data <- as.data.frame(ASV_significant_results_dataset)
       data$annotation <- data$feature
@@ -125,7 +144,7 @@ observeEvent(input$tabs, {
       
       g1 <- res_plot %>%
         arrange(coef) %>%
-        filter(qval_individual < qvalue, abs(coef) > 0) %>%
+        filter(qval_individual < qvalue, abs(coef) >= coef_cutoff) %>%
         ggplot(aes(
           x = coef,
           y = annotation,
@@ -151,21 +170,23 @@ observeEvent(input$tabs, {
       
     }
     
-   smt_abundance_plot <- make_taxa_dotplot(ASV_significant_results_dataset = abundance,
-                      #Relative_Abundance_filepath_rds = "results/SMT_Maaslin2/Relative_Abundance_Species_Luminal_SI_ASV.RDS",
-                      titlestring = "Abundance: SMT Ile + Jej (MUT vs WT) ",
-                      qvalue = 0.25)
-   smt_prevalence_plot <- make_taxa_dotplot(ASV_significant_results_dataset = prevalence,
-                      #Relative_Abundance_filepath_rds = "results/SMT_Maaslin2/Relative_Abundance_Species_Luminal_SI_ASV.RDS",
-                      titlestring = "Prevalence: SMT Ile + Jej (MUT vs WT) ",
-                      qvalue = 0.25)
    
    output$smt_DAT <- renderPlotly({
+     smt_abundance_plot <- make_taxa_dotplot(ASV_significant_results_dataset = abundance,
+                                             #Relative_Abundance_filepath_rds = "results/SMT_Maaslin2/Relative_Abundance_Species_Luminal_SI_ASV.RDS",
+                                             titlestring = "Abundance: SMT Ile + Jej (MUT vs WT) ",
+                                             qvalue = 0.25,
+                                             coef_cutoff = input$cutoff)
      smt_abundance_plot
    })
     
    output$smt_DPT <- renderPlotly({
-     smt_prevalence_plot
+     smt_prevalence_plot <- make_taxa_dotplot(ASV_significant_results_dataset = prevalence,
+                                              #Relative_Abundance_filepath_rds = "results/SMT_Maaslin2/Relative_Abundance_Species_Luminal_SI_ASV.RDS",
+                                              titlestring = "Prevalence: SMT Ile + Jej (MUT vs WT) ",
+                                              qvalue = 0.25,
+                                              coef_cutoff = input$cutoff)
+      smt_prevalence_plot
    })
    
   }
