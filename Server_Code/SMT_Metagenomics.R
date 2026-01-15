@@ -10,12 +10,12 @@ observeEvent(input$tabs, {
     meta <-read.csv(here("data/sequencing_data/Metagenomics/Filtered_Bracken_SMT_Shotgun_metadata.csv"), row.names=1) %>% 
       rownames_to_column("SampleID") %>% 
       mutate(Group ="Recipients") %>% 
-      dplyr::select(-c("MouseID", "Site","Sex","Sequencing_Depth"))
+      dplyr::select(-c("Site","Sex","Sequencing_Depth"))
     
     donors <- read.csv(here("data/sequencing_data/Metagenomics/smt_donors_bracken_table.csv")) %>% 
       group_by(X) %>%
       summarise(across(where(is.numeric), \(x) sum(x, na.rm = TRUE))) %>%
-      column_to_rownames("X")
+      column_to_rownames("X") 
     
     species <- cbind(species, donors)
     
@@ -24,14 +24,15 @@ observeEvent(input$tabs, {
     
     donors_meta <- donors_meta %>%
       mutate(Genotype = gsub("_.*","", Genotype) ) %>% 
-      mutate(Group = "Donors")
+      mutate(Group = "Donors") %>% 
+      mutate(MouseID="NA")
     
     meta <- rbind(meta,donors_meta)
     
     ### Stacked Column Chart ---
     ld <- species %>% 
       rownames_to_column("Species") %>%
-      pivot_longer(cols = starts_with("SLC"),names_to = "SampleID", values_to = "Count")
+      pivot_longer(cols = -Species,names_to = "SampleID", values_to = "Count")
     
     ld <- ld %>% 
       group_by(SampleID) %>%
@@ -73,7 +74,7 @@ observeEvent(input$tabs, {
       )
     ) +
       geom_bar(stat = "identity", position = "stack") +
-      facet_wrap(~Genotype, scales = "free_x") +
+      facet_wrap(~Genotype + Group, scales = "free_x") +
       labs(
         x = "Sample",
         y = "Species (%)",
