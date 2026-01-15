@@ -16,6 +16,7 @@ observeEvent(input$tabs, {
       group_by(X) %>%
       summarise(across(where(is.numeric), \(x) sum(x, na.rm = TRUE))) %>%
       column_to_rownames("X") 
+    names(donors) <- gsub(".*Donor_","",names(donors))
     
     species <- cbind(species, donors)
     
@@ -25,7 +26,8 @@ observeEvent(input$tabs, {
     donors_meta <- donors_meta %>%
       mutate(Genotype = gsub("_.*","", Genotype) ) %>% 
       mutate(Group = "Donors") %>% 
-      mutate(MouseID="NA")
+      mutate(MouseID="NA") %>%
+      dplyr::select(names(meta))
     
     meta <- rbind(meta,donors_meta)
     
@@ -45,6 +47,7 @@ observeEvent(input$tabs, {
       filter(Percentage >= 0.01) %>%
       mutate(Percentage = Count / sum(Count) * 100)
     
+    
     ld$Genotype <- factor(ld$Genotype, levels=c("WT", "MUT"))
     
     cols_large <- unlist(lapply(1:nrow(palettes_d_names), function(i) {
@@ -59,7 +62,7 @@ observeEvent(input$tabs, {
     set.seed(11)
     scrambled_cols <- unique(sample(cols_large))
     
-   
+    
     p <- ggplot(
       ld,
       aes(
@@ -74,13 +77,14 @@ observeEvent(input$tabs, {
       )
     ) +
       geom_bar(stat = "identity", position = "stack") +
-      facet_wrap(~Genotype + Group, scales = "free_x") +
+      facet_grid(~Genotype + Group, scales = "free_x", space = "free_x") +
       labs(
         x = "Sample",
         y = "Species (%)",
         title = "Relative Abundance"
       ) +
       theme_cowplot(12) +
+      theme(legend.position = "none")+
       scale_fill_manual(name = "Species", values = scrambled_cols) +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
     
