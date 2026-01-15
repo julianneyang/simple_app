@@ -124,11 +124,33 @@ observeEvent(input$tabs, {
       filter(metadata=="Genotype") %>%
       filter(coef!="NA")
     
-    abundance <- significant_results %>% 
-      filter(null_hypothesis!=0)
+    observe({
+      updateSelectizeInput(
+        session,
+        "selected_features",
+        choices = sort(unique(significant_results$feature)),
+        server = TRUE
+      )
+    })
     
-    prevalence <- significant_results %>% 
-      filter(null_hypothesis==0)
+    abundance <- significant_results %>% filter(null_hypothesis!=0) 
+    prevalence <- significant_results %>% filter(null_hypothesis==0)
+    
+    filtered_abundance <- reactive({
+      if (is.null(input$selected_features) || length(input$selected_features) == 0) {
+        abundance
+      } else {
+        abundance %>% filter(feature %in% input$selected_features)
+      }
+    })
+    
+    filtered_prevalence <- reactive({
+      if (is.null(input$selected_features) || length(input$selected_features) == 0) {
+        prevalence
+      } else {
+        prevalence %>% filter(feature %in% input$selected_features)
+      }
+    })
     
     make_taxa_dotplot <- function(ASV_significant_results_dataset,
                                   titlestring, 
@@ -177,7 +199,7 @@ observeEvent(input$tabs, {
     
    
    output$smt_DAT <- renderPlotly({
-     smt_abundance_plot <- make_taxa_dotplot(ASV_significant_results_dataset = abundance,
+     smt_abundance_plot <- make_taxa_dotplot(ASV_significant_results_dataset = filtered_abundance(),
                                              #Relative_Abundance_filepath_rds = "results/SMT_Maaslin2/Relative_Abundance_Species_Luminal_SI_ASV.RDS",
                                              titlestring = "Abundance: SMT Ile + Jej (MUT vs WT) ",
                                              qvalue = 0.25,
@@ -186,7 +208,7 @@ observeEvent(input$tabs, {
    })
     
    output$smt_DPT <- renderPlotly({
-     smt_prevalence_plot <- make_taxa_dotplot(ASV_significant_results_dataset = prevalence,
+     smt_prevalence_plot <- make_taxa_dotplot(ASV_significant_results_dataset = filtered_prevalence(),
                                               #Relative_Abundance_filepath_rds = "results/SMT_Maaslin2/Relative_Abundance_Species_Luminal_SI_ASV.RDS",
                                               titlestring = "Prevalence: SMT Ile + Jej (MUT vs WT) ",
                                               qvalue = 0.25,
