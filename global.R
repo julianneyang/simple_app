@@ -43,7 +43,11 @@ plot_fitc <- function(dataframe, title_string, subtitle_string, stat_comparisons
   df <- as.data.frame(dataframe)
   df$Genotype <- factor(df$Genotype, levels=c("WT", "HET", "MUT"))
   
+  if("Omit" %in% names(df) ){
   df_150 <- df %>% filter(Size=="150_kDa") %>% filter(Omit=="No")
+  } else {
+    df_150 <- df %>% filter(Size=="150_kDa") 
+  }
   df_4 <- df %>% filter(Size=="4_kDa") 
   
   if(dim(df_150)[1]!=0){
