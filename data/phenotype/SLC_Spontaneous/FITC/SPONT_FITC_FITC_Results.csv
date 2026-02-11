@@ -137,3 +137,12 @@ MouseID,Genotype,Sex,Plasma_FITC,Size,Batch,Hemolysis,Omit
 524,MUT,Male,785.92,150_kDa,Eight,,No
 555,HET,Male,446.305,150_kDa,Eight,,No
 559,WT,Female,952.06,150_kDa,Eight,,No
+608,HET,Male,544.935,150_kDa,Nine,,No
+572,HET,Male,2038.425,150_kDa,Nine,,No
+570,HET,Female,802.535,150_kDa,Nine,,No
+568,WT,Male,1502.595,150_kDa,Nine,,No
+601,WT,Female,848.87,150_kDa,Nine,,No
+598,WT,Female,1144.985,150_kDa,Nine,,No
+607,MUT,Male,604.34,150_kDa,Nine,,No
+574,MUT,Male,4423.885,150_kDa,Nine,,No
+573,MUT,Male,1079.195,150_kDa,Nine,,No
